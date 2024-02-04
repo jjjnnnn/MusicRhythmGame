@@ -665,6 +665,7 @@ GameObject:
   - component: {fileID: 1283893157663746331}
   - component: {fileID: 93131147}
   - component: {fileID: 93131149}
+  - component: {fileID: 160528750}
   m_Layer: 0
   m_Name: XueRen
   m_TagString: Untagged
@@ -681,7 +682,7 @@ Transform:
   m_GameObject: {fileID: 1283893157663746328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1283893156552625057}
@@ -716,11 +717,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283893157663746328}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9c60116a3dd6dd499ce08a091751beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &160528750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283893157663746328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a4981f3da5639479628c566df3e75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrackEventName:
+  - diantouEventID
+  - leftEventID
+  - rightEventID
 --- !u!1 &1283893157855266941
 GameObject:
   m_ObjectHideFlags: 0

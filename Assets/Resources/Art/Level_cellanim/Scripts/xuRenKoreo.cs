@@ -6,7 +6,7 @@ using SonicBloom.Koreo;
 public class xuRenKoreo : MonoBehaviour
 {
 
-    [SerializeField][EventID] private string TrackEventName;//事件音轨
+    [SerializeField][EventID] private string[] TrackEventName;//事件音轨
 
     private Animator _animator;
 
@@ -16,9 +16,10 @@ public class xuRenKoreo : MonoBehaviour
     {
         _animator=GetComponent<Animator>();
 
-        Koreographer.Instance.RegisterForEvents(TrackEventName, Event);
-
-
+        Koreographer.Instance.RegisterForEvents(TrackEventName[0], DiantouEvent);
+        Koreographer.Instance.RegisterForEvents(TrackEventName[1], LeftEvent);
+        Koreographer.Instance.RegisterForEvents(TrackEventName[2], RightEvent);
+        
     }
 
     // Update is called once per frame
@@ -27,11 +28,34 @@ public class xuRenKoreo : MonoBehaviour
         
     }
 
-    private void Event(KoreographyEvent koreoEvent)
+
+    /// <summary>
+    /// 点头事件
+    /// </summary>
+    /// <param name="koreoEvent"></param>
+    private void DiantouEvent(KoreographyEvent koreoEvent)
     {
-        Debug.Log("执行该事件");
+        Debug.Log("执行点头该事件");
         _animator.SetTrigger("diantou");
         
+    }
+    /// <summary>
+    /// 左转
+    /// </summary>
+    /// <param name="koreoEvent"></param>
+    private void LeftEvent(KoreographyEvent koreoEvent)
+    {
+        Debug.Log("执行左转该事件");
+        _animator.SetTrigger("left");
+    }
+    /// <summary>
+    /// 右转
+    /// </summary>
+    /// <param name="koreoEvent"></param>
+    private void RightEvent(KoreographyEvent koreoEvent)
+    {
+        Debug.Log("执行右转该事件");
+        _animator.SetTrigger("right");
     }
 
 
