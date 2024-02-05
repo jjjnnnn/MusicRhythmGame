@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using SonicBloom.Koreo;
 
-public class xuRenKoreo : MonoBehaviour
+public class xuRenOtherKoreo : MonoBehaviour
 {
 
     [SerializeField][EventID] private string[] TrackEventName;//ÊÂ¼þÒô¹ì
 
     private Animator _animator;
 
+    
 
     // Start is called before the first frame update
     void Start()

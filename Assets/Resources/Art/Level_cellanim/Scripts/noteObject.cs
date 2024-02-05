@@ -6,6 +6,7 @@ using UnityEngine;
 public class noteObject : MonoBehaviour
 {
     private KoreographyEvent trackEvent;
+    private GameController gameController;
     
 
 
@@ -25,8 +26,9 @@ public class noteObject : MonoBehaviour
     public bool IsNoteHittable()
     {
         int noteTime = trackEvent.StartSample;//note开始时间
-        int curTime;
-        int hitWindow;
+        int endTime = trackEvent.EndSample;
+
+        int hitTime = gameController.HitWindowSampleWidth;
         return true;
     }
 }
