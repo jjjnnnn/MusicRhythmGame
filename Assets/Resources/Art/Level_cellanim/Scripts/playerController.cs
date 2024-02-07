@@ -16,6 +16,8 @@ public class playerController : MonoBehaviour
 
     private Animator _animator;
     private List<KoreographyEvent> trackEvents = new List<KoreographyEvent>();
+    private int trackEventIndex = 0;
+
     private Koreography playingKoreo;
     private float hitWindowRangeInSamples;
     // Start is called before the first frame update
@@ -72,10 +74,16 @@ public class playerController : MonoBehaviour
     /// <returns>是否命中</returns>
     private bool IsNoteHittable()
     {
-        int rhythmTime = trackEvents[0].StartSample;//节奏时间
+        int rhythmTime = trackEvents[trackEventIndex].StartSample;//节奏时间
         int curTime = playingKoreo.GetLatestSampleTime();//当前音乐节奏时间
         float hitWindow = hitWindowRangeInSamples;//采样时间点
 
         return (Math.Abs(curTime-rhythmTime)<=hitWindow);
+    }
+
+    private void CheckSpawnNext()
+    {
+
+        
     }
 }
