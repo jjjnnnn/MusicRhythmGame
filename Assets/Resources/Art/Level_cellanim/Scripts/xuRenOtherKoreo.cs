@@ -36,7 +36,7 @@ public class xuRenOtherKoreo : MonoBehaviour
     /// <param name="koreoEvent"></param>
     private void DiantouEvent(KoreographyEvent koreoEvent)
     {
-        Debug.Log("执行点头该事件");
+        Debug.Log("其他海豹执行点头该事件");
         _animator.SetTrigger("diantou");
         
     }
@@ -46,7 +46,7 @@ public class xuRenOtherKoreo : MonoBehaviour
     /// <param name="koreoEvent"></param>
     private void LeftEvent(KoreographyEvent koreoEvent)
     {
-        Debug.Log("执行左转该事件");
+        Debug.Log("其他海豹执行左转该事件");
         _animator.SetTrigger("left");
     }
     /// <summary>
@@ -55,7 +55,7 @@ public class xuRenOtherKoreo : MonoBehaviour
     /// <param name="koreoEvent"></param>
     private void RightEvent(KoreographyEvent koreoEvent)
     {
-        Debug.Log("执行右转该事件");
+        Debug.Log("其他海豹执行右转该事件");
         _animator.SetTrigger("right");
     }
 

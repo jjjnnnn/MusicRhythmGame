@@ -6,7 +6,7 @@ using UnityEngine;
 public class noteObject : MonoBehaviour
 {
     private KoreographyEvent trackEvent;
-    private GameController gameController;
+    //private GameController gameController;
     
 
 
@@ -28,7 +28,7 @@ public class noteObject : MonoBehaviour
         int noteTime = trackEvent.StartSample;//note开始时间
         int endTime = trackEvent.EndSample;
 
-        int hitTime = gameController.HitWindowSampleWidth;
+        //int hitTime = gameController.HitWindowSampleWidth;
         return true;
     }
 }
