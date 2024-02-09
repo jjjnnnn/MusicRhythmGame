@@ -722,10 +722,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrackEventName:
-  - diantouEventID
-  - leftEventID
-  - rightEventID
-  _koreographer: {fileID: 0}
+  - haibaoEventID
+  eventTextName:
+  - diantou
+  - left
+  - right
+  aniName:
+  - diantou
+  - left
+  - right
 --- !u!1 &1283893157855266941
 GameObject:
   m_ObjectHideFlags: 0

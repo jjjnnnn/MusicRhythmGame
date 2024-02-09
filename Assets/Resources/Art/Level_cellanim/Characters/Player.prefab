@@ -664,8 +664,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1283893157663746331}
   - component: {fileID: 93131147}
-  - component: {fileID: 93131149}
-  - component: {fileID: 5718625571220895020}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -710,34 +708,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &93131149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283893157663746328}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9c60116a3dd6dd499ce08a091751beb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5718625571220895020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283893157663746328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1793af449d8de24f948b3a50ea32b6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TrackEventName:
-  - diantouEventID
-  - leftEventID
-  - rightEventID
 --- !u!1 &1283893157855266941
 GameObject:
   m_ObjectHideFlags: 0
