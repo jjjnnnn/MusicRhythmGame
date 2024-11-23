@@ -14,50 +14,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mEventID: haibaoEventID
   mEventList:
-  - mStartSample: 19894
-    mEndSample: 19894
-  - mStartSample: 59684
-    mEndSample: 59684
-  - mStartSample: 99473
-    mEndSample: 99473
-  - mStartSample: 119368
-    mEndSample: 119368
   - mStartSample: 139263
     mEndSample: 139263
-  - mStartSample: 179052
-    mEndSample: 179052
-  - mStartSample: 198947
-    mEndSample: 198947
+  - mStartSample: 179053
+    mEndSample: 179053
   - mStartSample: 218842
     mEndSample: 218842
-  - mStartSample: 238736
-    mEndSample: 238736
-  - mStartSample: 258631
-    mEndSample: 258631
-  - mStartSample: 278526
-    mEndSample: 278526
+  - mStartSample: 238737
+    mEndSample: 238737
+  - mStartSample: 258632
+    mEndSample: 258632
   - mStartSample: 298421
     mEndSample: 298421
-  - mStartSample: 318315
-    mEndSample: 318315
-  - mStartSample: 338210
-    mEndSample: 338210
+  - mStartSample: 318316
+    mEndSample: 318316
+  - mStartSample: 338211
+    mEndSample: 338211
   - mStartSample: 358105
     mEndSample: 358105
   - mStartSample: 378000
     mEndSample: 378000
-  - mStartSample: 387260
-    mEndSample: 387260
-  - mStartSample: 397894
-    mEndSample: 397894
-  - mStartSample: 417789
-    mEndSample: 417789
+  - mStartSample: 397895
+    mEndSample: 397895
+  - mStartSample: 417790
+    mEndSample: 417790
   - mStartSample: 437684
     mEndSample: 437684
-  - mStartSample: 457578
-    mEndSample: 457578
-  - mStartSample: 477473
-    mEndSample: 477473
+  - mStartSample: 457579
+    mEndSample: 457579
+  - mStartSample: 477474
+    mEndSample: 477474
+  - mStartSample: 497369
+    mEndSample: 497369
+  - mStartSample: 506629
+    mEndSample: 506629
+  - mStartSample: 517263
+    mEndSample: 517263
+  - mStartSample: 537158
+    mEndSample: 537158
+  - mStartSample: 557053
+    mEndSample: 557053
+  - mStartSample: 576947
+    mEndSample: 576947
+  - mStartSample: 596842
+    mEndSample: 596842
   _SerializedPayloadTypes:
   - SonicBloom.Koreo.TextPayload
   _AssetPayloads: []

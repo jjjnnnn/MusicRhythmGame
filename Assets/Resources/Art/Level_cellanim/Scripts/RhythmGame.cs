@@ -25,6 +25,8 @@ public class RhythmGame : MonoBehaviour
     [Tooltip("分数文本")] public Text scoreText;
     int score=0;//当前得分数
 
+    [Header("游戏输入")]
+    public KeyCode[] keys; 
 
     void Start()
     {
@@ -34,7 +36,7 @@ public class RhythmGame : MonoBehaviour
 
     void OnDestroy()
     {
-        Koreographer.Instance.UnregisterForEvents(koreoEventID, OnSKoreographyEvent);
+        //Koreographer.Instance.UnregisterForEvents(koreoEventID, OnSKoreographyEvent);
     }
 
     // 这个回调将被触发，当Koreographer到达我们定义的S键事件时
@@ -50,9 +52,9 @@ public class RhythmGame : MonoBehaviour
     void Update()
     {
         scoreText.text = string.Format("当前得分：" + score);
-        PlayerInput(KeyCode.S, eventTextName[0], aniName[0]);
-        PlayerInput(KeyCode.A, eventTextName[1], aniName[1]);
-        PlayerInput(KeyCode.D, eventTextName[2], aniName[2]);
+        PlayerInput(keys[0], eventTextName[0], aniName[0]);
+        PlayerInput(keys[1], eventTextName[1], aniName[1]);
+        PlayerInput(keys[2], eventTextName[2], aniName[2]);
 
     }
 
@@ -97,6 +99,5 @@ public class RhythmGame : MonoBehaviour
             return true;
         }
         return false;
-
     }
 }
