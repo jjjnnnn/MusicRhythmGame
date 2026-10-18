@@ -1,12 +1,12 @@
 # 海豹节奏队 · MusicRhythmGame
 
-使用用户提供的 Wii 日版《大家的节奏天国》SOMJ01 镜像还原海豹关卡（goma/ver0）的音乐动作时序与身体动画。Unity 6000.5.9f1。
+使用用户提供的 Wii 日版《大家的节奏天国》SOMJ01 镜像还原海豹关卡（goma/ver0）的音乐动作时序。当前画面使用新绘制的领巾海豹与企鹅队长，保留原关卡动作与判定节拍。Unity 6000.5.9f1。
 
 ## 开始游玩
 
 Windows版运行 `Builds/SealRhythm/SealRhythm.exe`，同目录Data、MonoBleedingEdge和DLL需保留在一起。也可打开 `Assets/Scenes/GamePlay.unity` 后点击Unity Play。
 
-标题页可选“开始”（完整演出，约106秒、230个判定输入）或“练习”（前32拍、约14秒、18个输入）。Enter开始，四拍倒数后进入音乐。最右侧海豹由玩家操作，其余三只演示原版动作。
+标题页可选“开始”（完整演出，约106秒、230个判定输入）或“练习”（前32拍、约14秒、18个输入）。Enter开始，四拍倒数后进入音乐。蓝色海豹由玩家操作，其余三只奶白色海豹跟随原关卡动作。
 
 | 操作 | 按键 |
 | --- | --- |
@@ -30,7 +30,7 @@ Windows版运行 `Builds/SealRhythm/SealRhythm.exe`，同目录Data、MonoBleedi
 
 230个输入从主程序TickFlow判定指令与NPC动作交叉提取：168翻身（84左/84右）、62滚动。原script48ticks/beat；与项目MP3对齐时加5拍。18处三连额外半拍再次通过音频指纹核验。每个输入在 `Tools/SealChart.json` 中都有原始tick、指令地址、调用地址、动作与动画索引。
 
-身体使用原版BRCAD的78个组合姿势、30个动画，包含60Hz关键帧、位置/旋转/缩放/透明度与脸部挂点。原始图集复用项目现有图片。原版A键翻身、A+B滚动在本项目适配为左右键，按当前节拍决定翻身或翻滚，点头另保留下键；镜头/舞台继续固定，滚动根位移有对齐补偿；队长使用原始事件时刻映射到项目已有三种动画。判定窗口、计分规则沿用本项目，并非Wii判定器复刻。
+原版BRCAD的78个组合姿势、30个动画及60Hz帧时钟仍保留为动作状态与验证依据。画面由新的 `SealCharacterAppearance` 绘制：奶白伙伴／蓝色玩家各有4种领巾海豹姿势，点头、侧身和翻滚沿用原动作触发与帧时长；翻滚保留正立／倒立切换。企鹅队长使用6种新姿势，按原始队长事件样本进行踏步、点头和指挥。素材在 `Assets/Resources/Characters/ArcticBand`，内置imagegen提示词在 `Tools/ArcticCharacterPrompts.txt`。原版A键翻身、A+B滚动适配为左右键，点头保留下键；判定窗口、计分规则仍使用本项目规则。
 
 来源与完整说明见 `Doc/SealChart.md`；提取工具与日版地址依据见 `Tools/ReverseEngineering/OriginalTiming.md`。镜像及提取出的原始二进制保存在 `Logs/SealExtraction`，不会打包进游戏或提交Git。
 
@@ -59,3 +59,7 @@ Unity菜单 `Tools > Seal Rhythm > Run Judge Tests` 验证判定；`Validate Ori
 同日Windows x64版按键修正后重新构建，构建报告0错误、0警告，并完成独立程序启动检查。构建摘要和启动日志见 `Logs/SealValidation/Controls/build.txt`、`player.log`。
 
 ImageGen UI改版验证：纯箭头按钮的三个PointerDown入口、点头映射和节拍样本位移检查通过。最终界面整曲230/230 Perfect、练习18/18 Perfect，暂停恢复、重开、结算及四只海豹状态通过；截图和日志见 `Logs/SealValidation/UI`。Windows新版构建成功，0错误；保留项目原有Inference着色器及队长Animator转换警告，详细数量见该目录的build.txt。
+
+新角色验证：整曲230/230 Perfect、练习18/18 Perfect，四个原动作状态、唯一蓝色玩家、三只奶白伙伴、企鹅队长和旧素材隐藏检查通过。原音乐与谱面资源未修改，记录在 `Logs/SealValidation/ArcticBand`。自动整曲测试会临时隔离桌面实时按键，结束后恢复；正式游戏默认接受正常键盘与触摸输入。
+
+新角色Windows版已重新构建，0错误；构建摘要与独立程序启动日志为 `Logs/SealValidation/ArcticBand/build.txt`、`player.log`。原项目Inference依赖的着色器警告保留，海豹关卡没有使用推理。

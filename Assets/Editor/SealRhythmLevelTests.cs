@@ -10,7 +10,7 @@ public static class SealRhythmLevelTests
     private static RhythmGame game;
     private static int phase, submitted = -1, savedBest;
     private static float savedOffset;
-    private static bool savedBackground;
+    private static bool savedBackground, savedLiveInput;
     private static int rolls, flips, leftRolls, rightRolls;
     private static double changedAt, startedAt;
     private static float pausedTime;
@@ -27,6 +27,7 @@ public static class SealRhythmLevelTests
         Directory.CreateDirectory(Folder);
         savedBest = PlayerPrefs.GetInt("SealRhythm.BestScore.OriginalSOMJ01.v2", 0);
         savedOffset = game.TimingOffsetMs;
+        savedLiveInput = game.LiveInputEnabled; game.LiveInputEnabled = false;
         game.ReturnToTitle(); game.SetTimingOffset(0);
         EditorApplication.update -= Tick; EditorApplication.update += Tick;
         phase = 1; submitted = -1; startedAt = changedAt = EditorApplication.timeSinceStartup;
@@ -75,7 +76,8 @@ public static class SealRhythmLevelTests
             { CheckResults("full song"); Capture("04-results"); phase = 9; changedAt = now; }
             else if (phase == 9 && now - changedAt > .5)
             {
-                game.SetTimingOffset(savedOffset); PlayerPrefs.SetInt("SealRhythm.BestScore.OriginalSOMJ01.v2", savedBest); PlayerPrefs.Save();
+                game.SetTimingOffset(savedOffset); game.LiveInputEnabled = savedLiveInput;
+                PlayerPrefs.SetInt("SealRhythm.BestScore.OriginalSOMJ01.v2", savedBest); PlayerPrefs.Save();
                 File.AppendAllText(Path.Combine(Folder, "result.txt"), "PASS: sample clock, all notes, no stray input, pause/resume, restart, practice and results.\n");
                 Debug.Log("SealRhythm full level smoke test PASSED. " + Folder); phase = 0; game.ReturnToTitle(); Application.runInBackground = savedBackground;
             }
@@ -99,7 +101,7 @@ public static class SealRhythmLevelTests
         {
             File.AppendAllText(Path.Combine(Folder, "result.txt"), "FAIL: " + exception + "\n");
             PlayerPrefs.SetInt("SealRhythm.BestScore.OriginalSOMJ01.v2", savedBest);
-            if (game != null) game.SetTimingOffset(savedOffset);
+            if (game != null) { game.SetTimingOffset(savedOffset); game.LiveInputEnabled = savedLiveInput; }
             Application.runInBackground = savedBackground; Debug.LogException(exception); phase = 0;
         }
     }
@@ -119,7 +121,48 @@ public static class SealRhythmLevelTests
                     "All four seals finish with the original final roll and phase");
             File.AppendAllText(Path.Combine(Folder, "result.txt"), "Original animation state: 4 seals, final motion 9, upright, next flip right. 168 flips / 62 rolls verified.\n");
             File.AppendAllText(Path.Combine(Folder, "result.txt"), "Physical controls: down nod preview; 31 left rolls / 31 right rolls through directional input.\n");
+            CheckCharacterAppearances();
         }
+    }
+    private static void CheckCharacterAppearances()
+    {
+        var seals = UnityEngine.Object.FindObjectsByType<SealCharacterAppearance>();
+        Require(seals.Length == 4, "Four replacement seal appearances remain active after the full song");
+        var sealTexture = Resources.Load<Texture2D>("Characters/ArcticBand/seals");
+        Require(sealTexture != null, "Replacement seal artwork is available in the player Resources");
+        int players = 0;
+        foreach (var seal in seals)
+        {
+            if (seal.IsPlayer) players++;
+            Require(seal.IsPlayer == (seal.gameObject == game.characterAnimator.gameObject),
+                "Only the controlled seal uses the blue player artwork");
+            RequireSingleArtworkRenderer(seal.gameObject, sealTexture, "Replacement seal");
+            var originalVisual = seal.transform.Find("Original Wii seal");
+            Require(originalVisual != null && !originalVisual.gameObject.activeInHierarchy,
+                "Original seal graphics stay hidden while their animation controller runs");
+        }
+        Require(players == 1, "Exactly one blue player seal");
+        var captains = UnityEngine.Object.FindObjectsByType<SealCaptainAppearance>();
+        Require(captains.Length == 1 && captains[0].IsReady, "One initialized replacement penguin conductor");
+        Require(captains[0].CurrentPose >= 0 && captains[0].CurrentPose < 6,
+            "Conductor finishes on a valid replacement animation pose");
+        var captainTexture = Resources.Load<Texture2D>("Characters/ArcticBand/captain");
+        Require(captainTexture != null, "Replacement conductor artwork is available in the player Resources");
+        RequireSingleArtworkRenderer(captains[0].gameObject, captainTexture, "Replacement conductor");
+        File.AppendAllText(Path.Combine(Folder, "result.txt"),
+            "Replacement artwork: 4 seals, exactly 1 blue controlled seal, 1 penguin conductor; original graphics hidden, one visible artwork renderer per actor.\n");
+    }
+    private static void RequireSingleArtworkRenderer(GameObject actor, Texture2D texture, string label)
+    {
+        int visible = 0;
+        foreach (var renderer in actor.GetComponentsInChildren<SpriteRenderer>(true))
+        {
+            if (!renderer.enabled || !renderer.gameObject.activeInHierarchy) continue;
+            visible++;
+            Require(renderer.sprite != null && renderer.sprite.texture == texture,
+                label + " uses the new generated artwork");
+        }
+        Require(visible == 1, label + " has exactly one visible renderer, without old-art overlays");
     }
     private static void WatchJudge()
     {

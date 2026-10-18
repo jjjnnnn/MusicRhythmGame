@@ -160,7 +160,7 @@ public sealed class SealRhythmHud : MonoBehaviour
             var entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerDown };
             entry.callback.AddListener(data =>
             {
-                if (button.interactable && data is PointerEventData pointer && pointer.button == PointerEventData.InputButton.Left) game.SubmitInput(input);
+                if (game.LiveInputEnabled && button.interactable && data is PointerEventData pointer && pointer.button == PointerEventData.InputButton.Left) game.SubmitInput(input);
             });
             trigger.triggers.Add(entry); actionButtons[input] = button;
         }
@@ -246,7 +246,7 @@ public sealed class SealRhythmHud : MonoBehaviour
         var colors = button.colors; colors.highlightedColor = new Color(1, .97f, .92f); colors.pressedColor = new Color(.88f, .90f, .90f);
         colors.disabledColor = new Color(1, 1, 1, .46f); colors.fadeDuration = .06f; button.colors = colors;
         button.navigation = new Navigation { mode = Navigation.Mode.None };
-        if (action != null) button.onClick.AddListener(() => { action(); if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(null); });
+        if (action != null) button.onClick.AddListener(() => { if (!game.LiveInputEnabled) return; action(); if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(null); });
         var label = Label(name + " label", button.transform, text, 20, Ink); Stretch(label.rectTransform, 8, 8, 4, 10); return button;
     }
     private Image Icon(string name, Transform parent, Sprite sprite, float size)

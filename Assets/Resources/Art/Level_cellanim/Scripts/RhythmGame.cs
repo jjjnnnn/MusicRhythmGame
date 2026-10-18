@@ -28,6 +28,8 @@ public class RhythmGame : MonoBehaviour
     public SealGameState State { get; private set; } = SealGameState.Ready;
     public bool IsPractice { get; private set; }
     public bool AssistEnabled { get; private set; }
+    // Automated playback can isolate its deterministic inputs from desktop keyboard/pointer events.
+    public bool LiveInputEnabled { get; set; } = true;
     public float TimingOffsetMs { get; private set; }
     public string StatusMessage { get; private set; } = "听口令，和伙伴一起打拍子。最右边的海豹是你！";
     public SealRhythmJudge Judge { get; private set; }
@@ -152,7 +154,13 @@ public class RhythmGame : MonoBehaviour
         }
         partnerSeals = partners.ToArray();
         seals = sealActors.ToArray();
-        foreach (var seal in seals) SealOriginalAnimation.Attach(seal);
+        foreach (var seal in seals)
+        {
+            SealOriginalAnimation.Attach(seal);
+            SealCharacterAppearance.Attach(seal, seal == characterAnimator);
+        }
+        foreach (var captain in FindObjectsByType<PeopleController>())
+            SealCaptainAppearance.Attach(captain.GetComponent<Animator>(), this);
         CreateFeedbackAudio();
         BuildJudge(false);
         initialized = true;
@@ -162,10 +170,13 @@ public class RhythmGame : MonoBehaviour
     private void Update()
     {
         if (!initialized) return;
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) { TogglePause(); return; }
-        if (Input.GetKeyDown(KeyCode.R) && (State == SealGameState.Paused || State == SealGameState.Results)) { RestartGame(); return; }
-        if (State == SealGameState.Ready && Input.GetKeyDown(KeyCode.Return)) { StartGame(false); return; }
-        if (State == SealGameState.Results && Input.GetKeyDown(KeyCode.Return)) { RestartGame(); return; }
+        if (LiveInputEnabled)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) { TogglePause(); return; }
+            if (Input.GetKeyDown(KeyCode.R) && (State == SealGameState.Paused || State == SealGameState.Results)) { RestartGame(); return; }
+            if (State == SealGameState.Ready && Input.GetKeyDown(KeyCode.Return)) { StartGame(false); return; }
+            if (State == SealGameState.Results && Input.GetKeyDown(KeyCode.Return)) { RestartGame(); return; }
+        }
         if (State == SealGameState.CountIn)
         {
             countTimer += Time.unscaledDeltaTime;
@@ -178,7 +189,7 @@ public class RhythmGame : MonoBehaviour
             }
             else if (beat != countBeat) { countBeat = beat; PlayTone(3); }
         }
-        if (State == SealGameState.Ready || State == SealGameState.Playing)
+        if (LiveInputEnabled && (State == SealGameState.Ready || State == SealGameState.Playing))
         {
             if (Pressed(0, KeyCode.S, KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.Space)) SubmitInput(0);
             if (Pressed(1, KeyCode.A, KeyCode.LeftArrow)) SubmitInput(1);
@@ -357,6 +368,7 @@ public class RhythmGame : MonoBehaviour
         if (actors != null) foreach (var actor in actors) if (actor != null)
         {
             if (actor.TryGetComponent<SealOriginalAnimation>(out var original)) original.ResetPose();
+            else if (actor.TryGetComponent<SealCaptainAppearance>(out var captain)) captain.ResetPose();
             else { actor.Rebind(); actor.Update(0); }
         }
     }
@@ -366,6 +378,7 @@ public class RhythmGame : MonoBehaviour
         {
             actor.speed = speed;
             if (actor.TryGetComponent<SealOriginalAnimation>(out var original)) original.SetPaused(speed == 0);
+            if (actor.TryGetComponent<SealCaptainAppearance>(out var captain)) captain.SetPaused(speed == 0);
         }
     }
     private void FrameStage()

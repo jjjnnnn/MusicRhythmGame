@@ -47,6 +47,8 @@
 
 ## 原版身体动画
 
+当前可见外观已替换为新绘制的领巾海豹和企鹅队长：三只伙伴奶白色，实际玩家单独使用蓝色图集。旧版身体分片隐藏，原始 `SealOriginalAnimation` 继续运行以保持动作编号、原生帧时长、方向与正倒立状态。`SealCharacterAppearance` 读取这些状态显示点头、侧身与半周翻滚；`SealCaptainAppearance` 按原始队长事件的样本时刻显示6种新姿势。新外观的轻微摆动与收尾属于视觉适配，没有修改230个输入、音乐、原始口令时刻或判定器。
+
 从 `content2/cellanim/goma/ver0/cellanim.szs` 解开Yaz0和U8，再解析 `goma.brcad`，得到78个组合姿势、30个动画及ROM自带标签。`OriginalGoma/goma.json`保留分片UV、原始位置、缩放、旋转、透明度、关键帧和时长；复用项目中几何/透明度相同的512x512海豹图集。
 
 原版60Hz离散帧、不插值、不将每个动作拉伸成一拍，正常动作结束停留末帧。动画索引与原版状态机逐项校对；TurnedTo/RolledFrom属于原版失败处理，不用作正常动作收尾。

@@ -61,6 +61,13 @@ public sealed class SealOriginalAnimation : MonoBehaviour
     public int CurrentMotion => motionIndex;
     public bool IsUpsideDown => phaseB;
     public bool NextFlipToLeft => nextFlipToLeft;
+    public float CurrentMotionFrame => elapsedFrames;
+    public int CurrentMotionDuration => initialized ? data.animations[motionIndex].totalDuration : 0;
+
+    public void SetAppearanceVisible(bool visible)
+    {
+        if (bodyRoot != null) bodyRoot.gameObject.SetActive(visible);
+    }
 
     public static SealOriginalAnimation Attach(Animator animator)
     {

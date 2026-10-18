@@ -21,6 +21,8 @@ public class PeopleController : MonoBehaviour
     private void OnCue(KoreographyEvent cue)
     {
         int index = Array.IndexOf(eventTextName, cue.GetTextValue());
+        if (isActiveAndEnabled && index >= 0 && TryGetComponent<SealCaptainAppearance>(out var skin))
+        { skin.PlayCue(index, cue.StartSample); return; }
         if (isActiveAndEnabled && animator != null && index >= 0 && index < aniName.Length)
             animator.SetTrigger(aniName[index]);
     }
