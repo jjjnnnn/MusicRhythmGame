@@ -71,10 +71,11 @@ public sealed class SealRhythmHud : MonoBehaviour
         {
             actionButtons[i].interactable = ready || playing;
             bool pressed = Time.unscaledTime - pressedAt[i] < .12f;
-            actionButtons[i].image.sprite = pressed ? art.PressedKey : art.Key;
+            actionButtons[i].image.sprite = art.Key;
+            actionButtons[i].image.color = Color.Lerp(SealUiArt.InputColor(i), Color.white, pressed ? .20f : 0);
             actionButtons[i].transform.localScale = Vector3.one * (pressed ? .94f : 1);
         }
-        SetText(assistText, "节拍提示  " + (game.AssistEnabled ? "开" : "关"));
+        SetText(assistText, "节拍强调  " + (game.AssistEnabled ? "开" : "关"));
         int offset = Mathf.RoundToInt(game.TimingOffsetMs);
         SetText(offsetText, "校准  " + (offset > 0 ? "+" : "") + offset + " ms");
         countdown.SetActive(counting); SetText(countdownText, game.CountdownLabel);
@@ -152,6 +153,7 @@ public sealed class SealRhythmHud : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             int input = order[i]; var button = MakeButton("Action " + input, controls, "", null);
+            button.image.color = SealUiArt.InputColor(input);
             Place(button.GetComponent<RectTransform>(), new Vector2(.5f, .5f), new Vector2((i - 1) * 112, 0), new Vector2(96, 76));
             Icon("Direction", button.transform, arrows[input], 35);
             var trigger = button.gameObject.AddComponent<EventTrigger>();

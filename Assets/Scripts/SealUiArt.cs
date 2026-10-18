@@ -24,6 +24,10 @@ public sealed class SealUiArt : IDisposable
     public Sprite Ring { get; }
     public Sprite Sparkle { get; }
 
+    // Shared by the scrolling notes and their matching physical controls.
+    public static Color InputColor(int input) => input == 1 ? new Color32(234, 137, 120, 255) :
+        input == 2 ? new Color32(129, 181, 220, 255) : new Color32(119, 200, 173, 255);
+
     public SealUiArt()
     {
         texture = Resources.Load<Texture2D>("UI/SealPaper/seal-ui-atlas");

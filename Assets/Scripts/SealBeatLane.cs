@@ -27,7 +27,7 @@ public sealed class SealBeatLane : MonoBehaviour
     private sealed class MarkerPair
     {
         public RectTransform Left, Right;
-        public Image LeftArrow, RightArrow, LeftTick, RightTick;
+        public Image LeftArrow, RightArrow;
 
         public void SetVisible(bool value)
         {
@@ -35,17 +35,15 @@ public sealed class SealBeatLane : MonoBehaviour
             if (Right.gameObject.activeSelf != value) Right.gameObject.SetActive(value);
         }
 
-        public void Show(float distance, Sprite arrow, float opacity)
+        public void Show(float distance, Sprite arrow, Color color, float opacity)
         {
             SetVisible(true);
-            Left.anchoredPosition = new Vector2(-distance, 0);
-            Right.anchoredPosition = new Vector2(distance, 0);
+            Left.anchoredPosition = new Vector2(-distance, 7);
+            Right.anchoredPosition = new Vector2(distance, 7);
             if (LeftArrow.sprite != arrow) LeftArrow.sprite = arrow;
             if (RightArrow.sprite != arrow) RightArrow.sprite = arrow;
-            var arrowColor = new Color(1, 1, 1, opacity);
-            var tickColor = new Color(1, 1, 1, opacity * .62f);
-            LeftArrow.color = RightArrow.color = arrowColor;
-            LeftTick.color = RightTick.color = tickColor;
+            color.a = opacity;
+            LeftArrow.color = RightArrow.color = color;
         }
     }
 
@@ -61,18 +59,16 @@ public sealed class SealBeatLane : MonoBehaviour
         if (initialized) { BindJudge(); Refresh(); return; }
 
         root = parent;
-        track = MakeImage("Beat line", root, null, new Vector2(600, 1), new Vector2(0, 10)).rectTransform;
+        track = MakeImage("Beat line", root, null, new Vector2(600, 1), new Vector2(0, 7)).rectTransform;
         track.GetComponent<Image>().color = new Color(Ink.r, Ink.g, Ink.b, .2f);
 
         for (int i = 0; i < pairs.Length; i++)
         {
             var pair = new MarkerPair();
-            pair.Left = MakeRect("Beat pair " + i + " left", root, new Vector2(32, 48), Vector2.zero);
-            pair.Right = MakeRect("Beat pair " + i + " right", root, new Vector2(32, 48), Vector2.zero);
-            pair.LeftTick = MakeImage("Tick", pair.Left, tickSprite, new Vector2(6, 22), new Vector2(0, 15));
-            pair.RightTick = MakeImage("Tick", pair.Right, tickSprite, new Vector2(6, 22), new Vector2(0, 15));
-            pair.LeftArrow = MakeImage("Required key", pair.Left, downSprite, new Vector2(27, 27), new Vector2(0, -9));
-            pair.RightArrow = MakeImage("Required key", pair.Right, downSprite, new Vector2(27, 27), new Vector2(0, -9));
+            pair.Left = MakeRect("Beat pair " + i + " left", root, new Vector2(48, 48), Vector2.zero);
+            pair.Right = MakeRect("Beat pair " + i + " right", root, new Vector2(48, 48), Vector2.zero);
+            pair.LeftArrow = MakeImage("Required key", pair.Left, downSprite, new Vector2(44, 44), Vector2.zero);
+            pair.RightArrow = MakeImage("Required key", pair.Right, downSprite, new Vector2(44, 44), Vector2.zero);
             pair.SetVisible(false);
             pairs[i] = pair;
         }
@@ -138,28 +134,26 @@ public sealed class SealBeatLane : MonoBehaviour
             Array.Clear(resolved, 0, resolved.Length);
         previousResolvedCount = observedJudge != null ? observedJudge.ResolvedCount : 0;
 
-        if (game.AssistEnabled)
+        // Incoming notes are core gameplay information, even with a saved accent setting off.
+        // Intro nods are visual demonstrations, never judge inputs. They disappear on time.
+        var intro = game.IntroNotes;
+        if (intro != null) for (int i = 0; i < intro.Count && used < pairs.Length; i++)
         {
-            // Intro nods are visual demonstrations, never judge inputs. They disappear on time.
-            var intro = game.IntroNotes;
-            if (intro != null) for (int i = 0; i < intro.Count && used < pairs.Length; i++)
-            {
-                long delta = (long)intro[i].Sample - sample;
-                if (delta <= 0) continue;
-                if (delta > horizon) break;
-                ShowMarker(used++, delta, intro[i].Input, sampleRate, bpm, extent);
-            }
+            long delta = (long)intro[i].Sample - sample;
+            if (delta <= 0) continue;
+            if (delta > horizon) break;
+            ShowMarker(used++, delta, intro[i].Input, sampleRate, bpm, extent);
+        }
 
-            if (observedJudge != null)
+        if (observedJudge != null)
+        {
+            var notes = observedJudge.Notes;
+            for (int i = observedJudge.NextNoteIndex; i < notes.Count && used < pairs.Length; i++)
             {
-                var notes = observedJudge.Notes;
-                for (int i = observedJudge.NextNoteIndex; i < notes.Count && used < pairs.Length; i++)
-                {
-                    long delta = (long)notes[i].Sample - sample;
-                    if (delta > horizon) break;
-                    if (resolved[i]) continue;
-                    ShowMarker(used++, delta, notes[i].Input, sampleRate, bpm, extent);
-                }
+                long delta = (long)notes[i].Sample - sample;
+                if (delta > horizon) break;
+                if (resolved[i]) continue;
+                ShowMarker(used++, delta, notes[i].Input, sampleRate, bpm, extent);
             }
         }
         for (int i = used; i < pairs.Length; i++) pairs[i].SetVisible(false);
@@ -169,9 +163,9 @@ public sealed class SealBeatLane : MonoBehaviour
         if (game.State == SealGameState.CountIn) beat = game.CountInBeats;
         float phase = (float)(beat - Math.Floor(beat));
         float pulse = 1f - Mathf.SmoothStep(0, 1, Mathf.Clamp01(phase / .36f));
-        center.localScale = Vector3.one * (1f + .055f * pulse);
+        center.localScale = Vector3.one * (1f + (game.AssistEnabled ? .055f : .02f) * pulse);
         ring.localScale = Vector3.one * (1f + .22f * (1f - pulse));
-        ringImage.color = new Color(1, 1, 1, .6f * pulse);
+        ringImage.color = new Color(1, 1, 1, game.AssistEnabled ? .6f * pulse : 0);
 
         float age = Time.unscaledTime - judgementShownAt;
         float life = Mathf.Clamp01(age / .5f);
@@ -206,7 +200,7 @@ public sealed class SealBeatLane : MonoBehaviour
         float edge = distance / Mathf.Max(1, extent);
         float opacity = 1f - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.88f, 1f, edge));
         Sprite arrow = input == SealInput.Left ? leftSprite : input == SealInput.Right ? rightSprite : downSprite;
-        pairs[index].Show(distance, arrow, opacity);
+        pairs[index].Show(distance, arrow, SealUiArt.InputColor((int)input), opacity);
     }
 
     private void BindJudge()
