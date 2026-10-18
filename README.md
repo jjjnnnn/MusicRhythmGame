@@ -6,7 +6,7 @@
 
 Windows版运行 `Builds/SealRhythm/SealRhythm.exe`，同目录Data、MonoBleedingEdge和DLL需保留在一起。也可打开 `Assets/Scenes/GamePlay.unity` 后点击Unity Play。
 
-标题页可选“正式演出”（约106秒、230个判定输入）或“节奏练习”（前32拍、约14秒、18个输入）。Enter开始，四拍倒数后进入音乐。最右侧海豹由玩家操作，其余三只演示原版动作。
+标题页可选“开始”（完整演出，约106秒、230个判定输入）或“练习”（前32拍、约14秒、18个输入）。Enter开始，四拍倒数后进入音乐。最右侧海豹由玩家操作，其余三只演示原版动作。
 
 | 操作 | 按键 |
 | --- | --- |
@@ -18,7 +18,9 @@ Windows版运行 `Builds/SealRhythm/SealRhythm.exe`，同目录Data、MonoBleedi
 
 前奏5次点头由四只海豹自动示范，不计分。从第15拍开始正式输入，第一下向右。左右键在普通拍执行翻身，在滚动拍执行对应方向的翻滚；方向必须与谱面一致。下键、S与空格始终点头，不触发翻滚。滚动会切换正立/倒立状态，也会推进下一次方向；听口令完成1至10次连续滚动。
 
-下方按钮支持鼠标与触摸，接触即响应。窗口失焦自动暂停。标题页可开关下一拍提示、每次10ms调整输入偏移（−250至+250ms；正数补偿晚输入）。个人最佳使用独立的原版谱面存档键，保留旧改编谱存档而不混算。
+下方按钮支持鼠标与触摸，接触即响应。窗口失焦自动暂停。标题页可开关节拍提示、每次10ms调整输入偏移（−250至+250ms；正数补偿晚输入）。个人最佳使用独立的原版谱面存档键，保留旧改编谱存档而不混算。
+
+界面使用 ImageGen 生成的奶油白纸面、冰蓝与珊瑚色图集 `Assets/Resources/UI/SealPaper/seal-ui-atlas.png`，生成提示保存在 `Tools/SealUiImagePrompt.txt`。下方操作按钮仅保留 ←、↓、→；顶部节拍条把未来3拍内的方向箭头从左右两侧向中心海豹汇合，判定飘字也显示在中心。前奏5次点头以 ↓ 示范提示，不增加判定或计分。UI截图与验证记录集中保存在 `Logs/SealValidation/UI`。
 
 ## 原版数据
 
@@ -51,3 +53,5 @@ Unity菜单 `Tools > Seal Rhythm > Run Judge Tests` 验证判定；`Validate Ori
 2026-10-18按键修正验证：判定13组测试、原版78姿势/30动画/230索引/采样映射和3种错误输入恢复校验通过。实际Nod/Left/Right输入接口跑通整曲230/230 Perfect、练习18/18 Perfect，含向左翻滚31次、向右翻滚31次；下键预览确认播放点头。四只海豹最终motion=9、正立、下一次向右。倒数暂停、音乐暂停恢复、重开及结算通过。记录在 `Logs/SealValidation/Controls/result.txt`，初次原版还原记录保留在 `Logs/SealValidation/Original`。
 
 同日Windows x64版按键修正后重新构建，构建报告0错误、0警告，并完成独立程序启动检查。构建摘要和启动日志见 `Logs/SealValidation/Controls/build.txt`、`player.log`。
+
+ImageGen UI改版验证：纯箭头按钮的三个PointerDown入口、点头映射和节拍样本位移检查通过。最终界面整曲230/230 Perfect、练习18/18 Perfect，暂停恢复、重开、结算及四只海豹状态通过；截图和日志见 `Logs/SealValidation/UI`。Windows新版构建成功，0错误；保留项目原有Inference着色器及队长Animator转换警告，详细数量见该目录的build.txt。

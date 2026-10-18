@@ -1,0 +1,5824 @@
+fileFormatVersion: 2
+guid: a4d838f0dfe24bd43ae438eca3cb1afc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6239184531922407629
+    second: seal-ui-atlas_0
+  - first:
+      213: 3407566360688366933
+    second: seal-ui-atlas_1
+  - first:
+      213: 1080508030164473473
+    second: seal-ui-atlas_2
+  - first:
+      213: 1846010295100868140
+    second: seal-ui-atlas_3
+  - first:
+      213: -4969869620694485270
+    second: seal-ui-atlas_4
+  - first:
+      213: -8399978183094134247
+    second: seal-ui-atlas_5
+  - first:
+      213: -1981550909364861209
+    second: seal-ui-atlas_6
+  - first:
+      213: -5467566834978891394
+    second: seal-ui-atlas_7
+  - first:
+      213: -1296607205952947149
+    second: seal-ui-atlas_8
+  - first:
+      213: 6587291188704793408
+    second: seal-ui-atlas_9
+  - first:
+      213: -4959396431923445398
+    second: seal-ui-atlas_10
+  - first:
+      213: -5197942294512782685
+    second: seal-ui-atlas_11
+  - first:
+      213: -2785971227215626964
+    second: seal-ui-atlas_12
+  - first:
+      213: 6924697562095628145
+    second: seal-ui-atlas_13
+  - first:
+      213: 9076720521078337521
+    second: seal-ui-atlas_14
+  - first:
+      213: -1224420130058871110
+    second: seal-ui-atlas_15
+  - first:
+      213: 3039327645498102219
+    second: seal-ui-atlas_16
+  - first:
+      213: -2325336090576680470
+    second: seal-ui-atlas_17
+  - first:
+      213: 2414112205396061920
+    second: seal-ui-atlas_18
+  - first:
+      213: 1201931279044049692
+    second: seal-ui-atlas_19
+  - first:
+      213: -9211822303943310955
+    second: seal-ui-atlas_20
+  - first:
+      213: 2256135819936923314
+    second: seal-ui-atlas_21
+  - first:
+      213: 5945606531137783981
+    second: seal-ui-atlas_22
+  - first:
+      213: -1850281970211128926
+    second: seal-ui-atlas_23
+  - first:
+      213: -5898914888730879211
+    second: seal-ui-atlas_24
+  - first:
+      213: 7393630813091946557
+    second: seal-ui-atlas_25
+  - first:
+      213: 7071322957168233702
+    second: seal-ui-atlas_26
+  - first:
+      213: 5291429108859398036
+    second: seal-ui-atlas_27
+  - first:
+      213: 7612532839506755630
+    second: seal-ui-atlas_28
+  - first:
+      213: -2322000200807034521
+    second: seal-ui-atlas_29
+  - first:
+      213: 3828942997285263785
+    second: seal-ui-atlas_30
+  - first:
+      213: 7648567065680571339
+    second: seal-ui-atlas_31
+  - first:
+      213: 8459511096461761067
+    second: seal-ui-atlas_32
+  - first:
+      213: 7984950894162866298
+    second: seal-ui-atlas_33
+  - first:
+      213: -1396987473605012229
+    second: seal-ui-atlas_34
+  - first:
+      213: 232589621531006560
+    second: seal-ui-atlas_35
+  - first:
+      213: 4582767692131501724
+    second: seal-ui-atlas_36
+  - first:
+      213: 2480834646874038894
+    second: seal-ui-atlas_37
+  - first:
+      213: -7216318268005720637
+    second: seal-ui-atlas_38
+  - first:
+      213: 4247125276483030855
+    second: seal-ui-atlas_39
+  - first:
+      213: -2923460691064570972
+    second: seal-ui-atlas_40
+  - first:
+      213: -5781047534106554769
+    second: seal-ui-atlas_41
+  - first:
+      213: 1624511871816842113
+    second: seal-ui-atlas_42
+  - first:
+      213: 8152599765025408488
+    second: seal-ui-atlas_43
+  - first:
+      213: -5669350291145121785
+    second: seal-ui-atlas_44
+  - first:
+      213: -315898305528391495
+    second: seal-ui-atlas_45
+  - first:
+      213: 6547232151445313289
+    second: seal-ui-atlas_46
+  - first:
+      213: -5370918158996863984
+    second: seal-ui-atlas_47
+  - first:
+      213: 6411078017576298571
+    second: seal-ui-atlas_48
+  - first:
+      213: -7955450100715357389
+    second: seal-ui-atlas_49
+  - first:
+      213: 6625798126263385966
+    second: seal-ui-atlas_50
+  - first:
+      213: 6566453817487958073
+    second: seal-ui-atlas_51
+  - first:
+      213: 1278316342699711477
+    second: seal-ui-atlas_52
+  - first:
+      213: -7621282559540033875
+    second: seal-ui-atlas_53
+  - first:
+      213: 5041532425852050935
+    second: seal-ui-atlas_54
+  - first:
+      213: -8299178126501530822
+    second: seal-ui-atlas_55
+  - first:
+      213: 222949232165175878
+    second: seal-ui-atlas_56
+  - first:
+      213: -9199873106523691645
+    second: seal-ui-atlas_57
+  - first:
+      213: 6460442088880598775
+    second: seal-ui-atlas_58
+  - first:
+      213: -7222691932491386199
+    second: seal-ui-atlas_59
+  - first:
+      213: 9166767812963575482
+    second: seal-ui-atlas_60
+  - first:
+      213: -6440500895036986581
+    second: seal-ui-atlas_61
+  - first:
+      213: 7901302625860504355
+    second: seal-ui-atlas_62
+  - first:
+      213: -5399236433372299633
+    second: seal-ui-atlas_63
+  - first:
+      213: -7392449125058369363
+    second: seal-ui-atlas_64
+  - first:
+      213: -7018229642426087022
+    second: seal-ui-atlas_65
+  - first:
+      213: 419618675538283675
+    second: seal-ui-atlas_66
+  - first:
+      213: 4990584057943586273
+    second: seal-ui-atlas_67
+  - first:
+      213: -5299341695846676458
+    second: seal-ui-atlas_68
+  - first:
+      213: 6677677675466652947
+    second: seal-ui-atlas_69
+  - first:
+      213: 4239429538670158567
+    second: seal-ui-atlas_70
+  - first:
+      213: -6056798323627213052
+    second: seal-ui-atlas_71
+  - first:
+      213: 5210393812608078010
+    second: seal-ui-atlas_72
+  - first:
+      213: -2709726011466372324
+    second: seal-ui-atlas_73
+  - first:
+      213: 5098944431557636461
+    second: seal-ui-atlas_74
+  - first:
+      213: 1169647167841030983
+    second: seal-ui-atlas_75
+  - first:
+      213: 3047425294419500689
+    second: seal-ui-atlas_76
+  - first:
+      213: 4394286654508846859
+    second: seal-ui-atlas_77
+  - first:
+      213: 7089717166878752404
+    second: seal-ui-atlas_78
+  - first:
+      213: 5011647840533281682
+    second: seal-ui-atlas_79
+  - first:
+      213: 6957240095645371360
+    second: seal-ui-atlas_80
+  - first:
+      213: -2522615452486771989
+    second: seal-ui-atlas_81
+  - first:
+      213: 5197717166166801489
+    second: seal-ui-atlas_82
+  - first:
+      213: -2512225207823406832
+    second: seal-ui-atlas_83
+  - first:
+      213: -886993182200310988
+    second: seal-ui-atlas_84
+  - first:
+      213: -9164171938730900614
+    second: seal-ui-atlas_85
+  - first:
+      213: 8331545137962581589
+    second: seal-ui-atlas_86
+  - first:
+      213: 5883849506088996668
+    second: seal-ui-atlas_87
+  - first:
+      213: 7872915286274700356
+    second: seal-ui-atlas_88
+  - first:
+      213: 3906263913015843928
+    second: seal-ui-atlas_89
+  - first:
+      213: -1901016375479852529
+    second: seal-ui-atlas_90
+  - first:
+      213: 2995273371839193602
+    second: seal-ui-atlas_91
+  - first:
+      213: 7546777421528229147
+    second: seal-ui-atlas_92
+  - first:
+      213: 5228730268417806966
+    second: seal-ui-atlas_93
+  - first:
+      213: 932477885119589310
+    second: seal-ui-atlas_94
+  - first:
+      213: -2009034417529999300
+    second: seal-ui-atlas_95
+  - first:
+      213: 2601239814891605685
+    second: seal-ui-atlas_96
+  - first:
+      213: 5365190921871090777
+    second: seal-ui-atlas_97
+  - first:
+      213: -7257808960286035806
+    second: seal-ui-atlas_98
+  - first:
+      213: 2807110792975376675
+    second: seal-ui-atlas_99
+  - first:
+      213: -6937356315770852559
+    second: seal-ui-atlas_100
+  - first:
+      213: -5269478828093102418
+    second: seal-ui-atlas_101
+  - first:
+      213: -5487766854384104370
+    second: seal-ui-atlas_102
+  - first:
+      213: -2261429533115129246
+    second: seal-ui-atlas_103
+  - first:
+      213: -6671836424188520375
+    second: seal-ui-atlas_104
+  - first:
+      213: 6178793407486359380
+    second: seal-ui-atlas_105
+  - first:
+      213: 7786661343819493806
+    second: seal-ui-atlas_106
+  - first:
+      213: -2233547142478473859
+    second: seal-ui-atlas_107
+  - first:
+      213: -5742177102100251490
+    second: seal-ui-atlas_108
+  - first:
+      213: 8354608654898442976
+    second: seal-ui-atlas_109
+  - first:
+      213: 5339304106075852641
+    second: seal-ui-atlas_110
+  - first:
+      213: 1410794147487540094
+    second: seal-ui-atlas_111
+  - first:
+      213: 5261005821161463535
+    second: seal-ui-atlas_112
+  - first:
+      213: -6303388968205264830
+    second: seal-ui-atlas_113
+  - first:
+      213: 1902083363073875480
+    second: seal-ui-atlas_114
+  - first:
+      213: 3293622306077851959
+    second: seal-ui-atlas_115
+  - first:
+      213: -1789569187775100494
+    second: seal-ui-atlas_116
+  - first:
+      213: -5864508660811334624
+    second: seal-ui-atlas_117
+  - first:
+      213: -1577054436975411477
+    second: seal-ui-atlas_118
+  - first:
+      213: -2816557830201778396
+    second: seal-ui-atlas_119
+  - first:
+      213: -9002074422654891607
+    second: seal-ui-atlas_120
+  - first:
+      213: -2628906287058621250
+    second: seal-ui-atlas_121
+  - first:
+      213: -2766097259312250137
+    second: seal-ui-atlas_122
+  - first:
+      213: -7373954425320158450
+    second: seal-ui-atlas_123
+  - first:
+      213: -6058688221993178229
+    second: seal-ui-atlas_124
+  - first:
+      213: 91922748659398093
+    second: seal-ui-atlas_125
+  - first:
+      213: 1599006873304373407
+    second: seal-ui-atlas_126
+  - first:
+      213: -414827929471595566
+    second: seal-ui-atlas_127
+  - first:
+      213: 6592466832269832585
+    second: seal-ui-atlas_128
+  - first:
+      213: 8086494064068834258
+    second: seal-ui-atlas_129
+  - first:
+      213: -3571186685228943400
+    second: seal-ui-atlas_130
+  - first:
+      213: 4641748969452565890
+    second: seal-ui-atlas_131
+  - first:
+      213: -7790890680544980828
+    second: seal-ui-atlas_132
+  - first:
+      213: -1168196910411416542
+    second: seal-ui-atlas_133
+  - first:
+      213: -2053962710292886301
+    second: seal-ui-atlas_134
+  - first:
+      213: 6582393261783226573
+    second: seal-ui-atlas_135
+  - first:
+      213: -1725942530581772537
+    second: seal-ui-atlas_136
+  - first:
+      213: -6382976646773915076
+    second: seal-ui-atlas_137
+  - first:
+      213: -7523703744452292587
+    second: seal-ui-atlas_138
+  - first:
+      213: -1607492932363420416
+    second: seal-ui-atlas_139
+  - first:
+      213: 8362782884670126309
+    second: seal-ui-atlas_140
+  - first:
+      213: 3557960796776992584
+    second: seal-ui-atlas_141
+  - first:
+      213: 1386657389147879157
+    second: seal-ui-atlas_142
+  - first:
+      213: -4609776258951461301
+    second: seal-ui-atlas_143
+  - first:
+      213: 1572273000364858464
+    second: seal-ui-atlas_144
+  - first:
+      213: 3892018960088942707
+    second: seal-ui-atlas_145
+  - first:
+      213: -5615925756661799329
+    second: seal-ui-atlas_146
+  - first:
+      213: 6118363589315245731
+    second: seal-ui-atlas_147
+  - first:
+      213: -4638218032165269012
+    second: seal-ui-atlas_148
+  - first:
+      213: 3535400624269118550
+    second: seal-ui-atlas_149
+  - first:
+      213: -1329803581968455073
+    second: seal-ui-atlas_150
+  - first:
+      213: -91811614437566145
+    second: seal-ui-atlas_151
+  - first:
+      213: -3339293084525166221
+    second: seal-ui-atlas_152
+  - first:
+      213: -5686195124756227223
+    second: seal-ui-atlas_153
+  - first:
+      213: -6667184176853203921
+    second: seal-ui-atlas_154
+  - first:
+      213: -1037408934943576166
+    second: seal-ui-atlas_155
+  - first:
+      213: 1128394667917527256
+    second: seal-ui-atlas_156
+  - first:
+      213: -8025327760424046272
+    second: seal-ui-atlas_157
+  - first:
+      213: 5830187467487174554
+    second: seal-ui-atlas_158
+  - first:
+      213: 6391865481208921308
+    second: seal-ui-atlas_159
+  - first:
+      213: -4086024655394945134
+    second: seal-ui-atlas_160
+  - first:
+      213: 715249821719099262
+    second: seal-ui-atlas_161
+  - first:
+      213: 3558351258944513341
+    second: seal-ui-atlas_162
+  - first:
+      213: 3599637991316878967
+    second: seal-ui-atlas_163
+  - first:
+      213: -1729324749759690602
+    second: seal-ui-atlas_164
+  - first:
+      213: -5598786732676806230
+    second: seal-ui-atlas_165
+  - first:
+      213: -3001518077033928963
+    second: seal-ui-atlas_166
+  - first:
+      213: -8394361661688032639
+    second: seal-ui-atlas_167
+  - first:
+      213: -8542765037243684943
+    second: seal-ui-atlas_168
+  - first:
+      213: 1874282332075945448
+    second: seal-ui-atlas_169
+  - first:
+      213: 8541285106744811289
+    second: seal-ui-atlas_170
+  - first:
+      213: 5605255521739001197
+    second: seal-ui-atlas_171
+  - first:
+      213: 8171962348581242774
+    second: seal-ui-atlas_172
+  - first:
+      213: 1557781697827842076
+    second: seal-ui-atlas_173
+  - first:
+      213: -6677696208693813408
+    second: seal-ui-atlas_174
+  - first:
+      213: 1371525950279394578
+    second: seal-ui-atlas_175
+  - first:
+      213: 5881362874498903683
+    second: seal-ui-atlas_176
+  - first:
+      213: -409745043731719237
+    second: seal-ui-atlas_177
+  - first:
+      213: 2822084190034706647
+    second: seal-ui-atlas_178
+  - first:
+      213: 8057201653096937878
+    second: seal-ui-atlas_179
+  - first:
+      213: 5711295252513241611
+    second: seal-ui-atlas_180
+  - first:
+      213: -2344040388427592428
+    second: seal-ui-atlas_181
+  - first:
+      213: 890134366937139384
+    second: seal-ui-atlas_182
+  - first:
+      213: -5594340266504402771
+    second: seal-ui-atlas_183
+  - first:
+      213: -5813975542772360186
+    second: seal-ui-atlas_184
+  - first:
+      213: -8486372180060861183
+    second: seal-ui-atlas_185
+  - first:
+      213: 1257540375026280244
+    second: seal-ui-atlas_186
+  - first:
+      213: 8413170865110797610
+    second: seal-ui-atlas_187
+  - first:
+      213: -4687099315614168840
+    second: seal-ui-atlas_188
+  - first:
+      213: 3272078558125853921
+    second: seal-ui-atlas_189
+  - first:
+      213: -4666208092794469073
+    second: seal-ui-atlas_190
+  - first:
+      213: 6309915440295744558
+    second: seal-ui-atlas_191
+  - first:
+      213: -6819878390249800233
+    second: seal-ui-atlas_192
+  - first:
+      213: -2079477988547771720
+    second: seal-ui-atlas_193
+  - first:
+      213: 4888682116409447896
+    second: seal-ui-atlas_194
+  - first:
+      213: -339402648452427151
+    second: seal-ui-atlas_195
+  - first:
+      213: 4198932385082209083
+    second: seal-ui-atlas_196
+  - first:
+      213: -5517212754220647141
+    second: seal-ui-atlas_197
+  - first:
+      213: 4429609101408540019
+    second: seal-ui-atlas_198
+  - first:
+      213: 5219558282260906430
+    second: seal-ui-atlas_199
+  - first:
+      213: 5296488090386078986
+    second: seal-ui-atlas_200
+  - first:
+      213: -4353124974771695038
+    second: seal-ui-atlas_201
+  - first:
+      213: -8433089504231941450
+    second: seal-ui-atlas_202
+  - first:
+      213: 3991539186044228355
+    second: seal-ui-atlas_203
+  - first:
+      213: 3860203832738234287
+    second: seal-ui-atlas_204
+  - first:
+      213: -3072873625997333829
+    second: seal-ui-atlas_205
+  - first:
+      213: 3566990989477526722
+    second: seal-ui-atlas_206
+  - first:
+      213: 1932724568788662327
+    second: seal-ui-atlas_207
+  - first:
+      213: 3990848212706110967
+    second: seal-ui-atlas_208
+  - first:
+      213: 4534673463935703962
+    second: seal-ui-atlas_209
+  - first:
+      213: -3689324571656209676
+    second: seal-ui-atlas_210
+  - first:
+      213: -4616045210294929538
+    second: seal-ui-atlas_211
+  - first:
+      213: -6262500651141144249
+    second: seal-ui-atlas_212
+  - first:
+      213: 3736709790009059507
+    second: seal-ui-atlas_213
+  - first:
+      213: -6874856648295995498
+    second: seal-ui-atlas_214
+  - first:
+      213: -3492508810776003274
+    second: seal-ui-atlas_215
+  - first:
+      213: -393793949731217696
+    second: seal-ui-atlas_216
+  - first:
+      213: 2144607322671622293
+    second: seal-ui-atlas_217
+  - first:
+      213: 5321326543825292423
+    second: seal-ui-atlas_218
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: seal-ui-atlas_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 887
+        width: 296
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f27ae89b6f969a0800000000000000
+      internalID: -6239184531922407629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_1
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 1171
+        width: 26
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 555966d0d8b1a4f20800000000000000
+      internalID: 3407566360688366933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_2
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 889
+        width: 218
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18619e2245cbefe00800000000000000
+      internalID: 1080508030164473473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_3
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 926
+        width: 293
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c26833335985e9910800000000000000
+      internalID: 1846010295100868140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_4
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 1219
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae6ff7659e9770bb0800000000000000
+      internalID: -4969869620694485270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_5
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 1213
+        width: 55
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91a94a3f8584d6b80800000000000000
+      internalID: -8399978183094134247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_6
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 1205
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e684f652fd1084e0800000000000000
+      internalID: -1981550909364861209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_7
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 1152
+        width: 78
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7950679eec4f14b0800000000000000
+      internalID: -5467566834978891394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_8
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 1205
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33c76fbad96810ee0800000000000000
+      internalID: -1296607205952947149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_9
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 1175
+        width: 74
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0435fc66f62ca6b50800000000000000
+      internalID: 6587291188704793408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_10
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 1211
+        width: 27
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a610dde983fac2bb0800000000000000
+      internalID: -4959396431923445398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_11
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 1193
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a23694e5033dd7b0800000000000000
+      internalID: -5197942294512782685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_12
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 1177
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2d7a57fded3659d0800000000000000
+      internalID: -2785971227215626964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_13
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 1189
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17f29bd7eb7791060800000000000000
+      internalID: 6924697562095628145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_14
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 1166
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ff6f50393df6fd70800000000000000
+      internalID: 9076720521078337521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_15
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 1173
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abed004016cf10fe0800000000000000
+      internalID: -1224420130058871110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_16
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 1162
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc150f9f36cdd2a20800000000000000
+      internalID: 3039327645498102219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_17
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 1126
+        width: 34
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae908c1552fbabfd0800000000000000
+      internalID: -2325336090576680470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_18
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 859
+        width: 269
+        height: 296
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ee2192a246a08120800000000000000
+      internalID: 2414112205396061920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_19
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 1139
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1bf9d3512e1ea010800000000000000
+      internalID: 1201931279044049692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_20
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 1069
+        width: 37
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 591407fbb68092080800000000000000
+      internalID: -9211822303943310955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_21
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 1084
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2beff5023976f4f10800000000000000
+      internalID: 2256135819936923314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_22
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 1094
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da8c5be83a9038250800000000000000
+      internalID: 5945606531137783981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_23
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 907
+        width: 31
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a9714fe95a7256e0800000000000000
+      internalID: -1850281970211128926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_24
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 927
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51bdee89928d22ea0800000000000000
+      internalID: -5898914888730879211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_25
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 939
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d306ab62d047b9660800000000000000
+      internalID: 7393630813091946557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_26
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 921
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ecc31a93c2622260800000000000000
+      internalID: 7071322957168233702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_27
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 855
+        width: 55
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 497e9b34dbeee6940800000000000000
+      internalID: 5291429108859398036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_28
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 899
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e20cbcbd84625a960800000000000000
+      internalID: 7612532839506755630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_29
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 915
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 761d28eae1996cfd0800000000000000
+      internalID: -2322000200807034521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_30
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 910
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a958629e53232530800000000000000
+      internalID: 3828942997285263785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_31
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 897
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcb64aee83b252a60800000000000000
+      internalID: 7648567065680571339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_32
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 863
+        width: 56
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2a14169588366570800000000000000
+      internalID: 8459511096461761067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_33
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 817
+        width: 101
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a70f38b388e30de60800000000000000
+      internalID: 7984950894162866298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_34
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 901
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf45a185b47ec9ce0800000000000000
+      internalID: -1396987473605012229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_35
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 859
+        width: 86
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0665cc947035a3300800000000000000
+      internalID: 232589621531006560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_36
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 855
+        width: 35
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9682a97fe2499f30800000000000000
+      internalID: 4582767692131501724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 865
+        width: 6
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e62a861a7f1bd6220800000000000000
+      internalID: 2480834646874038894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_38
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 859
+        width: 33
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cd5b59d4cc7adb90800000000000000
+      internalID: -7216318268005720637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_39
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 857
+        width: 21
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74f8a5dcfe1d0fa30800000000000000
+      internalID: 4247125276483030855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_40
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 891
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ab374a9df7cd67d0800000000000000
+      internalID: -2923460691064570972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_41
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 871
+        width: 41
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6e4ee3a5e795cfa0800000000000000
+      internalID: -5781047534106554769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_42
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 883
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18b3c0db0fc6b8610800000000000000
+      internalID: 1624511871816842113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_43
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 889
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e5c54eba4ad32170800000000000000
+      internalID: 8152599765025408488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 884
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 700a90d92fb6251b0800000000000000
+      internalID: -5669350291145121785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_45
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 897
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b815d13a24bd9bf0800000000000000
+      internalID: -315898305528391495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_46
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 869
+        width: 31
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9071ae8f3f07cda50800000000000000
+      internalID: 6547232151445313289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_47
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 886
+        width: 29
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0140c47046aa675b0800000000000000
+      internalID: -5370918158996863984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_48
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 867
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4863f85d79b8f850800000000000000
+      internalID: 6411078017576298571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_49
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 875
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33bf38e7840989190800000000000000
+      internalID: -7955450100715357389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_50
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 857
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6fb0657a4093fb50800000000000000
+      internalID: 6625798126263385966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_51
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 849
+        width: 43
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 930a069d4fab02b50800000000000000
+      internalID: 6566453817487958073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_52
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 740
+        width: 68
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fb513dd0fd7db110800000000000000
+      internalID: 1278316342699711477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_53
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 869
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da68cb134e3cb3690800000000000000
+      internalID: -7621282559540033875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_54
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 868
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fd5686b70f17f540800000000000000
+      internalID: 5041532425852050935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_55
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 861
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a333f22077563dc80800000000000000
+      internalID: -8299178126501530822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_56
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 879
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 642c62a3523181300800000000000000
+      internalID: 222949232165175878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_57
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 873
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3856cf2172c735080800000000000000
+      internalID: -9199873106523691645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_58
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 829
+        width: 109
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fee5b7d9d918a950800000000000000
+      internalID: 6460442088880598775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_59
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 869
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a275c174f7d3cb90800000000000000
+      internalID: -7222691932491386199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_60
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 859
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab6ad2e12c6e63f70800000000000000
+      internalID: 9166767812963575482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_61
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 866
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2b2cb72f8ebe96a0800000000000000
+      internalID: -6440500895036986581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_62
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 503
+        width: 282
+        height: 373
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32bc64510e017ad60800000000000000
+      internalID: 7901302625860504355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_63
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 843
+        width: 40
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8e3f7af11f0215b0800000000000000
+      internalID: -5399236433372299633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_64
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 857
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da8afb800beb86990800000000000000
+      internalID: -7392449125058369363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_65
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 861
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 299831b035d3a9e90800000000000000
+      internalID: -7018229642426087022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_66
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 870
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9c449056f8c2d500800000000000000
+      internalID: 419618675538283675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_67
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 854
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e5747b62cd124540800000000000000
+      internalID: 4990584057943586273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_68
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 594
+        width: 193
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61884a30ec4f476b0800000000000000
+      internalID: -5299341695846676458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_69
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 600
+        width: 220
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31dfeba4770ebac50800000000000000
+      internalID: 6677677675466652947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_70
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 852
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e2abb634ba75da30800000000000000
+      internalID: 4239429538670158567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_71
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 834
+        width: 40
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40fb404d30ee1fba0800000000000000
+      internalID: -6056798323627213052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_72
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 839
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab0d56411990f4840800000000000000
+      internalID: 5210393812608078010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_73
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 540
+        width: 357
+        height: 305
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1b29ef9c8e156ad0800000000000000
+      internalID: -2709726011466372324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_74
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 793
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d61f274f1f613c640800000000000000
+      internalID: 5098944431557636461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_75
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 746
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 743d4bfe6eb6b3010800000000000000
+      internalID: 1169647167841030983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_76
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 745
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e1a69c821aa4a20800000000000000
+      internalID: 3047425294419500689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_77
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 600
+        width: 44
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0f4d3b2e64abfc30800000000000000
+      internalID: 4394286654508846859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_78
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 681
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49efbc9433cb36260800000000000000
+      internalID: 7089717166878752404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_79
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 598
+        width: 164
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29bf65a7823fc8540800000000000000
+      internalID: 5011647840533281682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_80
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 678
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0eb0c0681051d8060800000000000000
+      internalID: 6957240095645371360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_81
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 672
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bea5d918c9eddfcd0800000000000000
+      internalID: -2522615452486771989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_82
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 656
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15c72545930022840800000000000000
+      internalID: 5197717166166801489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_83
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 654
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01967ebdb78c22dd0800000000000000
+      internalID: -2512225207823406832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_84
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 652
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 433d1c87664c0b3f0800000000000000
+      internalID: -886993182200310988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_85
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 600
+        width: 92
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a738753fc2252d080800000000000000
+      internalID: -9164171938730900614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_86
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 640
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55e746a19289f9370800000000000000
+      internalID: 8331545137962581589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_87
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 589
+        width: 40
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3fca4aa3f1a7a150800000000000000
+      internalID: 5883849506088996668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_88
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 646
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44475298db6324d60800000000000000
+      internalID: 7872915286274700356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_89
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 586
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85c9c362556d53630800000000000000
+      internalID: 3906263913015843928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_90
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 644
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f02a253bdab3e95e0800000000000000
+      internalID: -1901016375479852529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_91
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 633
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20269a51349519920800000000000000
+      internalID: 2995273371839193602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_92
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 641
+        width: 29
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b15e021941a8bb860800000000000000
+      internalID: 7546777421528229147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_93
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 630
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6725063e97e209840800000000000000
+      internalID: 5228730268417806966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_94
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 637
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebbe57f22b3d0fc00800000000000000
+      internalID: 932477885119589310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_95
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 578
+        width: 69
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c30379177d97e14e0800000000000000
+      internalID: -2009034417529999300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_96
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 602
+        width: 15
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5be873664d5791420800000000000000
+      internalID: 2601239814891605685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_97
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 616
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 954e64aa7bcf47a40800000000000000
+      internalID: 5365190921871090777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_98
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 620
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a0f0824435174b90800000000000000
+      internalID: -7257808960286035806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_99
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 606
+        width: 15
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 321667cb46cd4f620800000000000000
+      internalID: 2807110792975376675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_100
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 601
+        width: 31
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13b6a2ebf2f89bf90800000000000000
+      internalID: -6937356315770852559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_101
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 615
+        width: 29
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea6a11cbcec0fd6b0800000000000000
+      internalID: -5269478828093102418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_102
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 622
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4cc5421f1987d3b0800000000000000
+      internalID: -5487766854384104370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_103
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 629
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 262681a32d9cd90e0800000000000000
+      internalID: -2261429533115129246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_104
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 615
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9481bb00f10e863a0800000000000000
+      internalID: -6671836424188520375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_105
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 598
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 457ffb11edb7fb550800000000000000
+      internalID: 6178793407486359380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_106
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 602
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea170a89c37cf0c60800000000000000
+      internalID: 7786661343819493806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_107
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 582
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d755b7f25b8d001e0800000000000000
+      internalID: -2233547142478473859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_108
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 592
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9cbee75950bf40b0800000000000000
+      internalID: -5742177102100251490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_109
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 602
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e230a89e4881f370800000000000000
+      internalID: 8354608654898442976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_110
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 592
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16f8f6eabc4091a40800000000000000
+      internalID: 5339304106075852641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_111
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 586
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e73e13c6dc5249310800000000000000
+      internalID: 1410794147487540094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_112
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 347
+        width: 256
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fee579b9be8d20940800000000000000
+      internalID: 5261005821161463535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_113
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 584
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2485205512dd588a0800000000000000
+      internalID: -6303388968205264830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_114
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 584
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81ed235bdbe856a10800000000000000
+      internalID: 1902083363073875480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_115
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 527
+        width: 92
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 731c21a790c45bd20800000000000000
+      internalID: 3293622306077851959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_116
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 570
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b94ea52e4c2a27e0800000000000000
+      internalID: -1789569187775100494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_117
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 524
+        width: 25
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02c732ac1741d9ea0800000000000000
+      internalID: -5864508660811334624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_118
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 275
+        width: 264
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bee70ac585d2d1ae0800000000000000
+      internalID: -1577054436975411477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_119
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 572
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42f5a71839399e8d0800000000000000
+      internalID: -2816557830201778396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_120
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 280
+        width: 275
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a98604f105321380800000000000000
+      internalID: -9002074422654891607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_121
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 552
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebc641419af348bd0800000000000000
+      internalID: -2628906287058621250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_122
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 357
+        width: 176
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e20384b239dc99d0800000000000000
+      internalID: -2766097259312250137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_123
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 529
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b4fd0e4837aa990800000000000000
+      internalID: -7373954425320158450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_124
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 546
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8be04399273beba0800000000000000
+      internalID: -6058688221993178229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_125
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 490
+        width: 33
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc5fe9cb043964100800000000000000
+      internalID: 91922748659398093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_126
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 528
+        width: 11
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9817b48740d03610800000000000000
+      internalID: 1599006873304373407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_127
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 513
+        width: 45
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2db4fec223c3e3af0800000000000000
+      internalID: -414827929471595566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_128
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 527
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 981fcf2d7a52d7b50800000000000000
+      internalID: 6592466832269832585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_129
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 503
+        width: 52
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d3b027d18ff83070800000000000000
+      internalID: 8086494064068834258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_130
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 512
+        width: 13
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d7f25871a8907ec0800000000000000
+      internalID: -3571186685228943400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_131
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 513
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28571cc381eca6040800000000000000
+      internalID: 4641748969452565890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_132
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 329
+        width: 95
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a01736343231e390800000000000000
+      internalID: -7790890680544980828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_133
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 375
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22cf73f691bb9cfe0800000000000000
+      internalID: -1168196910411416542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_134
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 361
+        width: 32
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ec081f1ccbde73e0800000000000000
+      internalID: -2053962710292886301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_135
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 351
+        width: 39
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc8938cebcb595b50800000000000000
+      internalID: 6582393261783226573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_136
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 268
+        width: 37
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7074fe1b9683c08e0800000000000000
+      internalID: -1725942530581772537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_137
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 322
+        width: 34
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c324d67ee8c1b67a0800000000000000
+      internalID: -6382976646773915076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_138
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 359
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51015a48e4f669790800000000000000
+      internalID: -7523703744452292587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_139
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 306
+        width: 83
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00df683e1b901b9e0800000000000000
+      internalID: -1607492932363420416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_140
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 359
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e8ba76c9b29e0470800000000000000
+      internalID: 8362782884670126309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_141
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 337
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84f88a86e7a606130800000000000000
+      internalID: 3557960796776992584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_142
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 328
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f674517c856e3310800000000000000
+      internalID: 1386657389147879157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_143
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 318
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b464b278ae8c600c0800000000000000
+      internalID: -4609776258951461301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_144
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 310
+        width: 66
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06c5faca6f5d1d510800000000000000
+      internalID: 1572273000364858464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_145
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 337
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 378cf279f9a330630800000000000000
+      internalID: 3892018960088942707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_146
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 336
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f56e43d57493012b0800000000000000
+      internalID: -5615925756661799329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_147
+      rect:
+        serializedVersion: 2
+        x: 1159
+        y: 323
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a6b1db944bc8e450800000000000000
+      internalID: 6118363589315245731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_148
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 190
+        width: 114
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce15af9264db1afb0800000000000000
+      internalID: -4638218032165269012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_149
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 77
+        width: 150
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65c414ce224401130800000000000000
+      internalID: 3535400624269118550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_150
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 304
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5a6ab310b69b8de0800000000000000
+      internalID: -1329803581968455073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_151
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 268
+        width: 52
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f399137b2d1d9bef0800000000000000
+      internalID: -91811614437566145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_152
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 300
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37185f7c1a278a1d0800000000000000
+      internalID: -3339293084525166221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_153
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 303
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96bd85929a39611b0800000000000000
+      internalID: -5686195124756227223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_154
+      rect:
+        serializedVersion: 2
+        x: 1141
+        y: 296
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f244f8eb0576973a0800000000000000
+      internalID: -6667184176853203921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_155
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 292
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9f2fd1f1126a91f0800000000000000
+      internalID: -1037408934943576166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_156
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 278
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d84ba3d8fcd8af00800000000000000
+      internalID: 1128394667917527256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_157
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 39
+        width: 292
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 041f7d10cee40a090800000000000000
+      internalID: -8025327760424046272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_158
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 62
+        width: 236
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9fd18dac9cf8e050800000000000000
+      internalID: 5830187467487174554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_159
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 294
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdcf9832ac774b850800000000000000
+      internalID: 6391865481208921308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_160
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 292
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29742bf79368b47c0800000000000000
+      internalID: -4086024655394945134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_161
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 280
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e777a3d5ce31de900800000000000000
+      internalID: 715249821719099262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_162
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 236
+        width: 60
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d35a377fd9dc16130800000000000000
+      internalID: 3558351258944513341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_163
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 210
+        width: 27
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77671707eab74f130800000000000000
+      internalID: 3599637991316878967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_164
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 242
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 698484d6d443008e0800000000000000
+      internalID: -1729324749759690602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_165
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 247
+        width: 16
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa901a9512d1d42b0800000000000000
+      internalID: -5598786732676806230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_166
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 246
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df6aa7f26377856d0800000000000000
+      internalID: -3001518077033928963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_167
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 95
+        width: 190
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1825dee3b8c318b80800000000000000
+      internalID: -8394361661688032639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_168
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 230
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b7a67bc570027980800000000000000
+      internalID: -8542765037243684943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_169
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 210
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ed6d24c9d9c20a10800000000000000
+      internalID: 1874282332075945448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_170
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 184
+        width: 43
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91fdbd80d8db88670800000000000000
+      internalID: 8541285106744811289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_171
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 93
+        width: 46
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6dcc88f23ed9cd40800000000000000
+      internalID: 5605255521739001197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_172
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 90
+        width: 17
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6974d098574a86170800000000000000
+      internalID: 8171962348581242774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_173
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 0
+        width: 130
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1822a0633a5e9510800000000000000
+      internalID: 1557781697827842076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_174
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 111
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06f15da9dae0453a0800000000000000
+      internalID: -6677696208693813408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_175
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 79
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21522aac593a80310800000000000000
+      internalID: 1371525950279394578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_176
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 144
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38e6da1af5cce9150800000000000000
+      internalID: 5881362874498903683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_177
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 128
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbbd4ebbd0b405af0800000000000000
+      internalID: -409745043731719237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_178
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 130
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d0c3496e9e0a2720800000000000000
+      internalID: 2822084190034706647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_179
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 67
+        width: 13
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6997880f63ee0df60800000000000000
+      internalID: 8057201653096937878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_180
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 39
+        width: 39
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0a3d6db5c8924f40800000000000000
+      internalID: 5711295252513241611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_181
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 69
+        width: 38
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41dca9c9fab487fd0800000000000000
+      internalID: -2344040388427592428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_182
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 128
+        width: 39
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b8c7a79d746a5c00800000000000000
+      internalID: 890134366937139384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_183
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 164
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da8475eea29ec52b0800000000000000
+      internalID: -5594340266504402771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_184
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 166
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60c9e303c0c905fa0800000000000000
+      internalID: -5813975542772360186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_185
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 94
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10d07b707795a3a80800000000000000
+      internalID: -8486372180060861183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_186
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 98
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4372720fe4ea37110800000000000000
+      internalID: 1257540375026280244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_187
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 87
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2d4891b35691c470800000000000000
+      internalID: 8413170865110797610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_188
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 39
+        width: 53
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f847d9710414feb0800000000000000
+      internalID: -4687099315614168840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_189
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 29
+        width: 33
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ec8346cc12c86d20800000000000000
+      internalID: 3272078558125853921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_190
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 61
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f25cee4567c4e3fb0800000000000000
+      internalID: -4666208092794469073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_191
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 67
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e24949d59a2519750800000000000000
+      internalID: 6309915440295744558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_192
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 37
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dd3cc1ccbcea51a0800000000000000
+      internalID: -6819878390249800233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_193
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 53
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b2cd5679c53423e0800000000000000
+      internalID: -2079477988547771720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_194
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 69
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d5d368cb7618d340800000000000000
+      internalID: 4888682116409447896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_195
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 61
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1729a27e6133a4bf0800000000000000
+      internalID: -339402648452427151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_196
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 156
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3375b0e1ca954a30800000000000000
+      internalID: 4198932385082209083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_197
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 18
+        width: 67
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1d7c624b3cee63b0800000000000000
+      internalID: -5517212754220647141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_198
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 0
+        width: 51
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3751b473202297d30800000000000000
+      internalID: 4429609101408540019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_199
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 17
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb10c927a989f6840800000000000000
+      internalID: 5219558282260906430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_200
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 15
+        width: 25
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0d9c803bd7e08940800000000000000
+      internalID: 5296488090386078986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_201
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 17
+        width: 24
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2421ad736e79693c0800000000000000
+      internalID: -4353124974771695038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_202
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 29
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ba1e2db6c5a7fa80800000000000000
+      internalID: -8433089504231941450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_203
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 21
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 303d73bddbbc46730800000000000000
+      internalID: 3991539186044228355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_204
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 0
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fafb6f20fe2329530800000000000000
+      internalID: 3860203832738234287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_205
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 21
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bba23cac7b5fa55d0800000000000000
+      internalID: -3072873625997333829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_206
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 19
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ccb3dcf76f708130800000000000000
+      internalID: 3566990989477526722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_207
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 12
+        width: 37
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 738715b51ca62da10800000000000000
+      internalID: 1932724568788662327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_208
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 38
+        width: 39
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fda9d61e47526730800000000000000
+      internalID: 3990848212706110967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_209
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 0
+        width: 61
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9b174e5d756eee30800000000000000
+      internalID: 4534673463935703962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_210
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 45
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fabf4559d2ecccc0800000000000000
+      internalID: -3689324571656209676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_211
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 31
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e773a3d865380ffb0800000000000000
+      internalID: -4616045210294929538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_212
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 37
+        width: 24
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 741641386d02719a0800000000000000
+      internalID: -6262500651141144249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_213
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 34
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b8e63e81c57bd330800000000000000
+      internalID: 3736709790009059507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_214
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 31
+        width: 33
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 697a59c8d4a9790a0800000000000000
+      internalID: -6874856648295995498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_215
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 19
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63d36ce9dbd188fc0800000000000000
+      internalID: -3492508810776003274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_216
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 35
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ee92973d76f88af0800000000000000
+      internalID: -393793949731217696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_217
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 47
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5982b825ffc23cd10800000000000000
+      internalID: 2144607322671622293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seal-ui-atlas_218
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 0
+        width: 34
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78c409a4c4629d940800000000000000
+      internalID: 5321326543825292423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      seal-ui-atlas_0: -6239184531922407629
+      seal-ui-atlas_1: 3407566360688366933
+      seal-ui-atlas_10: -4959396431923445398
+      seal-ui-atlas_100: -6937356315770852559
+      seal-ui-atlas_101: -5269478828093102418
+      seal-ui-atlas_102: -5487766854384104370
+      seal-ui-atlas_103: -2261429533115129246
+      seal-ui-atlas_104: -6671836424188520375
+      seal-ui-atlas_105: 6178793407486359380
+      seal-ui-atlas_106: 7786661343819493806
+      seal-ui-atlas_107: -2233547142478473859
+      seal-ui-atlas_108: -5742177102100251490
+      seal-ui-atlas_109: 8354608654898442976
+      seal-ui-atlas_11: -5197942294512782685
+      seal-ui-atlas_110: 5339304106075852641
+      seal-ui-atlas_111: 1410794147487540094
+      seal-ui-atlas_112: 5261005821161463535
+      seal-ui-atlas_113: -6303388968205264830
+      seal-ui-atlas_114: 1902083363073875480
+      seal-ui-atlas_115: 3293622306077851959
+      seal-ui-atlas_116: -1789569187775100494
+      seal-ui-atlas_117: -5864508660811334624
+      seal-ui-atlas_118: -1577054436975411477
+      seal-ui-atlas_119: -2816557830201778396
+      seal-ui-atlas_12: -2785971227215626964
+      seal-ui-atlas_120: -9002074422654891607
+      seal-ui-atlas_121: -2628906287058621250
+      seal-ui-atlas_122: -2766097259312250137
+      seal-ui-atlas_123: -7373954425320158450
+      seal-ui-atlas_124: -6058688221993178229
+      seal-ui-atlas_125: 91922748659398093
+      seal-ui-atlas_126: 1599006873304373407
+      seal-ui-atlas_127: -414827929471595566
+      seal-ui-atlas_128: 6592466832269832585
+      seal-ui-atlas_129: 8086494064068834258
+      seal-ui-atlas_13: 6924697562095628145
+      seal-ui-atlas_130: -3571186685228943400
+      seal-ui-atlas_131: 4641748969452565890
+      seal-ui-atlas_132: -7790890680544980828
+      seal-ui-atlas_133: -1168196910411416542
+      seal-ui-atlas_134: -2053962710292886301
+      seal-ui-atlas_135: 6582393261783226573
+      seal-ui-atlas_136: -1725942530581772537
+      seal-ui-atlas_137: -6382976646773915076
+      seal-ui-atlas_138: -7523703744452292587
+      seal-ui-atlas_139: -1607492932363420416
+      seal-ui-atlas_14: 9076720521078337521
+      seal-ui-atlas_140: 8362782884670126309
+      seal-ui-atlas_141: 3557960796776992584
+      seal-ui-atlas_142: 1386657389147879157
+      seal-ui-atlas_143: -4609776258951461301
+      seal-ui-atlas_144: 1572273000364858464
+      seal-ui-atlas_145: 3892018960088942707
+      seal-ui-atlas_146: -5615925756661799329
+      seal-ui-atlas_147: 6118363589315245731
+      seal-ui-atlas_148: -4638218032165269012
+      seal-ui-atlas_149: 3535400624269118550
+      seal-ui-atlas_15: -1224420130058871110
+      seal-ui-atlas_150: -1329803581968455073
+      seal-ui-atlas_151: -91811614437566145
+      seal-ui-atlas_152: -3339293084525166221
+      seal-ui-atlas_153: -5686195124756227223
+      seal-ui-atlas_154: -6667184176853203921
+      seal-ui-atlas_155: -1037408934943576166
+      seal-ui-atlas_156: 1128394667917527256
+      seal-ui-atlas_157: -8025327760424046272
+      seal-ui-atlas_158: 5830187467487174554
+      seal-ui-atlas_159: 6391865481208921308
+      seal-ui-atlas_16: 3039327645498102219
+      seal-ui-atlas_160: -4086024655394945134
+      seal-ui-atlas_161: 715249821719099262
+      seal-ui-atlas_162: 3558351258944513341
+      seal-ui-atlas_163: 3599637991316878967
+      seal-ui-atlas_164: -1729324749759690602
+      seal-ui-atlas_165: -5598786732676806230
+      seal-ui-atlas_166: -3001518077033928963
+      seal-ui-atlas_167: -8394361661688032639
+      seal-ui-atlas_168: -8542765037243684943
+      seal-ui-atlas_169: 1874282332075945448
+      seal-ui-atlas_17: -2325336090576680470
+      seal-ui-atlas_170: 8541285106744811289
+      seal-ui-atlas_171: 5605255521739001197
+      seal-ui-atlas_172: 8171962348581242774
+      seal-ui-atlas_173: 1557781697827842076
+      seal-ui-atlas_174: -6677696208693813408
+      seal-ui-atlas_175: 1371525950279394578
+      seal-ui-atlas_176: 5881362874498903683
+      seal-ui-atlas_177: -409745043731719237
+      seal-ui-atlas_178: 2822084190034706647
+      seal-ui-atlas_179: 8057201653096937878
+      seal-ui-atlas_18: 2414112205396061920
+      seal-ui-atlas_180: 5711295252513241611
+      seal-ui-atlas_181: -2344040388427592428
+      seal-ui-atlas_182: 890134366937139384
+      seal-ui-atlas_183: -5594340266504402771
+      seal-ui-atlas_184: -5813975542772360186
+      seal-ui-atlas_185: -8486372180060861183
+      seal-ui-atlas_186: 1257540375026280244
+      seal-ui-atlas_187: 8413170865110797610
+      seal-ui-atlas_188: -4687099315614168840
+      seal-ui-atlas_189: 3272078558125853921
+      seal-ui-atlas_19: 1201931279044049692
+      seal-ui-atlas_190: -4666208092794469073
+      seal-ui-atlas_191: 6309915440295744558
+      seal-ui-atlas_192: -6819878390249800233
+      seal-ui-atlas_193: -2079477988547771720
+      seal-ui-atlas_194: 4888682116409447896
+      seal-ui-atlas_195: -339402648452427151
+      seal-ui-atlas_196: 4198932385082209083
+      seal-ui-atlas_197: -5517212754220647141
+      seal-ui-atlas_198: 4429609101408540019
+      seal-ui-atlas_199: 5219558282260906430
+      seal-ui-atlas_2: 1080508030164473473
+      seal-ui-atlas_20: -9211822303943310955
+      seal-ui-atlas_200: 5296488090386078986
+      seal-ui-atlas_201: -4353124974771695038
+      seal-ui-atlas_202: -8433089504231941450
+      seal-ui-atlas_203: 3991539186044228355
+      seal-ui-atlas_204: 3860203832738234287
+      seal-ui-atlas_205: -3072873625997333829
+      seal-ui-atlas_206: 3566990989477526722
+      seal-ui-atlas_207: 1932724568788662327
+      seal-ui-atlas_208: 3990848212706110967
+      seal-ui-atlas_209: 4534673463935703962
+      seal-ui-atlas_21: 2256135819936923314
+      seal-ui-atlas_210: -3689324571656209676
+      seal-ui-atlas_211: -4616045210294929538
+      seal-ui-atlas_212: -6262500651141144249
+      seal-ui-atlas_213: 3736709790009059507
+      seal-ui-atlas_214: -6874856648295995498
+      seal-ui-atlas_215: -3492508810776003274
+      seal-ui-atlas_216: -393793949731217696
+      seal-ui-atlas_217: 2144607322671622293
+      seal-ui-atlas_218: 5321326543825292423
+      seal-ui-atlas_22: 5945606531137783981
+      seal-ui-atlas_23: -1850281970211128926
+      seal-ui-atlas_24: -5898914888730879211
+      seal-ui-atlas_25: 7393630813091946557
+      seal-ui-atlas_26: 7071322957168233702
+      seal-ui-atlas_27: 5291429108859398036
+      seal-ui-atlas_28: 7612532839506755630
+      seal-ui-atlas_29: -2322000200807034521
+      seal-ui-atlas_3: 1846010295100868140
+      seal-ui-atlas_30: 3828942997285263785
+      seal-ui-atlas_31: 7648567065680571339
+      seal-ui-atlas_32: 8459511096461761067
+      seal-ui-atlas_33: 7984950894162866298
+      seal-ui-atlas_34: -1396987473605012229
+      seal-ui-atlas_35: 232589621531006560
+      seal-ui-atlas_36: 4582767692131501724
+      seal-ui-atlas_37: 2480834646874038894
+      seal-ui-atlas_38: -7216318268005720637
+      seal-ui-atlas_39: 4247125276483030855
+      seal-ui-atlas_4: -4969869620694485270
+      seal-ui-atlas_40: -2923460691064570972
+      seal-ui-atlas_41: -5781047534106554769
+      seal-ui-atlas_42: 1624511871816842113
+      seal-ui-atlas_43: 8152599765025408488
+      seal-ui-atlas_44: -5669350291145121785
+      seal-ui-atlas_45: -315898305528391495
+      seal-ui-atlas_46: 6547232151445313289
+      seal-ui-atlas_47: -5370918158996863984
+      seal-ui-atlas_48: 6411078017576298571
+      seal-ui-atlas_49: -7955450100715357389
+      seal-ui-atlas_5: -8399978183094134247
+      seal-ui-atlas_50: 6625798126263385966
+      seal-ui-atlas_51: 6566453817487958073
+      seal-ui-atlas_52: 1278316342699711477
+      seal-ui-atlas_53: -7621282559540033875
+      seal-ui-atlas_54: 5041532425852050935
+      seal-ui-atlas_55: -8299178126501530822
+      seal-ui-atlas_56: 222949232165175878
+      seal-ui-atlas_57: -9199873106523691645
+      seal-ui-atlas_58: 6460442088880598775
+      seal-ui-atlas_59: -7222691932491386199
+      seal-ui-atlas_6: -1981550909364861209
+      seal-ui-atlas_60: 9166767812963575482
+      seal-ui-atlas_61: -6440500895036986581
+      seal-ui-atlas_62: 7901302625860504355
+      seal-ui-atlas_63: -5399236433372299633
+      seal-ui-atlas_64: -7392449125058369363
+      seal-ui-atlas_65: -7018229642426087022
+      seal-ui-atlas_66: 419618675538283675
+      seal-ui-atlas_67: 4990584057943586273
+      seal-ui-atlas_68: -5299341695846676458
+      seal-ui-atlas_69: 6677677675466652947
+      seal-ui-atlas_7: -5467566834978891394
+      seal-ui-atlas_70: 4239429538670158567
+      seal-ui-atlas_71: -6056798323627213052
+      seal-ui-atlas_72: 5210393812608078010
+      seal-ui-atlas_73: -2709726011466372324
+      seal-ui-atlas_74: 5098944431557636461
+      seal-ui-atlas_75: 1169647167841030983
+      seal-ui-atlas_76: 3047425294419500689
+      seal-ui-atlas_77: 4394286654508846859
+      seal-ui-atlas_78: 7089717166878752404
+      seal-ui-atlas_79: 5011647840533281682
+      seal-ui-atlas_8: -1296607205952947149
+      seal-ui-atlas_80: 6957240095645371360
+      seal-ui-atlas_81: -2522615452486771989
+      seal-ui-atlas_82: 5197717166166801489
+      seal-ui-atlas_83: -2512225207823406832
+      seal-ui-atlas_84: -886993182200310988
+      seal-ui-atlas_85: -9164171938730900614
+      seal-ui-atlas_86: 8331545137962581589
+      seal-ui-atlas_87: 5883849506088996668
+      seal-ui-atlas_88: 7872915286274700356
+      seal-ui-atlas_89: 3906263913015843928
+      seal-ui-atlas_9: 6587291188704793408
+      seal-ui-atlas_90: -1901016375479852529
+      seal-ui-atlas_91: 2995273371839193602
+      seal-ui-atlas_92: 7546777421528229147
+      seal-ui-atlas_93: 5228730268417806966
+      seal-ui-atlas_94: 932477885119589310
+      seal-ui-atlas_95: -2009034417529999300
+      seal-ui-atlas_96: 2601239814891605685
+      seal-ui-atlas_97: 5365190921871090777
+      seal-ui-atlas_98: -7257808960286035806
+      seal-ui-atlas_99: 2807110792975376675
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

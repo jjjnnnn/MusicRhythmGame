@@ -33,6 +33,10 @@ public class RhythmGame : MonoBehaviour
     public SealRhythmJudge Judge { get; private set; }
     public int BestScore { get; private set; }
     public float SongTime => songSample / (float)sampleRate;
+    public int InputSample => AdjustedSample;
+    public int SampleRate => sampleRate;
+    public float CountInBeats => countTimer * beatsPerMinute / 60f;
+    public IReadOnlyList<RhythmNote> IntroNotes => introNotes;
     public float SongDuration => durationSamples / (float)sampleRate;
     public float Progress => durationSamples > 0 ? Mathf.Clamp01(songSample / (float)durationSamples) : 0;
     public string CountdownLabel => State == SealGameState.CountIn ? Mathf.Clamp(4 - countBeat, 1, 4).ToString() : "";
@@ -48,6 +52,7 @@ public class RhythmGame : MonoBehaviour
     private SealRhythmHud hud;
     private readonly List<RhythmNote> chart = new List<RhythmNote>();
     private readonly List<StageCue> introDemonstrations = new List<StageCue>();
+    private readonly List<RhythmNote> introNotes = new List<RhythmNote>();
     private readonly Queue<int> inputs = new Queue<int>();
     private Animator[] actors;
     private Animator[] seals;
@@ -127,8 +132,10 @@ public class RhythmGame : MonoBehaviour
             string payload = cue.GetTextValue();
             if (TryGetAction(payload, out _) || payload == "readyRight" || payload == "readyLeft")
                 introDemonstrations.Add(new StageCue(cue.StartSample, payload));
+            if (payload == "diantou") introNotes.Add(new RhythmNote(cue.StartSample, SealAction.Nod));
         }
         introDemonstrations.Sort((a, b) => a.Sample.CompareTo(b.Sample));
+        introNotes.Sort((a, b) => a.Sample.CompareTo(b.Sample));
         var sealActors = new List<Animator>();
         var partners = new List<Animator>();
         if (characterAnimator != null) sealActors.Add(characterAnimator);
@@ -223,6 +230,7 @@ public class RhythmGame : MonoBehaviour
     {
         if (input < 0 || input > (int)SealInput.Right || (State != SealGameState.Playing && State != SealGameState.Ready)) return;
         PlayTone(input);
+        if (hud != null) hud.PulseInput(input);
         if (State == SealGameState.Playing) inputs.Enqueue(input);
         else PlayInput((SealInput)input, -1);
     }
