@@ -1,59 +1,28 @@
+using System;
 using SonicBloom.Koreo;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>Captain cues are independent of player judgement and replay on every attempt.</summary>
 public class PeopleController : MonoBehaviour
 {
-    [Tooltip("事件音轨")][SerializeField][EventID] private string[] TrackEventName;//事件音轨
-    [Tooltip("事件文本名字")] public string[] eventTextName;
-
-
-    [Header("动画控制")]
-    private Animator _animator;
-    [Tooltip("动画名字")] public string[] aniName;
-
-
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField, EventID] private string[] TrackEventName = { "PeopleEventID" };
+    public string[] eventTextName = { "characterMove", "characterDiantou", "characterSpeak01" };
+    public string[] aniName = { "characterMove", "characterDiantou", "characterSpeak01" };
+    private Animator animator;
+    private Koreographer conductor;
+    private void Start()
     {
-        _animator = GetComponent<Animator>();
-
-        Koreographer.Instance.RegisterForEvents(TrackEventName[0], HaibaoEvent);
-        //Koreographer.Instance.RegisterForEvents(TrackEventName[1], LeftEvent);
-        //Koreographer.Instance.RegisterForEvents(TrackEventName[2], RightEvent);
-
+        animator = GetComponent<Animator>();
+        conductor = Koreographer.Instance;
+        if (conductor == null || TrackEventName == null) return;
+        foreach (string track in TrackEventName)
+            if (!string.IsNullOrEmpty(track)) conductor.RegisterForEvents(track, OnCue);
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnCue(KoreographyEvent cue)
     {
-
+        int index = Array.IndexOf(eventTextName, cue.GetTextValue());
+        if (isActiveAndEnabled && animator != null && index >= 0 && index < aniName.Length)
+            animator.SetTrigger(aniName[index]);
     }
-
-
-    /// <summary>
-    /// 点头事件
-    /// </summary>
-    /// <param name="koreoEvent"></param>
-    private void HaibaoEvent(KoreographyEvent koreoEvent)
-    {
-        if (koreoEvent.GetTextValue() == eventTextName[0])
-        {
-            Debug.Log("其他海豹执行点头该事件");
-            _animator.SetTrigger(aniName[0]);
-        }
-        else if (koreoEvent.GetTextValue() == eventTextName[1])
-        {
-            Debug.Log("其他海豹执行左转该事件");
-            _animator.SetTrigger(aniName[1]);
-        }
-        else if (koreoEvent.GetTextValue() == eventTextName[2])
-        {
-            Debug.Log("其他海豹执行右转该事件");
-            _animator.SetTrigger(aniName[2]);
-        }
-
-    }
-    
-  }
+    private void OnDestroy() { if (conductor != null) conductor.UnregisterForAllEvents(this); }
+}

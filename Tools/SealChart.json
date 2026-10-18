@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "sampleRate": 44100,
+  "bpm": 133,
+  "clipSamples": 4687488,
+  "introNodBeats": [7, 9, 11, 12, 13],
+  "marchFirstBeat": 15,
+  "marchLastBeat": 226,
+  "extraHalfBeats": [25.5, 41.5, 57.5, 73.5, 85.5, 97.5, 117.5, 133.5, 145.5, 151.5, 159.5, 167.5, 183.5, 191.5, 199.5, 213.5, 217.5, 221.5],
+  "nodPhrases": [
+    {"cueBeat": 58, "firstBeat": 61, "count": 4},
+    {"cueBeat": 102, "firstBeat": 105, "count": 4},
+    {"cueBeat": 134, "firstBeat": 137, "count": 4},
+    {"cueBeat": 168, "firstBeat": 171, "count": 4},
+    {"cueBeat": 200, "firstBeat": 203, "count": 4},
+    {"cueBeat": 222, "firstBeat": 225, "count": 2}
+  ],
+  "provenance": {
+    "timing": "Existing 133 BPM Koreography and the project's original opening markers. Full-song march grid plus 18 half-beat responses, found by matching repeated spoken cue waveforms in haibao.mp3; each response is two beats after the cue's middle syllable.",
+    "actions": "Project adaptation: retain the five opening nods and original alternating left/right prefix, then alternate flips across the full music. Six short nod phrases replace march notes after major calls. These action assignments are authored for the project's three existing animations, not a frame-exact reconstruction of the Wii game.",
+    "clipLength": "Unity imported AudioClip.samples is authoritative; the MP3 container duration differs because of encoder padding."
+  }
+}
