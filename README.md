@@ -30,7 +30,9 @@ Windows版运行 `Builds/SealRhythm/SealRhythm.exe`，同目录Data、MonoBleedi
 
 230个输入从主程序TickFlow判定指令与NPC动作交叉提取：168翻身（84左/84右）、62滚动。原script48ticks/beat；与项目MP3对齐时加5拍。18处三连额外半拍再次通过音频指纹核验。每个输入在 `Tools/SealChart.json` 中都有原始tick、指令地址、调用地址、动作与动画索引。
 
-原版BRCAD的78个组合姿势、30个动画及60Hz帧时钟仍保留为动作状态与验证依据。画面由新的 `SealCharacterAppearance` 绘制：奶白伙伴／蓝色玩家各有4种领巾海豹姿势，点头、侧身和翻滚沿用原动作触发与帧时长；翻滚保留正立／倒立切换。企鹅队长使用6种新姿势，按原始队长事件样本进行踏步、点头和指挥。素材在 `Assets/Resources/Characters/ArcticBand`，内置imagegen提示词在 `Tools/ArcticCharacterPrompts.txt`。原版A键翻身、A+B滚动适配为左右键，点头保留下键；判定窗口、计分规则仍使用本项目规则。
+原版BRCAD的78个组合姿势、30个动画及60Hz帧时钟仍保留为动作状态与验证依据。画面由新的 `SealCharacterAppearance` 绘制：奶白伙伴／蓝色玩家各有4种领巾海豹姿势，点头、侧身和翻滚沿用原动作触发与帧时长；翻滚保留正立／倒立切换。企鹅队长与海豹共享音乐采样时钟：前奏5次下键拍点头，230个正式拍点按实际输入方向向左／向右指挥，每次动作200ms；旧队长轨道保留作原版数据记录。素材在 `Assets/Resources/Characters/ArcticBand`，内置imagegen提示词在 `Tools/ArcticCharacterPrompts.txt`。原版A键翻身、A+B滚动适配为左右键，点头保留下键；判定窗口、计分规则仍使用本项目规则。
+
+舞台背景使用内置 ImageGen 生成的简洁雪岸 `Assets/Resources/Characters/ArcticBand/background.png`，提示词保存在 `Tools/ArcticBackgroundPrompt.txt`。四只海豹中心间距为1.08世界单位，保留原先的队列顺序。企鹅右侧纸面气泡使用26号加粗中文：开场显示“开始准备，根据节拍跟上队伍的动作”，半拍和连续翻滚变奏前显示对应提示；暂停与结算隐藏。对白取自现有谱面样本时刻，不改动音乐或判定。
 
 来源与完整说明见 `Doc/SealChart.md`；提取工具与日版地址依据见 `Tools/ReverseEngineering/OriginalTiming.md`。镜像及提取出的原始二进制保存在 `Logs/SealExtraction`，不会打包进游戏或提交Git。
 
@@ -63,3 +65,7 @@ ImageGen UI改版验证：纯箭头按钮的三个PointerDown入口、点头映�
 新角色验证：整曲230/230 Perfect、练习18/18 Perfect，四个原动作状态、唯一蓝色玩家、三只奶白伙伴、企鹅队长和旧素材隐藏检查通过。原音乐与谱面资源未修改，记录在 `Logs/SealValidation/ArcticBand`。自动整曲测试会临时隔离桌面实时按键，结束后恢复；正式游戏默认接受正常键盘与触摸输入。
 
 新角色Windows版已重新构建，0错误；构建摘要与独立程序启动日志为 `Logs/SealValidation/ArcticBand/build.txt`、`player.log`。原项目Inference依赖的着色器警告保留，海豹关卡没有使用推理。
+
+舞台与队长同步验证：整曲230/230 Perfect、练习18/18 Perfect；企鹅235次前奏／正式拍动作的样本时刻、物理方向与姿势全部核验通过。准备中文精确匹配，12.807秒记录首次翻滚变奏气泡；暂停隐藏、音乐恢复、新背景、1.08单位队列间距及唯一蓝色玩家通过。截图与完整记录见 `Logs/SealValidation/StagePolish`。
+
+上述舞台更新已重新构建Windows x64并完成独立启动检查，0构建错误；原项目未使用字段和Inference着色器警告保留。该目录下 `build.txt`、`startup.txt`、`player.log` 保存构建与启动记录。

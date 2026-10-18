@@ -31,7 +31,7 @@ public class RhythmGame : MonoBehaviour
     // Automated playback can isolate its deterministic inputs from desktop keyboard/pointer events.
     public bool LiveInputEnabled { get; set; } = true;
     public float TimingOffsetMs { get; private set; }
-    public string StatusMessage { get; private set; } = "听口令，和伙伴一起打拍子。最右边的海豹是你！";
+    public string StatusMessage { get; private set; } = "听口令，和伙伴一起打拍子。蓝色海豹是你！";
     public SealRhythmJudge Judge { get; private set; }
     public int BestScore { get; private set; }
     public float SongTime => songSample / (float)sampleRate;
@@ -39,6 +39,25 @@ public class RhythmGame : MonoBehaviour
     public int SampleRate => sampleRate;
     public float CountInBeats => countTimer * beatsPerMinute / 60f;
     public IReadOnlyList<RhythmNote> IntroNotes => introNotes;
+    public Transform CaptainTransform => captains.Length > 0 && captains[0] != null ? captains[0].transform : null;
+    public bool CaptainDialogueVisible => !string.IsNullOrEmpty(CaptainDialogueText);
+    public string CaptainDialogueText
+    {
+        get
+        {
+            if (State == SealGameState.Ready || State == SealGameState.CountIn ||
+                (State == SealGameState.Playing && introNotes.Count > 0 && songSample < introNotes[0].Sample))
+                return "开始准备，根据节拍跟上队伍的动作";
+            if (State != SealGameState.Playing) return "";
+            // Roll-count instructions take precedence when a half-beat cue overlaps them.
+            for (int i = dialogueCues.Count - 1; i >= 0; --i)
+            {
+                var cue = dialogueCues[i];
+                if (songSample >= cue.Start && songSample < cue.End) return cue.Text;
+            }
+            return "";
+        }
+    }
     public float SongDuration => durationSamples / (float)sampleRate;
     public float Progress => durationSamples > 0 ? Mathf.Clamp01(songSample / (float)durationSamples) : 0;
     public string CountdownLabel => State == SealGameState.CountIn ? Mathf.Clamp(4 - countBeat, 1, 4).ToString() : "";
@@ -55,10 +74,13 @@ public class RhythmGame : MonoBehaviour
     private readonly List<RhythmNote> chart = new List<RhythmNote>();
     private readonly List<StageCue> introDemonstrations = new List<StageCue>();
     private readonly List<RhythmNote> introNotes = new List<RhythmNote>();
+    private readonly List<DialogueCue> dialogueCues = new List<DialogueCue>();
     private readonly Queue<int> inputs = new Queue<int>();
     private Animator[] actors;
     private Animator[] seals;
     private Animator[] partnerSeals;
+    private SealCaptainAppearance[] captains = Array.Empty<SealCaptainAppearance>();
+    private Sprite stageBackgroundSprite;
     private bool[] phaseBefore, nextFlipLeftBefore;
     private int nextPartnerNoteIndex, nextIntroIndex;
     private int sampleRate = 44100, songSample, durationSamples, countBeat;
@@ -78,6 +100,13 @@ public class RhythmGame : MonoBehaviour
         public StageCue(int sample, string payload) { Sample = sample; Payload = payload; }
     }
 
+    private readonly struct DialogueCue
+    {
+        public readonly int Start, End;
+        public readonly string Text;
+        public DialogueCue(int start, int end, string text) { Start = start; End = end; Text = text; }
+    }
+
     private void Awake()
     {
         musicPlayer = FindAnyObjectByType<SimpleMusicPlayer>();
@@ -95,7 +124,7 @@ public class RhythmGame : MonoBehaviour
         stageCamera = Camera.main;
         var background = GameObject.Find("Bg");
         if (background != null && background.TryGetComponent<SpriteRenderer>(out var renderer))
-        { stageBounds = renderer.bounds; FrameStage(); }
+        { stageBounds = renderer.bounds; ReplaceStageBackground(renderer); FrameStage(); }
         if (characterAnimator == null && GameObject.Find("player") != null)
             characterAnimator = GameObject.Find("player").GetComponent<Animator>();
         song = Resources.Load<Koreography>("Art/Level_cellanim/Kore/haibao");
@@ -138,6 +167,7 @@ public class RhythmGame : MonoBehaviour
         }
         introDemonstrations.Sort((a, b) => a.Sample.CompareTo(b.Sample));
         introNotes.Sort((a, b) => a.Sample.CompareTo(b.Sample));
+        BuildCaptainDialogue();
         var sealActors = new List<Animator>();
         var partners = new List<Animator>();
         if (characterAnimator != null) sealActors.Add(characterAnimator);
@@ -154,13 +184,19 @@ public class RhythmGame : MonoBehaviour
         }
         partnerSeals = partners.ToArray();
         seals = sealActors.ToArray();
+        SpreadSeals();
         foreach (var seal in seals)
         {
             SealOriginalAnimation.Attach(seal);
             SealCharacterAppearance.Attach(seal, seal == characterAnimator);
         }
+        var captainSkins = new List<SealCaptainAppearance>();
         foreach (var captain in FindObjectsByType<PeopleController>())
-            SealCaptainAppearance.Attach(captain.GetComponent<Animator>(), this);
+        {
+            var skin = SealCaptainAppearance.Attach(captain.GetComponent<Animator>(), this);
+            if (skin != null) captainSkins.Add(skin);
+        }
+        captains = captainSkins.ToArray();
         CreateFeedbackAudio();
         BuildJudge(false);
         initialized = true;
@@ -266,7 +302,7 @@ public class RhythmGame : MonoBehaviour
         musicPlayer.Stop(); song.ResetTimings(); inputs.Clear(); songSample = 0;
         nextPartnerNoteIndex = nextIntroIndex = 0;
         IsPractice = false; BuildJudge(false); ResetActors(); State = SealGameState.Ready;
-        StatusMessage = "听口令，和伙伴一起打拍子。最右边的海豹是你！";
+        StatusMessage = "听口令，和伙伴一起打拍子。蓝色海豹是你！";
     }
     public void ToggleAssist()
     {
@@ -309,6 +345,8 @@ public class RhythmGame : MonoBehaviour
         while (nextIntroIndex < introDemonstrations.Count && introDemonstrations[nextIntroIndex].Sample <= songSample)
         {
             var cue = introDemonstrations[nextIntroIndex++];
+            if (cue.Payload == "diantou")
+                foreach (var captain in captains) captain.PlayBeat(SealInput.Nod, cue.Sample);
             foreach (var seal in seals)
             {
                 if (cue.Payload == "readyRight" || cue.Payload == "readyLeft")
@@ -324,6 +362,7 @@ public class RhythmGame : MonoBehaviour
         while (nextPartnerNoteIndex < Judge.TotalNotes && Judge.Notes[nextPartnerNoteIndex].Sample <= songSample)
         {
             var note = Judge.Notes[nextPartnerNoteIndex];
+            foreach (var captain in captains) captain.PlayBeat(note.Input, note.Sample);
             foreach (var partner in partnerSeals) PlayChartAction(partner, note.Action, nextPartnerNoteIndex);
             nextPartnerNoteIndex++;
         }
@@ -390,6 +429,61 @@ public class RhythmGame : MonoBehaviour
         stageCamera.clearFlags = CameraClearFlags.SolidColor;
         stageCamera.backgroundColor = new Color(.94f, .99f, 1f);
     }
+    private void ReplaceStageBackground(SpriteRenderer renderer)
+    {
+        var texture = Resources.Load<Texture2D>("Characters/ArcticBand/background");
+        if (texture == null) return;
+        var previousBounds = renderer.bounds;
+        stageBackgroundSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
+            new Vector2(.5f, .5f), 100, 0, SpriteMeshType.FullRect);
+        stageBackgroundSprite.name = "Arctic snow stage";
+        renderer.sprite = stageBackgroundSprite;
+        renderer.color = Color.white;
+        var size = renderer.bounds.size;
+        renderer.transform.localScale = Vector3.Scale(renderer.transform.localScale,
+            new Vector3(previousBounds.size.x / Mathf.Max(.001f, size.x), previousBounds.size.y / Mathf.Max(.001f, size.y), 1));
+        renderer.transform.position += previousBounds.center - renderer.bounds.center;
+    }
+    private void SpreadSeals()
+    {
+        if (seals.Length < 2) return;
+        var sorted = (Animator[])seals.Clone();
+        Array.Sort(sorted, (a, b) => a.transform.position.x.CompareTo(b.transform.position.x));
+        float center = 0;
+        foreach (var seal in sorted) center += seal.transform.position.x;
+        center /= sorted.Length;
+        for (int i = 0; i < sorted.Length; ++i)
+        {
+            var position = sorted[i].transform.position;
+            position.x = center + (i - (sorted.Length - 1) * .5f) * 1.08f;
+            sorted[i].transform.position = position;
+        }
+    }
+    private void BuildCaptainDialogue()
+    {
+        dialogueCues.Clear();
+        float beatSamples = sampleRate * 60f / beatsPerMinute;
+        foreach (var note in chart)
+        {
+            float beat = note.Sample / beatSamples;
+            if (Mathf.Abs(beat - Mathf.Floor(beat) - .5f) < .01f)
+                dialogueCues.Add(new DialogueCue(note.Sample - Mathf.RoundToInt(.75f * beatSamples),
+                    note.Sample + Mathf.RoundToInt(.75f * beatSamples), "注意，半拍连击！"));
+        }
+        string[] counts = { "", "一", "两", "三", "四", "五", "六", "七", "八", "九", "十" };
+        for (int i = 0; i < chart.Count; ++i)
+        {
+            if (chart[i].Action != SealAction.Roll) continue;
+            int first = i;
+            while (i + 1 < chart.Count && chart[i + 1].Action == SealAction.Roll &&
+                chart[i + 1].Sample - chart[i].Sample <= beatSamples * 1.05f) ++i;
+            int count = i - first + 1;
+            string number = count < counts.Length ? counts[count] : count.ToString();
+            dialogueCues.Add(new DialogueCue(chart[first].Sample - Mathf.RoundToInt(2 * beatSamples),
+                chart[i].Sample + Mathf.RoundToInt(.5f * beatSamples),
+                count == 1 ? "准备，翻滚一次！" : "连续翻滚，" + number + "次！"));
+        }
+    }
     private void OnApplicationFocus(bool focus) { if (!focus && (State == SealGameState.Playing || State == SealGameState.CountIn)) TogglePause(); }
     private void Fail(string message) { State = SealGameState.Error; StatusMessage = message; Debug.LogError(message); }
     private void CreateFeedbackAudio()
@@ -407,6 +501,7 @@ public class RhythmGame : MonoBehaviour
     private void OnDestroy()
     {
         if (Judge != null) Judge.Judged -= OnJudged; SetActorSpeed(1);
+        if (stageBackgroundSprite != null) Destroy(stageBackgroundSprite);
         if (tones != null) foreach (var tone in tones) if (tone != null) Destroy(tone);
     }
 }

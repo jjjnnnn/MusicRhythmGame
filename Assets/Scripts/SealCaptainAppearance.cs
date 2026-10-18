@@ -1,6 +1,7 @@
 using UnityEngine;
+using SealRhythm;
 
-/// <summary>New penguin artwork, driven only by the existing captain cue samples.</summary>
+/// <summary>Penguin conductor poses use the same input and sample clock as the chart.</summary>
 [DefaultExecutionOrder(100)]
 public sealed class SealCaptainAppearance : MonoBehaviour
 {
@@ -17,10 +18,14 @@ public sealed class SealCaptainAppearance : MonoBehaviour
     private bool[] rendererWasEnabled;
     private SpriteRenderer body;
     private Vector3 ground;
-    private int cue = -1, step;
-    private float cueTime, pausedElapsed;
+    // A half-beat is about 226 ms. Finish each gesture before the next one can arrive.
+    private const float GestureDuration = .20f;
+    private int pausedElapsedSamples;
     public bool IsReady => initialized;
     public int CurrentPose { get; private set; }
+    public SealInput LastBeatInput { get; private set; } = SealInput.Nod;
+    public int LastBeatSample { get; private set; } = -1;
+    public int BeatCueCount { get; private set; }
 
     public static SealCaptainAppearance Attach(Animator animator, RhythmGame rhythmGame)
     {
@@ -72,44 +77,55 @@ public sealed class SealCaptainAppearance : MonoBehaviour
         initialized = true; ResetPose();
     }
 
-    public void PlayCue(int index, int sample)
+    public void PlayBeat(SealInput input, int sample)
     {
-        if (!initialized || index < 0 || index > 2) return;
-        cue = index; cueTime = sample / (float)game.SampleRate;
-        if (index == 0) step = 1 - step;
-        Render(Mathf.Max(0, game.SongTime - cueTime));
+        if (!initialized || (input != SealInput.Nod && input != SealInput.Left && input != SealInput.Right)) return;
+        LastBeatInput = input;
+        LastBeatSample = sample;
+        BeatCueCount++;
+        pausedElapsedSamples = ElapsedSamples();
+        Render(pausedElapsedSamples);
     }
     public void ResetPose()
     {
         if (!initialized) return;
-        paused = false; cue = -1; step = 0; cueTime = pausedElapsed = 0; Render(1);
+        paused = false;
+        LastBeatInput = SealInput.Nod;
+        LastBeatSample = -1;
+        BeatCueCount = 0;
+        pausedElapsedSamples = 0;
+        Render(0);
     }
     public void SetPaused(bool value)
     {
-        if (value && !paused) pausedElapsed = Mathf.Max(0, game.SongTime - cueTime);
+        if (value && !paused) pausedElapsedSamples = ElapsedSamples();
         paused = value;
+    }
+    private int ElapsedSamples()
+    {
+        int songSample = Mathf.RoundToInt(game.SongTime * game.SampleRate);
+        return Mathf.Max(0, songSample - LastBeatSample);
     }
     private void LateUpdate()
     {
-        if (initialized) Render(paused ? pausedElapsed : Mathf.Max(0, game.SongTime - cueTime));
+        if (initialized) Render(paused ? pausedElapsedSamples : ElapsedSamples());
     }
-    private void Render(float elapsed)
+    private void Render(int elapsedSamples)
     {
-        int pose = 0; float bob = 0, tilt = 0, squash = 1, side = 0;
-        if (cue == 0 && elapsed < .34f)
+        float elapsed = elapsedSamples / (float)Mathf.Max(1, game.SampleRate);
+        int pose = 0;
+        float bob = 0, squash = 1;
+        if (LastBeatSample >= 0 && elapsed < GestureDuration)
         {
-            pose = step == 0 ? 1 : 2;
-            float wave = Mathf.Sin(Mathf.Clamp01(elapsed / .34f) * Mathf.PI);
-            bob = wave * .055f; side = wave * (step == 0 ? -.035f : .035f); tilt = wave * (step == 0 ? 2 : -2);
+            pose = LastBeatInput == SealInput.Nod ? 3 : LastBeatInput == SealInput.Left ? 1 : 2;
+            float wave = Mathf.Sin(Mathf.Clamp01(elapsed / GestureDuration) * Mathf.PI);
+            bob = wave * (LastBeatInput == SealInput.Nod ? -.025f : .018f);
+            if (LastBeatInput == SealInput.Nod) squash -= .015f * wave;
         }
-        else if (cue == 1 && elapsed < .26f)
-        { pose = 3; squash = 1 - .025f * Mathf.Sin(elapsed / .26f * Mathf.PI); }
-        else if (cue == 2 && elapsed < .38f)
-        { pose = elapsed < .18f ? 4 : 5; bob = .035f * Mathf.Sin(elapsed / .38f * Mathf.PI); }
         CurrentPose = pose; body.sprite = frames[pose];
-        body.transform.localPosition = ground + new Vector3(side, bob, 0);
+        body.transform.localPosition = ground + new Vector3(0, bob, 0);
         body.transform.localScale = new Vector3(.94f, .94f * squash, 1);
-        body.transform.localRotation = Quaternion.Euler(0, 0, tilt);
+        body.transform.localRotation = Quaternion.identity;
     }
     private void OnDestroy()
     {

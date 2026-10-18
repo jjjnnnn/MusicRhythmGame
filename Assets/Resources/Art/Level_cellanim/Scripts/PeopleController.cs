@@ -13,6 +13,8 @@ public class PeopleController : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        // The replacement conductor shares RhythmGame's physical-input beat clock.
+        if (TryGetComponent<SealCaptainAppearance>(out var skin) && skin.IsReady) return;
         conductor = Koreographer.Instance;
         if (conductor == null || TrackEventName == null) return;
         foreach (string track in TrackEventName)
@@ -21,8 +23,6 @@ public class PeopleController : MonoBehaviour
     private void OnCue(KoreographyEvent cue)
     {
         int index = Array.IndexOf(eventTextName, cue.GetTextValue());
-        if (isActiveAndEnabled && index >= 0 && TryGetComponent<SealCaptainAppearance>(out var skin))
-        { skin.PlayCue(index, cue.StartSample); return; }
         if (isActiveAndEnabled && animator != null && index >= 0 && index < aniName.Length)
             animator.SetTrigger(aniName[index]);
     }

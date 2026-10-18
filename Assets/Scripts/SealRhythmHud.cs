@@ -14,6 +14,7 @@ public sealed class SealRhythmHud : MonoBehaviour
     private RectTransform canvasRect, controls;
     private SealUiArt art;
     private SealBeatLane lane;
+    private SealCaptainDialogue dialogue;
     private Font font;
     private bool ownsFont;
     private GameObject ownedEventSystem, shade, countdown;
@@ -80,6 +81,7 @@ public sealed class SealRhythmHud : MonoBehaviour
         SetText(offsetText, "校准  " + (offset > 0 ? "+" : "") + offset + " ms");
         countdown.SetActive(counting); SetText(countdownText, game.CountdownLabel);
         lane.SetVisible(ready || playing || counting); lane.Refresh();
+        dialogue.Refresh();
         if (finished)
         {
             SetText(gradeText, accuracy >= .9 ? "好极了！" : accuracy >= .7 ? "演出完成" : "再来一次？");
@@ -112,6 +114,8 @@ public sealed class SealRhythmHud : MonoBehaviour
         shade = ImageObject("Menu shade", canvasRect, new Color(.20f, .28f, .31f, .16f)).gameObject;
         Stretch(shade.GetComponent<RectTransform>(), 0, 0, 136, 118);
         BuildReady(); BuildPaused(); BuildResults(); BuildError();
+        dialogue = gameObject.AddComponent<SealCaptainDialogue>();
+        dialogue.Initialize(game, canvasRect, font, art.Paper);
         var count = ImageObject("Count in", canvasRect, Color.white, art.Key);
         countdown = count.gameObject; Place(count.rectTransform, new Vector2(.5f, .65f), Vector2.zero, new Vector2(88, 88));
         countdownText = Label("Count in number", count.transform, "", 42, Ink);
