@@ -80,9 +80,13 @@ public sealed class SealCaptainDialogue : MonoBehaviour
     private void PositionBubble()
     {
         var area = parentRect.rect;
+        bool readyBesideMenu = area.width >= 1254;
+        bool readyBelowMenu = game.State == SealGameState.Ready && !readyBesideMenu;
         float width = Mathf.Min(330, Mathf.Max(220, area.width - 48));
         float height = width < 300 ? 148 : 124;
+        if (readyBelowMenu) { width = Mathf.Min(510, area.width - 44); height = 90; }
         bubble.sizeDelta = new Vector2(width, height);
+        label.fontSize = readyBelowMenu ? 24 : 26;
         Vector2 position = new Vector2(300, 55);
         Transform currentCaptain = game.CaptainTransform;
         if (currentCaptain != captain)
@@ -121,27 +125,29 @@ public sealed class SealCaptainDialogue : MonoBehaviour
         }
 
         // The title card occupies the centre before the count-in. Use the spare space beside it.
-        bool readyBesideMenu = area.width >= 1254;
+        Rect controlArea = SealRhythmHud.CalculateControlArea(area.size);
+        bool stacked = area.width < 860 && game.State != SealGameState.Ready;
+        if (stacked) position = new Vector2(area.center.x, position.y + height * .5f + 55);
         if (game.State == SealGameState.Ready)
         {
             if (readyBesideMenu) position.x = Mathf.Max(position.x, Mathf.Min(510, area.width - 36) * .5f + width * .5f + 20);
             else
             {
                 // The menu is centred at 55% height and is 290 units tall;
-                // the controls end 104 units above the canvas bottom.
+                // the wider touch controls occupy their own bottom strip.
                 float menuBottom = area.yMin + area.height * .55f - 145;
-                float controlsTop = area.yMin + 104;
+                float controlsTop = area.yMin + controlArea.yMax;
                 position = new Vector2(area.center.x, (controlsTop + menuBottom) * .5f);
             }
         }
         float minimumX = area.xMin + width * .5f + 22;
         float maximumX = area.xMax - width * .5f - 22;
-        float minimumY = area.yMin + height * .5f + 116;
+        float minimumY = area.yMin + height * .5f + controlArea.yMax + 12;
         float maximumY = area.yMax - height * .5f - 148;
         position.x = Mathf.Clamp(position.x, minimumX, maximumX);
         position.y = Mathf.Clamp(position.y, Mathf.Min(minimumY, maximumY), maximumY);
         bubble.anchoredPosition = position - area.center;
-        tail.gameObject.SetActive(game.State != SealGameState.Ready || readyBesideMenu);
+        tail.gameObject.SetActive(!stacked && (game.State != SealGameState.Ready || readyBesideMenu));
     }
 
     private static RectTransform CreateRect(string name, Transform parent)

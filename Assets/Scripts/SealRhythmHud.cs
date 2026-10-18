@@ -11,7 +11,7 @@ public sealed class SealRhythmHud : MonoBehaviour
     private static readonly Color Coral = new Color32(207, 105, 88, 255);
     private RhythmGame game;
     private Canvas canvas;
-    private RectTransform canvasRect, controls;
+    private RectTransform canvasRect, controls, headerRect;
     private SealUiArt art;
     private SealBeatLane lane;
     private SealCaptainDialogue dialogue;
@@ -29,7 +29,11 @@ public sealed class SealRhythmHud : MonoBehaviour
     private readonly float[] pressedAt = { -10, -10, -10 };
     private bool built, stateKnown;
     private SealGameState displayedState;
-    private float lastWidth = -1;
+    private Vector2 lastSize = new Vector2(-1, -1), lastScreenSize;
+    private Rect lastSafeArea;
+
+    public RectTransform SafeAreaRect => canvasRect;
+    public RectTransform ControlsRect => controls;
 
     public void Initialize(RhythmGame rhythmGame)
     {
@@ -44,6 +48,9 @@ public sealed class SealRhythmHud : MonoBehaviour
     public void Refresh()
     {
         if (!built || game == null) return;
+        UpdateSafeArea();
+        var size = canvasRect.rect.size;
+        if ((size - lastSize).sqrMagnitude > 1) ApplyResponsiveLayout(size);
         var state = game.State;
         bool playing = state == SealGameState.Playing, ready = state == SealGameState.Ready;
         bool paused = state == SealGameState.Paused, counting = state == SealGameState.CountIn;
@@ -91,8 +98,6 @@ public sealed class SealRhythmHud : MonoBehaviour
             SetText(bestText, game.IsPractice ? "练习" : "最佳  " + game.BestScore.ToString("D6"));
         }
         if (state == SealGameState.Error) SetText(errorText, game.StatusMessage);
-        float width = canvasRect.rect.width;
-        if (Mathf.Abs(width - lastWidth) > 1) ApplyResponsiveLayout(width);
     }
     public void ShowJudgement(string label, string timing, bool success)
     {
@@ -106,13 +111,14 @@ public sealed class SealRhythmHud : MonoBehaviour
         art = new SealUiArt();
         var go = new GameObject("Seal Rhythm HUD", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
         canvas = go.GetComponent<Canvas>(); canvas.renderMode = RenderMode.ScreenSpaceOverlay; canvas.sortingOrder = 100;
-        canvasRect = go.GetComponent<RectTransform>();
+        canvasRect = RectObject("Safe area", go.transform);
+        Stretch(canvasRect, 0, 0, 0, 0);
         var scaler = go.GetComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize; scaler.referenceResolution = new Vector2(1280, 720); scaler.matchWidthOrHeight = .5f;
         if (EventSystem.current == null) ownedEventSystem = new GameObject("Seal Rhythm EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
         BuildHeader(); BuildControls();
         shade = ImageObject("Menu shade", canvasRect, new Color(.20f, .28f, .31f, .16f)).gameObject;
-        Stretch(shade.GetComponent<RectTransform>(), 0, 0, 136, 118);
+        Stretch(shade.GetComponent<RectTransform>(), 0, 0, 138, 156);
         BuildReady(); BuildPaused(); BuildResults(); BuildError();
         dialogue = gameObject.AddComponent<SealCaptainDialogue>();
         dialogue.Initialize(game, canvasRect, font, art.Paper);
@@ -121,12 +127,13 @@ public sealed class SealRhythmHud : MonoBehaviour
         countdownText = Label("Count in number", count.transform, "", 42, Ink);
         Stretch(countdownText.rectTransform, 8, 8, 4, 10);
         countdown.SetActive(false); built = true;
-        Canvas.ForceUpdateCanvases(); ApplyResponsiveLayout(canvasRect.rect.width);
+        UpdateSafeArea(); Canvas.ForceUpdateCanvases(); ApplyResponsiveLayout(canvasRect.rect.size);
     }
     private void BuildHeader()
     {
         var surface = ImageObject("Score and rhythm paper", canvasRect, new Color32(255, 249, 236, 246));
         var header = surface.rectTransform;
+        headerRect = header;
         PlaceStretchX(header, 12, new Vector2(0, 1), -69, 138);
         scoreText = Label("Score", header, "000000", 25, Ink, TextAnchor.MiddleLeft);
         Place(scoreText.rectTransform, new Vector2(0, 1), new Vector2(28, -25), new Vector2(132, 36), new Vector2(0, .5f));
@@ -152,14 +159,16 @@ public sealed class SealRhythmHud : MonoBehaviour
     private void BuildControls()
     {
         controls = RectObject("Arrow controls", canvasRect);
-        Place(controls, new Vector2(.5f, 0), new Vector2(0, 62), new Vector2(344, 84));
+        Place(controls, new Vector2(.5f, 0), new Vector2(0, 80), new Vector2(1178, 128));
         int[] order = { 1, 0, 2 }; Sprite[] arrows = { art.Down, art.Left, art.Right };
         for (int i = 0; i < 3; i++)
         {
             int input = order[i]; var button = MakeButton("Action " + input, controls, "", null);
             button.image.color = SealUiArt.InputColor(input);
-            Place(button.GetComponent<RectTransform>(), new Vector2(.5f, .5f), new Vector2((i - 1) * 112, 0), new Vector2(96, 76));
-            Icon("Direction", button.transform, arrows[input], 35);
+            var rect = button.GetComponent<RectTransform>();
+            rect.anchorMin = new Vector2(i / 3f, 0); rect.anchorMax = new Vector2((i + 1) / 3f, 1);
+            rect.offsetMin = new Vector2(i == 0 ? 0 : 9, 0); rect.offsetMax = new Vector2(i == 2 ? 0 : -9, 0);
+            Icon("Direction", button.transform, arrows[input], 48);
             var trigger = button.gameObject.AddComponent<EventTrigger>();
             var entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerDown };
             entry.callback.AddListener(data =>
@@ -220,14 +229,37 @@ public sealed class SealRhythmHud : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene.buildIndex);
 #endif
     }
-    private void ApplyResponsiveLayout(float width)
+    private void UpdateSafeArea()
     {
-        if (width <= 0) return; lastWidth = width;
+        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
+        if (screenSize.x <= 0 || screenSize.y <= 0) return;
+        Rect safe = Screen.safeArea;
+        if (safe.width <= 0 || safe.height <= 0) safe = new Rect(Vector2.zero, screenSize);
+        if (lastScreenSize == screenSize && lastSafeArea == safe) return;
+        lastScreenSize = screenSize; lastSafeArea = safe;
+        canvasRect.anchorMin = new Vector2(safe.xMin / screenSize.x, safe.yMin / screenSize.y);
+        canvasRect.anchorMax = new Vector2(safe.xMax / screenSize.x, safe.yMax / screenSize.y);
+        canvasRect.offsetMin = canvasRect.offsetMax = Vector2.zero;
+        Canvas.ForceUpdateCanvases();
+    }
+    public static Rect CalculateControlArea(Vector2 safeCanvasSize)
+    {
+        float side = Mathf.Max(18, safeCanvasSize.x * .04f);
+        float height = safeCanvasSize.y > safeCanvasSize.x * 1.1f ? 160 : 128;
+        return new Rect(side, 16, Mathf.Max(0, safeCanvasSize.x - side * 2), height);
+    }
+    private void ApplyResponsiveLayout(Vector2 size)
+    {
+        float width = size.x;
+        if (width <= 0 || size.y <= 0) return; lastSize = size;
         float cardWidth = Mathf.Min(510, width - 36);
         foreach (var card in new[] { readyRect, pauseRect, resultsRect, errorRect }) card.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, cardWidth);
         laneRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Min(680, width - 100));
         accuracyText.gameObject.SetActive(width >= 720); timeText.gameObject.SetActive(width >= 620);
-        controls.localScale = Vector3.one * Mathf.Min(1, (width - 24) / 344);
+        Rect area = CalculateControlArea(size);
+        PlaceStretchX(controls, area.x, Vector2.zero, area.y + area.height * .5f, area.height);
+        controls.localScale = Vector3.one;
+        Stretch(shade.GetComponent<RectTransform>(), 0, 0, headerRect.rect.height, area.yMax + 12);
     }
     private RectTransform MakeCard(string name, float height)
     {

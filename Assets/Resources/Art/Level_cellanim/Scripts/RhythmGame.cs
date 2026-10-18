@@ -81,6 +81,7 @@ public class RhythmGame : MonoBehaviour
     private Animator[] partnerSeals;
     private SealCaptainAppearance[] captains = Array.Empty<SealCaptainAppearance>();
     private Sprite stageBackgroundSprite;
+    private SpriteRenderer stageBackground;
     private bool[] phaseBefore, nextFlipLeftBefore;
     private int nextPartnerNoteIndex, nextIntroIndex;
     private int sampleRate = 44100, songSample, durationSamples, countBeat;
@@ -429,6 +430,7 @@ public class RhythmGame : MonoBehaviour
         stageCamera.transform.position = new Vector3(stageBounds.center.x, stageBounds.center.y, stageCamera.transform.position.z);
         stageCamera.clearFlags = CameraClearFlags.SolidColor;
         stageCamera.backgroundColor = new Color(.94f, .99f, 1f);
+        CoverStageBackground();
     }
     private void ReplaceStageBackground(SpriteRenderer renderer)
     {
@@ -438,12 +440,29 @@ public class RhythmGame : MonoBehaviour
         stageBackgroundSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
             new Vector2(.5f, .5f), 100, 0, SpriteMeshType.FullRect);
         stageBackgroundSprite.name = "Arctic snow stage";
+        stageBackground = renderer;
         renderer.sprite = stageBackgroundSprite;
         renderer.color = Color.white;
         var size = renderer.bounds.size;
         renderer.transform.localScale = Vector3.Scale(renderer.transform.localScale,
             new Vector3(previousBounds.size.x / Mathf.Max(.001f, size.x), previousBounds.size.y / Mathf.Max(.001f, size.y), 1));
         renderer.transform.position += previousBounds.center - renderer.bounds.center;
+    }
+    private void CoverStageBackground()
+    {
+        if (stageBackground == null || stageBackground.sprite == null || stageCamera == null) return;
+        // Expand only the scenery. The camera and all character positions retain their
+        // established framing while the snow reaches behind the larger touch controls.
+        Vector2 nativeSize = stageBackground.sprite.bounds.size;
+        float viewHeight = stageCamera.orthographicSize * 2;
+        float viewWidth = viewHeight * stageCamera.aspect;
+        float scale = Mathf.Max(viewWidth / nativeSize.x, viewHeight / nativeSize.y) * 1.005f;
+        var backdrop = stageBackground.transform;
+        Vector3 parentScale = backdrop.parent != null ? backdrop.parent.lossyScale : Vector3.one;
+        backdrop.localScale = new Vector3(scale / Mathf.Abs(parentScale.x), scale / Mathf.Abs(parentScale.y), backdrop.localScale.z);
+        var position = stageCamera.transform.position;
+        position.z = backdrop.position.z;
+        backdrop.position = position;
     }
     private void SpreadSeals()
     {
