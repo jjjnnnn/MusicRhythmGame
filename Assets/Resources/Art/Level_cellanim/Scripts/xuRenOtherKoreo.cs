@@ -6,8 +6,8 @@ using UnityEngine;
 public class xuRenOtherKoreo : MonoBehaviour
 {
     [SerializeField, EventID] private string[] TrackEventName = { "haibaoEventID" };
-    public string[] eventTextName = { "diantou", "left", "right" };
-    public string[] aniName = { "diantou", "left", "right" };
+    public string[] eventTextName = { "diantou", "left", "right", "roll" };
+    public string[] aniName = { "diantou", "left", "right", "roll" };
     private Animator animator;
     private Koreographer conductor;
     private void Start()
@@ -20,7 +20,8 @@ public class xuRenOtherKoreo : MonoBehaviour
     }
     private void OnBeat(KoreographyEvent beat)
     {
-        if (isActiveAndEnabled) RhythmGame.PlayAction(animator, aniName, Array.IndexOf(eventTextName, beat.GetTextValue()));
+        if (isActiveAndEnabled && RhythmGame.TryGetAction(beat.GetTextValue(), out var action))
+            RhythmGame.PlayAction(animator, aniName, (int)action);
     }
     private void OnDestroy() { if (conductor != null) conductor.UnregisterForAllEvents(this); }
 }

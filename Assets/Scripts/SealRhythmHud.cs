@@ -236,7 +236,7 @@ public sealed class SealRhythmHud : MonoBehaviour
         var caption = Label("Controls caption", footer.transform, "听口令，跟上海豹的节奏", 15, Muted, TextAnchor.MiddleCenter);
         PlaceStretchX(caption.rectTransform, 16, new Vector2(0, 1), 0, -15, 26);
 
-        string[] labels = { "点头   S / ↓ / 空格", "向左   A / ←", "向右   D / →" };
+        string[] labels = { "点头   S / ↓ / 空格", "左翻身 / 翻滚   A / ←", "右翻身 / 翻滚   D / →" };
         int[] visualOrder = { 1, 0, 2 };
         for (int i = 0; i < visualOrder.Length; ++i)
         {
@@ -256,7 +256,7 @@ public sealed class SealRhythmHud : MonoBehaviour
             {
                 var pointer = data as PointerEventData;
                 if (button.interactable && pointer != null && pointer.button == PointerEventData.InputButton.Left)
-                    game.SubmitAction(action);
+                    game.SubmitInput(action);
             });
             trigger.triggers.Add(entry);
             actionButtons[action] = button;
@@ -287,7 +287,7 @@ public sealed class SealRhythmHud : MonoBehaviour
         readyPanel = readyRect.gameObject;
         CardLabel(readyRect, "Ready eyebrow", "RHYTHM HEAVEN  /  SEAL TEAM", 13, Teal, 20, 24);
         CardLabel(readyRect, "Title", "海豹节奏队", 38, Cream, 46, 55);
-        CardLabel(readyRect, "Instructions", "听口令，看同伴；在节拍上点头、向左、向右。", 21, Cream, 105, 32);
+        CardLabel(readyRect, "Instructions", "听口令，看同伴；左右键随节拍翻身或翻滚，下键点头。", 21, Cream, 105, 32);
         CardLabel(readyRect, "Keys", "S / ↓ / 空格 点头     A / ← 向左     D / → 向右", 17, Muted, 140, 28);
         var play = MakeButton("Start show", readyRect, "正式演出", () => game.StartGame(false), true);
         PlaceCardButton(play, 0, 2, 185, 49);

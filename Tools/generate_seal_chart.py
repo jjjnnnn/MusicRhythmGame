@@ -27,32 +27,14 @@ def sample_at(beat, source):
 
 
 def build_chart(source):
-    phrase_nods = set()
-    for phrase in source["nodPhrases"]:
-        phrase_nods.update(range(phrase["firstBeat"], phrase["firstBeat"] + phrase["count"]))
-    main_beats = sorted(set(range(source["marchFirstBeat"], source["marchLastBeat"] + 1))
-                        | set(source["extraHalfBeats"]))
-    notes = [(beat, "diantou") for beat in source["introNodBeats"]]
-    direction = "left"
-    for beat in main_beats:
-        action = "diantou" if beat in phrase_nods else direction
-        notes.append((beat, action))
-        if action != "diantou":
-            direction = "right" if direction == "left" else "left"
-    notes.sort()
-
-    # Both NPC seals use haibaoEventID, so their actions and the player's
-    # expected input share the exact same timestamps and payloads.
-    people = [(0, "characterMove")]
-    people.extend((beat, "characterDiantou") for beat, _ in notes)
-    speak_beats = {11}
-    # Original first extra response is beat 25.5. Its three-syllable spoken
-    # cue spans 22.5/23/23.5; animate the captain at the first syllable.
-    speak_beats.update(beat - 3 for beat in source["extraHalfBeats"])
-    speak_beats.update(phrase["cueBeat"] for phrase in source["nodPhrases"])
-    people.extend((beat, "characterSpeak01") for beat in sorted(speak_beats))
-    people.sort(key=lambda item: (item[0], item[1]))
-    return notes, people
+    assert source['schemaVersion'] == 2, 'Use the explicit original-ROM chart schema'
+    notes = [(event['beat'], event['action']) for event in source['notes']]
+    # Two captain commands may target separate animation layers at one beat.
+    # Merge only identical trigger/time pairs, keeping distinct layer commands.
+    people = sorted(set((event['beat'], event['action']) for event in source['captainEvents']))
+    intro = sorted((event['beat'], event['action']) for event in
+                   source['introDemonstrations'] + source['preparationEvents'])
+    return notes, people, intro
 
 
 def serialize_track(existing, events, source):
@@ -72,26 +54,28 @@ def serialize_track(existing, events, source):
     return "".join(lines)
 
 
-def validate(source, notes, people):
+def validate(source, notes, people, intro):
     assert source["sampleRate"] == 44100 and source["bpm"] == 133
     assert len(source["extraHalfBeats"]) == 18
     assert all(beat % 1 == .5 for beat in source["extraHalfBeats"])
-    assert len(notes) == 235, "Five opening nods plus 230 main inputs are expected"
+    assert len(notes) == 230, 'Only the 230 original input commands are judged'
     samples = [sample_at(beat, source) for beat, _ in notes]
     assert all(a < b for a, b in zip(samples, samples[1:])), "Duplicate or unsorted input"
     assert min(b - a for a, b in zip(samples, samples[1:])) >= 9947
     assert source["clipSamples"] - samples[-1] >= source["sampleRate"] * 1.8
-    assert all(text in ("diantou", "left", "right") for _, text in notes)
-    # Protect the hand-authored opening's action sequence. Quantization fixes
-    # the 25.5-beat marker's original 686-sample timing error, not the pattern.
-    opening_beats = [7, 9, 11, 12, 13] + list(range(15, 26)) + [25.5] + list(range(26, 31))
-    opening_actions = ["diantou"] * 5 + ["left", "right"] * 8 + ["left"]
-    assert notes[:22] == list(zip(opening_beats, opening_actions))
+    assert all(text in ('roll', 'left', 'right') for _, text in notes)
+    assert collections.Counter(action for _, action in notes) == {'left': 84, 'right': 84, 'roll': 62}
+    assert notes[0] == (15, 'right') and notes[-1] == (226, 'roll')
+    for index, (beat, action) in enumerate(notes):
+        original = source['notes'][index]
+        assert beat == original['originalTick'] / 48 + source['provenance']['audioOffsetBeats']
+        if action != 'roll':
+            assert action == ('right' if index % 2 == 0 else 'left')
+        assert original['sourceAddress'].startswith('0x80') and original['sourceCallers']
+    assert intro == [(beat, 'diantou') for beat in (7, 9, 11, 12, 13)] + [(14, 'readyRight')]
+    assert not (set(beat for beat, _ in intro) & set(beat for beat, _ in notes))
     assert len(set(people)) == len(people), "Duplicate captain cue"
-    assert [beat for beat, text in people if text == "characterDiantou"] == [beat for beat, _ in notes]
-    for phrase in source["nodPhrases"]:
-        assert phrase["cueBeat"] < phrase["firstBeat"]
-        assert not (set(source["extraHalfBeats"]) & set(range(phrase["firstBeat"], phrase["firstBeat"] + phrase["count"])))
+    assert source['provenance']['discId'] == 'SOMJ01'
 
 
 def verify_serialization(text, events, source):
@@ -110,9 +94,9 @@ def main():
     parser.add_argument("--check", action="store_true", help="Verify without writing assets")
     args = parser.parse_args()
     source = json.loads(SOURCE.read_text(encoding="utf-8"))
-    notes, people = build_chart(source)
-    validate(source, notes, people)
-    for filename, events in (("haibaoEvent.asset", notes), ("PeopleEvent.asset", people)):
+    notes, people, intro = build_chart(source)
+    validate(source, notes, people, intro)
+    for filename, events in (("haibaoEvent.asset", notes), ("PeopleEvent.asset", people), ('haibaoIntroEvent.asset', intro)):
         path = TRACKS / filename
         current = path.read_text(encoding="utf-8")
         expected = serialize_track(current, events, source)

@@ -11,6 +11,7 @@ public static class SealRhythmLevelTests
     private static int phase, submitted = -1, savedBest;
     private static float savedOffset;
     private static bool savedBackground;
+    private static int rolls, flips, leftRolls, rightRolls;
     private static double changedAt, startedAt;
     private static float pausedTime;
     private static readonly string Folder = Path.Combine(Directory.GetCurrentDirectory(), "Logs", "SealValidation");
@@ -24,13 +25,20 @@ public static class SealRhythmLevelTests
         game = UnityEngine.Object.FindAnyObjectByType<RhythmGame>();
         if (game == null || game.Judge == null) throw new InvalidOperationException("Open GamePlay and wait for initialization.");
         Directory.CreateDirectory(Folder);
-        savedBest = PlayerPrefs.GetInt("SealRhythm.BestScore.v1", 0);
+        savedBest = PlayerPrefs.GetInt("SealRhythm.BestScore.OriginalSOMJ01.v2", 0);
         savedOffset = game.TimingOffsetMs;
         game.ReturnToTitle(); game.SetTimingOffset(0);
         EditorApplication.update -= Tick; EditorApplication.update += Tick;
         phase = 1; submitted = -1; startedAt = changedAt = EditorApplication.timeSinceStartup;
         savedBackground = Application.runInBackground; Application.runInBackground = true;
-        File.WriteAllText(Path.Combine(Folder, "result.txt"), "RUNNING: practice, count-in pause, restart, full-song autoplay, playback pause/resume.\n");
+        File.WriteAllText(Path.Combine(Folder, "result.txt"), "RUNNING: physical Nod/Left/Right inputs, practice, count-in pause, restart, full-song autoplay, playback pause/resume.\n");
+        game.SubmitInput(1);
+        Require(game.characterAnimator.GetComponent<SealOriginalAnimation>().CurrentMotion == 4, "Left preview follows the left key");
+        game.SubmitInput(0);
+        Require(game.characterAnimator.GetComponent<SealOriginalAnimation>().CurrentMotion == 1, "Down previews a nod, never a roll");
+        game.SubmitInput(2);
+        Require(game.characterAnimator.GetComponent<SealOriginalAnimation>().CurrentMotion == 5, "Right preview follows the right key");
+        game.ReturnToTitle(); Capture("01-ready");
     }
 
     private static void Tick()
@@ -67,7 +75,7 @@ public static class SealRhythmLevelTests
             { CheckResults("full song"); Capture("04-results"); phase = 9; changedAt = now; }
             else if (phase == 9 && now - changedAt > .5)
             {
-                game.SetTimingOffset(savedOffset); PlayerPrefs.SetInt("SealRhythm.BestScore.v1", savedBest); PlayerPrefs.Save();
+                game.SetTimingOffset(savedOffset); PlayerPrefs.SetInt("SealRhythm.BestScore.OriginalSOMJ01.v2", savedBest); PlayerPrefs.Save();
                 File.AppendAllText(Path.Combine(Folder, "result.txt"), "PASS: sample clock, all notes, no stray input, pause/resume, restart, practice and results.\n");
                 Debug.Log("SealRhythm full level smoke test PASSED. " + Folder); phase = 0; game.ReturnToTitle(); Application.runInBackground = savedBackground;
             }
@@ -75,13 +83,22 @@ public static class SealRhythmLevelTests
             {
                 int index = game.Judge.NextNoteIndex;
                 if (index < game.Judge.TotalNotes && index != submitted && game.SongTime * 44100 >= game.Judge.Notes[index].Sample - 441)
-                { submitted = index; game.SubmitAction((int)game.Judge.Notes[index].Action); }
+                {
+                    var note = game.Judge.Notes[index];
+                    // Independent original-chart fixture: all 230 scored actions advance
+                    // direction, starting right. A roll uses that direction's physical key.
+                    var input = note.Action == SealRhythm.SealAction.Roll
+                        ? (index % 2 == 0 ? SealRhythm.SealInput.Right : SealRhythm.SealInput.Left)
+                        : (SealRhythm.SealInput)note.Action;
+                    Require(note.Input == input, "Original physical direction at note " + index);
+                    submitted = index; game.SubmitInput((int)input);
+                }
             }
         }
         catch (Exception exception)
         {
             File.AppendAllText(Path.Combine(Folder, "result.txt"), "FAIL: " + exception + "\n");
-            PlayerPrefs.SetInt("SealRhythm.BestScore.v1", savedBest);
+            PlayerPrefs.SetInt("SealRhythm.BestScore.OriginalSOMJ01.v2", savedBest);
             if (game != null) game.SetTimingOffset(savedOffset);
             Application.runInBackground = savedBackground; Debug.LogException(exception); phase = 0;
         }
@@ -91,11 +108,34 @@ public static class SealRhythmLevelTests
         var j = game.Judge;
         File.AppendAllText(Path.Combine(Folder, "result.txt"), mode + ": total=" + j.TotalNotes + ", perfect=" + j.PerfectCount + ", good=" + j.GoodCount + ", miss=" + j.MissCount + ", stray=" + j.StrayCount + ", score=" + j.Score + "\n");
         Require(j.TotalNotes > 0 && j.ResolvedCount == j.TotalNotes && j.MissCount == 0 && j.StrayCount == 0, mode + " all notes hit exactly once");
+        if (mode == "full song")
+        {
+            Require(j.TotalNotes == 230 && rolls == 62 && flips == 168 && leftRolls == 31 && rightRolls == 31,
+                "Original ROM flip/roll counts and both physical roll directions");
+            var actors = UnityEngine.Object.FindObjectsByType<SealOriginalAnimation>();
+            Require(actors.Length == 4, "Four original-animation seals");
+            foreach (var actor in actors)
+                Require(actor.CurrentMotion == 9 && !actor.IsUpsideDown && !actor.NextFlipToLeft,
+                    "All four seals finish with the original final roll and phase");
+            File.AppendAllText(Path.Combine(Folder, "result.txt"), "Original animation state: 4 seals, final motion 9, upright, next flip right. 168 flips / 62 rolls verified.\n");
+            File.AppendAllText(Path.Combine(Folder, "result.txt"), "Physical controls: down nod preview; 31 left rolls / 31 right rolls through directional input.\n");
+        }
     }
     private static void WatchJudge()
     {
+        rolls = flips = leftRolls = rightRolls = 0;
         game.Judge.Judged += judgement =>
         {
+            if (judgement.Grade == SealRhythm.HitGrade.Perfect || judgement.Grade == SealRhythm.HitGrade.Good)
+            {
+                if (judgement.Action == SealRhythm.SealAction.Roll)
+                {
+                    rolls++;
+                    if (game.Judge.Notes[judgement.NoteIndex].Input == SealRhythm.SealInput.Left) leftRolls++;
+                    else rightRolls++;
+                }
+                else if (judgement.Action == SealRhythm.SealAction.Left || judgement.Action == SealRhythm.SealAction.Right) flips++;
+            }
             if (judgement.Grade == SealRhythm.HitGrade.Miss || judgement.Grade == SealRhythm.HitGrade.Stray)
                 File.AppendAllText(Path.Combine(Folder, "result.txt"), "Unexpected " + judgement.Grade + " note=" + judgement.NoteIndex + " offset=" + judgement.OffsetMilliseconds + "ms song=" + game.SongTime + "\n");
         };

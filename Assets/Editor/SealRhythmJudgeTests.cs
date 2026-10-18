@@ -21,7 +21,10 @@ public static class SealRhythmJudgeTests
             NearestNoteAndStableOrder,
             ScoreComboAndStrayPenalty,
             ResetRestoresAllState,
-            InputValidationAndSampleOverflow
+            InputValidationAndSampleOverflow,
+            PhysicalInputsChooseTheChartAction,
+            DownCannotRollAndRollDirectionMatters,
+            PhysicalInputUsesNearestBeatAndTimingWindow
         };
         foreach (Action test in tests)
         {
@@ -215,6 +218,90 @@ public static class SealRhythmJudgeTests
         judge = Single(int.MaxValue);
         Equal(HitGrade.Stray, judge.Submit(SealAction.Nod, int.MinValue).Grade);
         Throws<ArgumentOutOfRangeException>(() => judge.Submit((SealAction)99, 0));
+    }
+
+    private static void PhysicalInputsChooseTheChartAction()
+    {
+        var judge = new SealRhythmJudge(new[]
+        {
+            new RhythmNote(1000, SealAction.Nod),
+            new RhythmNote(2000, SealAction.Left),
+            new RhythmNote(3000, SealAction.Right),
+            new RhythmNote(4000, SealAction.Roll, false),
+            new RhythmNote(5000, SealAction.Roll, true)
+        }, 1000, 40, 100);
+        var inputs = new[] { SealInput.Nod, SealInput.Left, SealInput.Right, SealInput.Right, SealInput.Left };
+        var actions = new[] { SealAction.Nod, SealAction.Left, SealAction.Right, SealAction.Roll, SealAction.Roll };
+        for (int i = 0; i < inputs.Length; ++i)
+        {
+            Equal(inputs[i], judge.Notes[i].Input);
+            Judgement result = judge.SubmitInput(inputs[i], (i + 1) * 1000);
+            Equal(HitGrade.Perfect, result.Grade);
+            Equal(actions[i], result.Action);
+            Equal(i, result.NoteIndex);
+        }
+        Equal(5, judge.PerfectCount);
+        Equal(1000000, judge.Score);
+    }
+
+    private static void DownCannotRollAndRollDirectionMatters()
+    {
+        foreach (bool rollToLeft in new[] { false, true })
+        {
+            var judge = new SealRhythmJudge(new[]
+            {
+                new RhythmNote(1000, SealAction.Roll, rollToLeft)
+            }, 1000, 40, 100);
+            SealInput correct = rollToLeft ? SealInput.Left : SealInput.Right;
+            SealInput wrong = rollToLeft ? SealInput.Right : SealInput.Left;
+            Judgement down = judge.SubmitInput(SealInput.Nod, 1000);
+            Equal(HitGrade.Miss, down.Grade);
+            Equal(SealAction.Roll, down.Action);
+            Equal(1, judge.MissCount);
+            Equal(0, judge.PerfectCount);
+            // A wrong press consumes the beat; the correct direction cannot rescue it.
+            Equal(HitGrade.Stray, judge.SubmitInput(correct, 1000).Grade);
+            judge.Reset();
+            Equal(HitGrade.Miss, judge.SubmitInput(wrong, 1000).Grade);
+            Equal(0, judge.Score);
+            judge.Reset();
+            Equal(HitGrade.Perfect, judge.SubmitInput(correct, 1000).Grade);
+        }
+        // A directional press remains a wrong action at a nod beat.
+        Equal(HitGrade.Miss, Single().SubmitInput(SealInput.Left, 1000).Grade);
+        Equal(HitGrade.Perfect, Single().SubmitInput(SealInput.Nod, 1000).Grade);
+    }
+
+    private static void PhysicalInputUsesNearestBeatAndTimingWindow()
+    {
+        var judge = new SealRhythmJudge(new[]
+        {
+            new RhythmNote(1000, SealAction.Left),
+            new RhythmNote(1080, SealAction.Roll, false)
+        }, 1000, 40, 100);
+        // Select by time before checking the key; do not skip a nearby roll to find a matching flip.
+        Judgement nearest = judge.SubmitInput(SealInput.Left, 1070);
+        Equal(1, nearest.NoteIndex);
+        Equal(SealAction.Roll, nearest.Action);
+        Equal(HitGrade.Miss, nearest.Grade);
+        Equal(0, judge.NextNoteIndex);
+
+        judge = new SealRhythmJudge(new[] { new RhythmNote(1000, SealAction.Roll, false) }, 1000, 40, 100);
+        Judgement early = judge.SubmitInput(SealInput.Right, 899);
+        Equal(HitGrade.Stray, early.Grade);
+        Equal(SealAction.Right, early.Action);
+        Equal(-1, early.NoteIndex);
+        Equal(0, judge.ResolvedCount);
+        Equal(HitGrade.Good, judge.SubmitInput(SealInput.Right, 900).Grade);
+        Equal(HitGrade.Stray, judge.SubmitInput(SealInput.Right, 900).Grade);
+        Equal(1, judge.ResolvedCount);
+        judge.Reset();
+        Equal(HitGrade.Good, judge.SubmitInput(SealInput.Right, 1100).Grade);
+        judge.Reset();
+        Equal(HitGrade.Stray, judge.SubmitInput(SealInput.Right, 1101).Grade);
+        Equal(1, judge.MissCount);
+        Throws<ArgumentOutOfRangeException>(() => judge.SubmitInput((SealInput)3, 1000));
+        Throws<ArgumentOutOfRangeException>(() => judge.SubmitInput((SealInput)(-1), 1000));
     }
 
     private static void Equal<T>(T expected, T actual)

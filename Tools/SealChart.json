@@ -1,23 +1,6310 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "sampleRate": 44100,
   "bpm": 133,
   "clipSamples": 4687488,
-  "introNodBeats": [7, 9, 11, 12, 13],
   "marchFirstBeat": 15,
   "marchLastBeat": 226,
-  "extraHalfBeats": [25.5, 41.5, 57.5, 73.5, 85.5, 97.5, 117.5, 133.5, 145.5, 151.5, 159.5, 167.5, 183.5, 191.5, 199.5, 213.5, 217.5, 221.5],
-  "nodPhrases": [
-    {"cueBeat": 58, "firstBeat": 61, "count": 4},
-    {"cueBeat": 102, "firstBeat": 105, "count": 4},
-    {"cueBeat": 134, "firstBeat": 137, "count": 4},
-    {"cueBeat": 168, "firstBeat": 171, "count": 4},
-    {"cueBeat": 200, "firstBeat": 203, "count": 4},
-    {"cueBeat": 222, "firstBeat": 225, "count": 2}
+  "extraHalfBeats": [
+    25.5,
+    41.5,
+    57.5,
+    73.5,
+    85.5,
+    97.5,
+    117.5,
+    133.5,
+    145.5,
+    151.5,
+    159.5,
+    167.5,
+    183.5,
+    191.5,
+    199.5,
+    213.5,
+    217.5,
+    221.5
   ],
+  "expectedCounts": {
+    "inputs": 230,
+    "flip": 168,
+    "roll": 62,
+    "introDemonstrations": 5
+  },
   "provenance": {
-    "timing": "Existing 133 BPM Koreography and the project's original opening markers. Full-song march grid plus 18 half-beat responses, found by matching repeated spoken cue waveforms in haibao.mp3; each response is two beats after the cue's middle syllable.",
-    "actions": "Project adaptation: retain the five opening nods and original alternating left/right prefix, then alternate flips across the full music. Six short nod phrases replace march notes after major calls. These action assignments are authored for the project's three existing animations, not a frame-exact reconstruction of the Wii game.",
-    "clipLength": "Unity imported AudioClip.samples is authoritative; the MP3 container duration differs because of encoder padding."
-  }
+    "discId": "SOMJ01",
+    "dolSha256": "3f2f92fe0519f0e815626583dd6be4370b5b6850c346db727aa6796d65d4a8c9",
+    "internalName": "goma/ver0",
+    "sceneId": 11,
+    "entryAddress": "0x8022E3EC",
+    "musicStartAddress": "0x8022E48C",
+    "musicWaveSoundId": 45,
+    "originalWaveTempo": {
+      "waveInfoAddress": "0x802EF640",
+      "tempoAddress": "0x802EE86C",
+      "sampleRate": 32000,
+      "beatCount": 230,
+      "sampleCount": 3320281,
+      "flags": 32768,
+      "bpm": 133.0007911980944
+    },
+    "ticksPerBeat": 48,
+    "audioOffsetBeats": 5,
+    "inputBasis": "Original opcode 0x200 delay/type, verified against NPC 0x203/0x204 events and opposite branches.",
+    "directionBasis": "Opcode 0x202 resets false; first flip A_TurnToR; both flip and roll toggle direction, roll also toggles A/B.",
+    "captainVisualMapping": "Original event times and arguments retained; mapped to the project captain animator move/nod/speak triggers.",
+    "introBasis": "Five opcode 0x201 demonstrations have no opcode 0x200 input; excluded from judgement."
+  },
+  "notes": [
+    {
+      "beat": 15.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 480,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E4C8"
+      ]
+    },
+    {
+      "beat": 16.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 528,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E4D8"
+      ]
+    },
+    {
+      "beat": 17.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 576,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E4E8"
+      ]
+    },
+    {
+      "beat": 18.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 624,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E4F8"
+      ]
+    },
+    {
+      "beat": 19.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 672,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E508"
+      ]
+    },
+    {
+      "beat": 20.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 720,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E518"
+      ]
+    },
+    {
+      "beat": 21.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 768,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E528"
+      ]
+    },
+    {
+      "beat": 22.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 816,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E538"
+      ]
+    },
+    {
+      "beat": 23.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 864,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E548"
+      ]
+    },
+    {
+      "beat": 24.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 912,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E558"
+      ]
+    },
+    {
+      "beat": 25.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 960,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022E568"
+      ]
+    },
+    {
+      "beat": 25.5,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 984,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022E568"
+      ]
+    },
+    {
+      "beat": 26.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 1008,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022E568"
+      ]
+    },
+    {
+      "beat": 27.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1056,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E588"
+      ]
+    },
+    {
+      "beat": 28.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1104,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E598"
+      ]
+    },
+    {
+      "beat": 29.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1152,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E5A8"
+      ]
+    },
+    {
+      "beat": 30.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802286EC",
+      "originalTick": 1200,
+      "sourceAddress": "0x80228668",
+      "sourceCallers": [
+        "0x8022E5B8"
+      ]
+    },
+    {
+      "beat": 31.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1248,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E5C8"
+      ]
+    },
+    {
+      "beat": 32.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1296,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E5D8"
+      ]
+    },
+    {
+      "beat": 33.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1344,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E5E8"
+      ]
+    },
+    {
+      "beat": 34.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1392,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E5F8"
+      ]
+    },
+    {
+      "beat": 35.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1440,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E608"
+      ]
+    },
+    {
+      "beat": 36.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1488,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E618"
+      ]
+    },
+    {
+      "beat": 37.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1536,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E628"
+      ]
+    },
+    {
+      "beat": 38.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1584,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E638"
+      ]
+    },
+    {
+      "beat": 39.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1632,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E648"
+      ]
+    },
+    {
+      "beat": 40.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1680,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E658"
+      ]
+    },
+    {
+      "beat": 41.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 1728,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022E668"
+      ]
+    },
+    {
+      "beat": 41.5,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 1752,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022E668"
+      ]
+    },
+    {
+      "beat": 42.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 1776,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022E668"
+      ]
+    },
+    {
+      "beat": 43.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1824,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E688"
+      ]
+    },
+    {
+      "beat": 44.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 1872,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E698"
+      ]
+    },
+    {
+      "beat": 45.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228914",
+      "originalTick": 1920,
+      "sourceAddress": "0x80228890",
+      "sourceCallers": [
+        "0x8022E6A8"
+      ]
+    },
+    {
+      "beat": 46.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228998",
+      "originalTick": 1968,
+      "sourceAddress": "0x8022891C",
+      "sourceCallers": [
+        "0x8022E6A8"
+      ]
+    },
+    {
+      "beat": 47.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2016,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E6C8"
+      ]
+    },
+    {
+      "beat": 48.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2064,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E6D8"
+      ]
+    },
+    {
+      "beat": 49.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2112,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E6E8"
+      ]
+    },
+    {
+      "beat": 50.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2160,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E6F8"
+      ]
+    },
+    {
+      "beat": 51.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2208,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E708"
+      ]
+    },
+    {
+      "beat": 52.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2256,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E718"
+      ]
+    },
+    {
+      "beat": 53.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2304,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E728"
+      ]
+    },
+    {
+      "beat": 54.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2352,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E738"
+      ]
+    },
+    {
+      "beat": 55.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2400,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E748"
+      ]
+    },
+    {
+      "beat": 56.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2448,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E758"
+      ]
+    },
+    {
+      "beat": 57.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 2496,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022E768"
+      ]
+    },
+    {
+      "beat": 57.5,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 2520,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022E768"
+      ]
+    },
+    {
+      "beat": 58.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 2544,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022E768"
+      ]
+    },
+    {
+      "beat": 59.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2592,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E788"
+      ]
+    },
+    {
+      "beat": 60.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228B5C",
+      "originalTick": 2640,
+      "sourceAddress": "0x80228AD8",
+      "sourceCallers": [
+        "0x8022E798"
+      ]
+    },
+    {
+      "beat": 61.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228BE0",
+      "originalTick": 2688,
+      "sourceAddress": "0x80228B64",
+      "sourceCallers": [
+        "0x8022E798"
+      ]
+    },
+    {
+      "beat": 62.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228C64",
+      "originalTick": 2736,
+      "sourceAddress": "0x80228BE8",
+      "sourceCallers": [
+        "0x8022E798"
+      ]
+    },
+    {
+      "beat": 63.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2784,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E7C8"
+      ]
+    },
+    {
+      "beat": 64.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2832,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E7D8"
+      ]
+    },
+    {
+      "beat": 65.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2880,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E7E8"
+      ]
+    },
+    {
+      "beat": 66.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2928,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E7F8"
+      ]
+    },
+    {
+      "beat": 67.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 2976,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E808"
+      ]
+    },
+    {
+      "beat": 68.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 3024,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E818"
+      ]
+    },
+    {
+      "beat": 69.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 3072,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E828"
+      ]
+    },
+    {
+      "beat": 70.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 3120,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E838"
+      ]
+    },
+    {
+      "beat": 71.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 3168,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E848"
+      ]
+    },
+    {
+      "beat": 72.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 3216,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E858"
+      ]
+    },
+    {
+      "beat": 73.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 3264,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022E868"
+      ]
+    },
+    {
+      "beat": 73.5,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 3288,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022E868"
+      ]
+    },
+    {
+      "beat": 74.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 3312,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022E868"
+      ]
+    },
+    {
+      "beat": 75.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228E24",
+      "originalTick": 3360,
+      "sourceAddress": "0x80228DA0",
+      "sourceCallers": [
+        "0x8022E888"
+      ]
+    },
+    {
+      "beat": 76.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228EA8",
+      "originalTick": 3408,
+      "sourceAddress": "0x80228E2C",
+      "sourceCallers": [
+        "0x8022E888"
+      ]
+    },
+    {
+      "beat": 77.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228F2C",
+      "originalTick": 3456,
+      "sourceAddress": "0x80228EB0",
+      "sourceCallers": [
+        "0x8022E888"
+      ]
+    },
+    {
+      "beat": 78.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228FB0",
+      "originalTick": 3504,
+      "sourceAddress": "0x80228F34",
+      "sourceCallers": [
+        "0x8022E888"
+      ]
+    },
+    {
+      "beat": 79.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 3552,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E8C8"
+      ]
+    },
+    {
+      "beat": 80.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 3600,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E8D8"
+      ]
+    },
+    {
+      "beat": 81.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 3648,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E8E8"
+      ]
+    },
+    {
+      "beat": 82.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 3696,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E8F8"
+      ]
+    },
+    {
+      "beat": 83.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 3744,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E908"
+      ]
+    },
+    {
+      "beat": 84.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 3792,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E918"
+      ]
+    },
+    {
+      "beat": 85.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 3840,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022E928"
+      ]
+    },
+    {
+      "beat": 85.5,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 3864,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022E928"
+      ]
+    },
+    {
+      "beat": 86.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 3888,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022E928"
+      ]
+    },
+    {
+      "beat": 87.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80229170",
+      "originalTick": 3936,
+      "sourceAddress": "0x802290EC",
+      "sourceCallers": [
+        "0x8022E948"
+      ]
+    },
+    {
+      "beat": 88.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802291F4",
+      "originalTick": 3984,
+      "sourceAddress": "0x80229178",
+      "sourceCallers": [
+        "0x8022E948"
+      ]
+    },
+    {
+      "beat": 89.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80229278",
+      "originalTick": 4032,
+      "sourceAddress": "0x802291FC",
+      "sourceCallers": [
+        "0x8022E948"
+      ]
+    },
+    {
+      "beat": 90.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802292FC",
+      "originalTick": 4080,
+      "sourceAddress": "0x80229280",
+      "sourceCallers": [
+        "0x8022E948"
+      ]
+    },
+    {
+      "beat": 91.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80229380",
+      "originalTick": 4128,
+      "sourceAddress": "0x80229304",
+      "sourceCallers": [
+        "0x8022E948"
+      ]
+    },
+    {
+      "beat": 92.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 4176,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E998"
+      ]
+    },
+    {
+      "beat": 93.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 4224,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E9A8"
+      ]
+    },
+    {
+      "beat": 94.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 4272,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E9B8"
+      ]
+    },
+    {
+      "beat": 95.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 4320,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E9C8"
+      ]
+    },
+    {
+      "beat": 96.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 4368,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022E9D8"
+      ]
+    },
+    {
+      "beat": 97.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 4416,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022E9E8"
+      ]
+    },
+    {
+      "beat": 97.5,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 4440,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022E9E8"
+      ]
+    },
+    {
+      "beat": 98.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 4464,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022E9E8"
+      ]
+    },
+    {
+      "beat": 99.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 4512,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EA08"
+      ]
+    },
+    {
+      "beat": 100.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 4560,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EA18"
+      ]
+    },
+    {
+      "beat": 101.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 4608,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EA28"
+      ]
+    },
+    {
+      "beat": 102.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 4656,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EA38"
+      ]
+    },
+    {
+      "beat": 103.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022960C",
+      "originalTick": 4704,
+      "sourceAddress": "0x80229588",
+      "sourceCallers": [
+        "0x8022EA48"
+      ]
+    },
+    {
+      "beat": 104.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80229690",
+      "originalTick": 4752,
+      "sourceAddress": "0x80229614",
+      "sourceCallers": [
+        "0x8022EA48"
+      ]
+    },
+    {
+      "beat": 105.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80229714",
+      "originalTick": 4800,
+      "sourceAddress": "0x80229698",
+      "sourceCallers": [
+        "0x8022EA48"
+      ]
+    },
+    {
+      "beat": 106.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80229798",
+      "originalTick": 4848,
+      "sourceAddress": "0x8022971C",
+      "sourceCallers": [
+        "0x8022EA48"
+      ]
+    },
+    {
+      "beat": 107.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022981C",
+      "originalTick": 4896,
+      "sourceAddress": "0x802297A0",
+      "sourceCallers": [
+        "0x8022EA48"
+      ]
+    },
+    {
+      "beat": 108.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802298A0",
+      "originalTick": 4944,
+      "sourceAddress": "0x80229824",
+      "sourceCallers": [
+        "0x8022EA48"
+      ]
+    },
+    {
+      "beat": 109.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 4992,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EAA8"
+      ]
+    },
+    {
+      "beat": 110.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 5040,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EAB8"
+      ]
+    },
+    {
+      "beat": 111.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 5088,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EAC8"
+      ]
+    },
+    {
+      "beat": 112.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 5136,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EAD8"
+      ]
+    },
+    {
+      "beat": 113.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 5184,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EAE8"
+      ]
+    },
+    {
+      "beat": 114.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 5232,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EAF8"
+      ]
+    },
+    {
+      "beat": 115.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 5280,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EB08"
+      ]
+    },
+    {
+      "beat": 116.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 5328,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EB18"
+      ]
+    },
+    {
+      "beat": 117.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 5376,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022EB28"
+      ]
+    },
+    {
+      "beat": 117.5,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 5400,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022EB28"
+      ]
+    },
+    {
+      "beat": 118.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 5424,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022EB28"
+      ]
+    },
+    {
+      "beat": 119.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80229AE8",
+      "originalTick": 5472,
+      "sourceAddress": "0x80229A64",
+      "sourceCallers": [
+        "0x8022EB48"
+      ]
+    },
+    {
+      "beat": 120.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80229B6C",
+      "originalTick": 5520,
+      "sourceAddress": "0x80229AF0",
+      "sourceCallers": [
+        "0x8022EB48"
+      ]
+    },
+    {
+      "beat": 121.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80229BF0",
+      "originalTick": 5568,
+      "sourceAddress": "0x80229B74",
+      "sourceCallers": [
+        "0x8022EB48"
+      ]
+    },
+    {
+      "beat": 122.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80229C74",
+      "originalTick": 5616,
+      "sourceAddress": "0x80229BF8",
+      "sourceCallers": [
+        "0x8022EB48"
+      ]
+    },
+    {
+      "beat": 123.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80229CF8",
+      "originalTick": 5664,
+      "sourceAddress": "0x80229C7C",
+      "sourceCallers": [
+        "0x8022EB48"
+      ]
+    },
+    {
+      "beat": 124.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80229D7C",
+      "originalTick": 5712,
+      "sourceAddress": "0x80229D00",
+      "sourceCallers": [
+        "0x8022EB48"
+      ]
+    },
+    {
+      "beat": 125.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80229E00",
+      "originalTick": 5760,
+      "sourceAddress": "0x80229D84",
+      "sourceCallers": [
+        "0x8022EB48"
+      ]
+    },
+    {
+      "beat": 126.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 5808,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EBB8"
+      ]
+    },
+    {
+      "beat": 127.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 5856,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EBC8"
+      ]
+    },
+    {
+      "beat": 128.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 5904,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EBD8"
+      ]
+    },
+    {
+      "beat": 129.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 5952,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EBE8"
+      ]
+    },
+    {
+      "beat": 130.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 6000,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EBF8"
+      ]
+    },
+    {
+      "beat": 131.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 6048,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EC08"
+      ]
+    },
+    {
+      "beat": 132.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 6096,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EC18"
+      ]
+    },
+    {
+      "beat": 133.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 6144,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022EC28"
+      ]
+    },
+    {
+      "beat": 133.5,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 6168,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022EC28"
+      ]
+    },
+    {
+      "beat": 134.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 6192,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022EC28"
+      ]
+    },
+    {
+      "beat": 135.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022A004",
+      "originalTick": 6240,
+      "sourceAddress": "0x80229F80",
+      "sourceCallers": [
+        "0x8022EC48"
+      ]
+    },
+    {
+      "beat": 136.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022A088",
+      "originalTick": 6288,
+      "sourceAddress": "0x8022A00C",
+      "sourceCallers": [
+        "0x8022EC48"
+      ]
+    },
+    {
+      "beat": 137.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022A10C",
+      "originalTick": 6336,
+      "sourceAddress": "0x8022A090",
+      "sourceCallers": [
+        "0x8022EC48"
+      ]
+    },
+    {
+      "beat": 138.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022A190",
+      "originalTick": 6384,
+      "sourceAddress": "0x8022A114",
+      "sourceCallers": [
+        "0x8022EC48"
+      ]
+    },
+    {
+      "beat": 139.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022A214",
+      "originalTick": 6432,
+      "sourceAddress": "0x8022A198",
+      "sourceCallers": [
+        "0x8022EC48"
+      ]
+    },
+    {
+      "beat": 140.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022A298",
+      "originalTick": 6480,
+      "sourceAddress": "0x8022A21C",
+      "sourceCallers": [
+        "0x8022EC48"
+      ]
+    },
+    {
+      "beat": 141.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022A31C",
+      "originalTick": 6528,
+      "sourceAddress": "0x8022A2A0",
+      "sourceCallers": [
+        "0x8022EC48"
+      ]
+    },
+    {
+      "beat": 142.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022A3A0",
+      "originalTick": 6576,
+      "sourceAddress": "0x8022A324",
+      "sourceCallers": [
+        "0x8022EC48"
+      ]
+    },
+    {
+      "beat": 143.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 6624,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022ECC8"
+      ]
+    },
+    {
+      "beat": 144.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 6672,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022ECD8"
+      ]
+    },
+    {
+      "beat": 145.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 6720,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022ECE8"
+      ]
+    },
+    {
+      "beat": 145.5,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 6744,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022ECE8"
+      ]
+    },
+    {
+      "beat": 146.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 6768,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022ECE8"
+      ]
+    },
+    {
+      "beat": 147.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 6816,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022ED08"
+      ]
+    },
+    {
+      "beat": 148.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 6864,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022ED18"
+      ]
+    },
+    {
+      "beat": 149.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 6912,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022ED28"
+      ]
+    },
+    {
+      "beat": 150.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 6960,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022ED38"
+      ]
+    },
+    {
+      "beat": 151.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 7008,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022ED48"
+      ]
+    },
+    {
+      "beat": 151.5,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 7032,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022ED48"
+      ]
+    },
+    {
+      "beat": 152.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 7056,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022ED48"
+      ]
+    },
+    {
+      "beat": 153.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 7104,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022ED68"
+      ]
+    },
+    {
+      "beat": 154.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802286EC",
+      "originalTick": 7152,
+      "sourceAddress": "0x80228668",
+      "sourceCallers": [
+        "0x8022ED78"
+      ]
+    },
+    {
+      "beat": 155.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 7200,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022ED88"
+      ]
+    },
+    {
+      "beat": 156.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 7248,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022ED98"
+      ]
+    },
+    {
+      "beat": 157.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 7296,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EDA8"
+      ]
+    },
+    {
+      "beat": 158.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 7344,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EDB8"
+      ]
+    },
+    {
+      "beat": 159.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 7392,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022EDC8"
+      ]
+    },
+    {
+      "beat": 159.5,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 7416,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022EDC8"
+      ]
+    },
+    {
+      "beat": 160.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 7440,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022EDC8"
+      ]
+    },
+    {
+      "beat": 161.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228914",
+      "originalTick": 7488,
+      "sourceAddress": "0x80228890",
+      "sourceCallers": [
+        "0x8022EDE8"
+      ]
+    },
+    {
+      "beat": 162.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228998",
+      "originalTick": 7536,
+      "sourceAddress": "0x8022891C",
+      "sourceCallers": [
+        "0x8022EDE8"
+      ]
+    },
+    {
+      "beat": 163.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 7584,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EE08"
+      ]
+    },
+    {
+      "beat": 164.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 7632,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EE18"
+      ]
+    },
+    {
+      "beat": 165.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 7680,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EE28"
+      ]
+    },
+    {
+      "beat": 166.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 7728,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EE38"
+      ]
+    },
+    {
+      "beat": 167.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 7776,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022EE48"
+      ]
+    },
+    {
+      "beat": 167.5,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 7800,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022EE48"
+      ]
+    },
+    {
+      "beat": 168.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 7824,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022EE48"
+      ]
+    },
+    {
+      "beat": 169.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022A560",
+      "originalTick": 7872,
+      "sourceAddress": "0x8022A4DC",
+      "sourceCallers": [
+        "0x8022EE68"
+      ]
+    },
+    {
+      "beat": 170.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022A5E4",
+      "originalTick": 7920,
+      "sourceAddress": "0x8022A568",
+      "sourceCallers": [
+        "0x8022EE68"
+      ]
+    },
+    {
+      "beat": 171.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022A668",
+      "originalTick": 7968,
+      "sourceAddress": "0x8022A5EC",
+      "sourceCallers": [
+        "0x8022EE68"
+      ]
+    },
+    {
+      "beat": 172.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022A6EC",
+      "originalTick": 8016,
+      "sourceAddress": "0x8022A670",
+      "sourceCallers": [
+        "0x8022EE68"
+      ]
+    },
+    {
+      "beat": 173.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022A770",
+      "originalTick": 8064,
+      "sourceAddress": "0x8022A6F4",
+      "sourceCallers": [
+        "0x8022EE68"
+      ]
+    },
+    {
+      "beat": 174.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022A7F4",
+      "originalTick": 8112,
+      "sourceAddress": "0x8022A778",
+      "sourceCallers": [
+        "0x8022EE68"
+      ]
+    },
+    {
+      "beat": 175.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022A878",
+      "originalTick": 8160,
+      "sourceAddress": "0x8022A7FC",
+      "sourceCallers": [
+        "0x8022EE68"
+      ]
+    },
+    {
+      "beat": 176.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022A8FC",
+      "originalTick": 8208,
+      "sourceAddress": "0x8022A880",
+      "sourceCallers": [
+        "0x8022EE68"
+      ]
+    },
+    {
+      "beat": 177.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022A980",
+      "originalTick": 8256,
+      "sourceAddress": "0x8022A904",
+      "sourceCallers": [
+        "0x8022EE68"
+      ]
+    },
+    {
+      "beat": 178.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 8304,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EEF8"
+      ]
+    },
+    {
+      "beat": 179.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 8352,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EF08"
+      ]
+    },
+    {
+      "beat": 180.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 8400,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EF18"
+      ]
+    },
+    {
+      "beat": 181.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 8448,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EF28"
+      ]
+    },
+    {
+      "beat": 182.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 8496,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EF38"
+      ]
+    },
+    {
+      "beat": 183.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 8544,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022EF48"
+      ]
+    },
+    {
+      "beat": 183.5,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 8568,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022EF48"
+      ]
+    },
+    {
+      "beat": 184.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 5,
+      "animationName": "goma_A_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 8592,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022EF48"
+      ]
+    },
+    {
+      "beat": 185.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 4,
+      "animationName": "goma_A_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 8640,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EF68"
+      ]
+    },
+    {
+      "beat": 186.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802286EC",
+      "originalTick": 8688,
+      "sourceAddress": "0x80228668",
+      "sourceCallers": [
+        "0x8022EF78"
+      ]
+    },
+    {
+      "beat": 187.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 8736,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EF88"
+      ]
+    },
+    {
+      "beat": 188.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 8784,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EF98"
+      ]
+    },
+    {
+      "beat": 189.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 8832,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EFA8"
+      ]
+    },
+    {
+      "beat": 190.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 8880,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022EFB8"
+      ]
+    },
+    {
+      "beat": 191.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 8928,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022EFC8"
+      ]
+    },
+    {
+      "beat": 191.5,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 8952,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022EFC8"
+      ]
+    },
+    {
+      "beat": 192.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 8976,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022EFC8"
+      ]
+    },
+    {
+      "beat": 193.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 8,
+      "animationName": "goma_A_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x80228914",
+      "originalTick": 9024,
+      "sourceAddress": "0x80228890",
+      "sourceCallers": [
+        "0x8022EFE8"
+      ]
+    },
+    {
+      "beat": 194.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 20,
+      "animationName": "goma_B_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": false,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228998",
+      "originalTick": 9072,
+      "sourceAddress": "0x8022891C",
+      "sourceCallers": [
+        "0x8022EFE8"
+      ]
+    },
+    {
+      "beat": 195.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 9120,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022F008"
+      ]
+    },
+    {
+      "beat": 196.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 9168,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022F018"
+      ]
+    },
+    {
+      "beat": 197.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 9216,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022F028"
+      ]
+    },
+    {
+      "beat": 198.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 9264,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022F038"
+      ]
+    },
+    {
+      "beat": 199.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 9312,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022F048"
+      ]
+    },
+    {
+      "beat": 199.5,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 9336,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022F048"
+      ]
+    },
+    {
+      "beat": 200.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 9360,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022F048"
+      ]
+    },
+    {
+      "beat": 201.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022AB84",
+      "originalTick": 9408,
+      "sourceAddress": "0x8022AB00",
+      "sourceCallers": [
+        "0x8022F068"
+      ]
+    },
+    {
+      "beat": 202.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022AC08",
+      "originalTick": 9456,
+      "sourceAddress": "0x8022AB8C",
+      "sourceCallers": [
+        "0x8022F068"
+      ]
+    },
+    {
+      "beat": 203.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022AC8C",
+      "originalTick": 9504,
+      "sourceAddress": "0x8022AC10",
+      "sourceCallers": [
+        "0x8022F068"
+      ]
+    },
+    {
+      "beat": 204.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022AD10",
+      "originalTick": 9552,
+      "sourceAddress": "0x8022AC94",
+      "sourceCallers": [
+        "0x8022F068"
+      ]
+    },
+    {
+      "beat": 205.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022AD94",
+      "originalTick": 9600,
+      "sourceAddress": "0x8022AD18",
+      "sourceCallers": [
+        "0x8022F068"
+      ]
+    },
+    {
+      "beat": 206.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022AE18",
+      "originalTick": 9648,
+      "sourceAddress": "0x8022AD9C",
+      "sourceCallers": [
+        "0x8022F068"
+      ]
+    },
+    {
+      "beat": 207.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022AE9C",
+      "originalTick": 9696,
+      "sourceAddress": "0x8022AE20",
+      "sourceCallers": [
+        "0x8022F068"
+      ]
+    },
+    {
+      "beat": 208.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022AF20",
+      "originalTick": 9744,
+      "sourceAddress": "0x8022AEA4",
+      "sourceCallers": [
+        "0x8022F068"
+      ]
+    },
+    {
+      "beat": 209.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022AFA4",
+      "originalTick": 9792,
+      "sourceAddress": "0x8022AF28",
+      "sourceCallers": [
+        "0x8022F068"
+      ]
+    },
+    {
+      "beat": 210.0,
+      "action": "roll",
+      "directionAfter": "right",
+      "originalType": "roll",
+      "animationIndex": 19,
+      "animationName": "goma_B_RollFromL",
+      "directionFlagBefore": 0,
+      "phaseBBefore": false,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022B028",
+      "originalTick": 9840,
+      "sourceAddress": "0x8022AFAC",
+      "sourceCallers": [
+        "0x8022F068"
+      ]
+    },
+    {
+      "beat": 211.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 9888,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022F108"
+      ]
+    },
+    {
+      "beat": 212.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 9936,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022F118"
+      ]
+    },
+    {
+      "beat": 213.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 9984,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022F128"
+      ]
+    },
+    {
+      "beat": 213.5,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 10008,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022F128"
+      ]
+    },
+    {
+      "beat": 214.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 10032,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022F128"
+      ]
+    },
+    {
+      "beat": 215.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 10080,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022F148"
+      ]
+    },
+    {
+      "beat": 216.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 10128,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022F158"
+      ]
+    },
+    {
+      "beat": 217.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 10176,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022F168"
+      ]
+    },
+    {
+      "beat": 217.5,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 10200,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022F168"
+      ]
+    },
+    {
+      "beat": 218.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 10224,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022F168"
+      ]
+    },
+    {
+      "beat": 219.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 10272,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022F188"
+      ]
+    },
+    {
+      "beat": 220.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 10320,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022F198"
+      ]
+    },
+    {
+      "beat": 221.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228610",
+      "originalTick": 10368,
+      "sourceAddress": "0x802285E4",
+      "sourceCallers": [
+        "0x8022F1A8"
+      ]
+    },
+    {
+      "beat": 221.5,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x8022861C",
+      "originalTick": 10392,
+      "sourceAddress": "0x802285F4",
+      "sourceCallers": [
+        "0x8022F1A8"
+      ]
+    },
+    {
+      "beat": 222.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x80228624",
+      "originalTick": 10416,
+      "sourceAddress": "0x80228604",
+      "sourceCallers": [
+        "0x8022F1A8"
+      ]
+    },
+    {
+      "beat": 223.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 10464,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022F1C8"
+      ]
+    },
+    {
+      "beat": 224.0,
+      "action": "left",
+      "directionAfter": "left",
+      "originalType": "flip",
+      "animationIndex": 15,
+      "animationName": "goma_B_TurnToL",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 10512,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022F1D8"
+      ]
+    },
+    {
+      "beat": 225.0,
+      "action": "right",
+      "directionAfter": "right",
+      "originalType": "flip",
+      "animationIndex": 16,
+      "animationName": "goma_B_TurnToR",
+      "directionFlagBefore": 0,
+      "phaseBBefore": true,
+      "directionFlagAfter": 1,
+      "phaseBAfter": true,
+      "npcSourceAddress": "0x802285C8",
+      "originalTick": 10560,
+      "sourceAddress": "0x802285B8",
+      "sourceCallers": [
+        "0x8022F1E8"
+      ]
+    },
+    {
+      "beat": 226.0,
+      "action": "roll",
+      "directionAfter": "left",
+      "originalType": "roll",
+      "animationIndex": 9,
+      "animationName": "goma_A_RollFromR",
+      "directionFlagBefore": 1,
+      "phaseBBefore": true,
+      "directionFlagAfter": 0,
+      "phaseBAfter": false,
+      "npcSourceAddress": "0x8022884C",
+      "originalTick": 10608,
+      "sourceAddress": "0x80228828",
+      "sourceCallers": [
+        "0x8022F1F8"
+      ]
+    }
+  ],
+  "introDemonstrations": [
+    {
+      "beat": 7.0,
+      "action": "diantou",
+      "sourceAddress": "0x8022846C"
+    },
+    {
+      "beat": 9.0,
+      "action": "diantou",
+      "sourceAddress": "0x80228484"
+    },
+    {
+      "beat": 11.0,
+      "action": "diantou",
+      "sourceAddress": "0x802284A8"
+    },
+    {
+      "beat": 12.0,
+      "action": "diantou",
+      "sourceAddress": "0x802284C8"
+    },
+    {
+      "beat": 13.0,
+      "action": "diantou",
+      "sourceAddress": "0x802284E0"
+    }
+  ],
+  "preparationEvents": [
+    {
+      "beat": 14.0,
+      "action": "readyRight",
+      "sourceAddress": "0x80228500",
+      "arguments": [
+        0,
+        0
+      ]
+    }
+  ],
+  "captainEvents": [
+    {
+      "beat": 7.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228470"
+    },
+    {
+      "beat": 9.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228488"
+    },
+    {
+      "beat": 11.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802284AC"
+    },
+    {
+      "beat": 11.0,
+      "action": "characterMove",
+      "commandKind": 2,
+      "arguments": [
+        0
+      ],
+      "sourceAddress": "0x802284B0"
+    },
+    {
+      "beat": 12.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802284CC"
+    },
+    {
+      "beat": 13.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802284E4"
+    },
+    {
+      "beat": 14.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x8022850C"
+    },
+    {
+      "beat": 15.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 16.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 17.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 18.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 19.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 20.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 21.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 22.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 23.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 24.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 25.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 26.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 27.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 28.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 29.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 30.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 31.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 31.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 32.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 32.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 33.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 34.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 35.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 36.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 37.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 38.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 39.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 40.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 41.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 42.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 43.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 44.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 45.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 46.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 47.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 47.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 48.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 48.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 49.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 50.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 51.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 52.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 53.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 54.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 55.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 56.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 57.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 58.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 59.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 60.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 61.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 62.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 63.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 63.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 64.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 64.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 65.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 66.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 67.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 68.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 69.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 70.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 71.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 72.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 73.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 74.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 75.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 76.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 77.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 78.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 79.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 79.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 80.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 80.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 81.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 82.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 83.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 84.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 85.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 86.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 87.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 88.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 89.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 90.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 91.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 92.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 92.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 93.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 93.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 94.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 94.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 95.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 95.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 96.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 96.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 97.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 98.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 99.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 100.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 101.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 102.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 103.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 104.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 105.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 106.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 107.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 108.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 109.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 109.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 110.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 110.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 111.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 111.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 112.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 112.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 113.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 114.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 115.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 116.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 117.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 118.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 119.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 120.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 121.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 122.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 123.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 124.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 125.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 126.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 126.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 127.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 127.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 128.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 128.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 129.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 130.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 131.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 132.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 133.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 134.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 135.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 136.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 137.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 138.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 139.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 140.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 141.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 142.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 143.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 143.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 144.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 144.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 145.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 146.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 147.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 148.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 149.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 150.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 151.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 152.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 153.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 154.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 155.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 155.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 156.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 156.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 157.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 158.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 159.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 160.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 161.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 162.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 163.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 163.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 164.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 164.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 165.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 166.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 167.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 168.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 169.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 170.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 171.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 172.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 173.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 174.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 175.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 176.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 177.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 178.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 178.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 179.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 179.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 180.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 180.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 181.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 182.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 183.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 184.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 185.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 186.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 187.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 187.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 188.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 188.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 189.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 190.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 191.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 192.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 193.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 194.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 195.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 195.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 196.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 196.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 197.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 198.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 199.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 200.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 201.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 202.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 203.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 204.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 205.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 206.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 207.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 208.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 209.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 210.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        3,
+        8
+      ],
+      "sourceAddress": "0x8022851C"
+    },
+    {
+      "beat": 211.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        10
+      ],
+      "sourceAddress": "0x80228544"
+    },
+    {
+      "beat": 211.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 212.0,
+      "action": "characterSpeak01",
+      "commandKind": 3,
+      "arguments": [
+        5,
+        4294967295
+      ],
+      "sourceAddress": "0x802285A0"
+    },
+    {
+      "beat": 212.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 213.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 214.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 215.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 216.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 217.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 218.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 219.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 220.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 221.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228614"
+    },
+    {
+      "beat": 222.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x80228628"
+    },
+    {
+      "beat": 223.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 224.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 225.0,
+      "action": "characterDiantou",
+      "commandKind": 1,
+      "arguments": [],
+      "sourceAddress": "0x802285CC"
+    },
+    {
+      "beat": 225.5,
+      "action": "characterMove",
+      "commandKind": 2,
+      "arguments": [
+        1
+      ],
+      "sourceAddress": "0x8022F218"
+    }
+  ]
 }

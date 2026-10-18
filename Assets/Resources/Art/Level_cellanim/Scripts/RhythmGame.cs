@@ -13,9 +13,9 @@ public enum SealGameState { Ready, CountIn, Playing, Paused, Results, Error }
 public class RhythmGame : MonoBehaviour
 {
     [EventID] public string koreoEventID = "haibaoEventID";
-    public string[] eventTextName = { "diantou", "left", "right" };
+    public string[] eventTextName = { "diantou", "left", "right", "roll" };
     public Animator characterAnimator;
-    public string[] aniName = { "diantou", "left", "right" };
+    public string[] aniName = { "diantou", "left", "right", "roll" };
     [Range(60, 200)] public int hitWindowRangeInMS = 120;
     [Range(20, 100)] public int perfectWindowInMS = 55;
     public float beatsPerMinute = 133f;
@@ -37,18 +37,23 @@ public class RhythmGame : MonoBehaviour
     public float Progress => durationSamples > 0 ? Mathf.Clamp01(songSample / (float)durationSamples) : 0;
     public string CountdownLabel => State == SealGameState.CountIn ? Mathf.Clamp(4 - countBeat, 1, 4).ToString() : "";
     public bool HasUpcomingNote => Judge != null && Judge.NextNoteIndex < Judge.TotalNotes && Judge.Notes[Judge.NextNoteIndex].Sample - AdjustedSample <= sampleRate * 1.25f;
-    public string NextActionLabel => HasUpcomingNote ? ActionLabel(Judge.Notes[Judge.NextNoteIndex].Action) : "听节奏，准备好";
+    public string NextActionLabel => HasUpcomingNote ? NoteLabel(Judge.Notes[Judge.NextNoteIndex]) : "听节奏，准备好";
     public float NextActionProgress => HasUpcomingNote ? 1f - Mathf.Clamp01((Judge.Notes[Judge.NextNoteIndex].Sample - AdjustedSample) / (sampleRate * 1.25f)) : 0;
 
-    private const string BestKey = "SealRhythm.BestScore.v1";
+    private const string BestKey = "SealRhythm.BestScore.OriginalSOMJ01.v2";
     private Koreography song;
     private SimpleMusicPlayer musicPlayer;
     private AudioSource music, feedbackAudio;
     private AudioClip[] tones;
     private SealRhythmHud hud;
     private readonly List<RhythmNote> chart = new List<RhythmNote>();
+    private readonly List<StageCue> introDemonstrations = new List<StageCue>();
     private readonly Queue<int> inputs = new Queue<int>();
     private Animator[] actors;
+    private Animator[] seals;
+    private Animator[] partnerSeals;
+    private bool[] phaseBefore, nextFlipLeftBefore;
+    private int nextPartnerNoteIndex, nextIntroIndex;
     private int sampleRate = 44100, songSample, durationSamples, countBeat;
     private float countTimer;
     private SealGameState resumeState;
@@ -58,6 +63,13 @@ public class RhythmGame : MonoBehaviour
     private Bounds stageBounds;
     private float framedAspect;
     private int AdjustedSample => songSample - Mathf.RoundToInt(TimingOffsetMs * sampleRate / 1000f);
+
+    private readonly struct StageCue
+    {
+        public readonly int Sample;
+        public readonly string Payload;
+        public StageCue(int sample, string payload) { Sample = sample; Payload = payload; }
+    }
 
     private void Awake()
     {
@@ -92,12 +104,48 @@ public class RhythmGame : MonoBehaviour
         var track = song.GetTrackByID(koreoEventID);
         if (track != null) foreach (var note in track.GetAllEvents())
         {
-            int action = Array.IndexOf(eventTextName, note.GetTextValue());
-            if (action >= 0 && action < 3 && note.StartSample >= 0 && note.StartSample < durationSamples)
-                chart.Add(new RhythmNote(note.StartSample, (SealAction)action));
+            if (TryGetAction(note.GetTextValue(), out var action) &&
+                note.StartSample >= 0 && note.StartSample < durationSamples)
+                chart.Add(new RhythmNote(note.StartSample, action));
         }
         if (chart.Count == 0) { Fail("海豹轨道没有有效节拍，请检查 haibaoEventID。"); return; }
         chart.Sort((a, b) => a.Sample.CompareTo(b.Sample));
+        phaseBefore = new bool[chart.Count];
+        nextFlipLeftBefore = new bool[chart.Count];
+        bool upsideDown = false, nextLeft = false;
+        for (int i = 0; i < chart.Count; ++i)
+        {
+            phaseBefore[i] = upsideDown;
+            nextFlipLeftBefore[i] = nextLeft;
+            chart[i] = new RhythmNote(chart[i].Sample, chart[i].Action, nextLeft);
+            if (chart[i].Action != SealAction.Nod) nextLeft = !nextLeft;
+            if (chart[i].Action == SealAction.Roll) upsideDown = !upsideDown;
+        }
+        var introTrack = song.GetTrackByID("haibaoIntroEventID");
+        if (introTrack != null) foreach (var cue in introTrack.GetAllEvents())
+        {
+            string payload = cue.GetTextValue();
+            if (TryGetAction(payload, out _) || payload == "readyRight" || payload == "readyLeft")
+                introDemonstrations.Add(new StageCue(cue.StartSample, payload));
+        }
+        introDemonstrations.Sort((a, b) => a.Sample.CompareTo(b.Sample));
+        var sealActors = new List<Animator>();
+        var partners = new List<Animator>();
+        if (characterAnimator != null) sealActors.Add(characterAnimator);
+        foreach (var partner in FindObjectsByType<xuRenOtherKoreo>())
+        {
+            if (partner.TryGetComponent<Animator>(out var actor) && actor != characterAnimator && !partners.Contains(actor))
+            {
+                partners.Add(actor);
+                sealActors.Add(actor);
+            }
+            // This controller runs before the legacy partner's Start. The central sample
+            // clock owns its events here; the legacy script remains usable in other scenes.
+            partner.enabled = false;
+        }
+        partnerSeals = partners.ToArray();
+        seals = sealActors.ToArray();
+        foreach (var seal in seals) SealOriginalAnimation.Attach(seal);
         CreateFeedbackAudio();
         BuildJudge(false);
         initialized = true;
@@ -125,9 +173,9 @@ public class RhythmGame : MonoBehaviour
         }
         if (State == SealGameState.Ready || State == SealGameState.Playing)
         {
-            if (Pressed(0, KeyCode.S, KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.Space)) SubmitAction(0);
-            if (Pressed(1, KeyCode.A, KeyCode.LeftArrow)) SubmitAction(1);
-            if (Pressed(2, KeyCode.D, KeyCode.RightArrow)) SubmitAction(2);
+            if (Pressed(0, KeyCode.S, KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.Space)) SubmitInput(0);
+            if (Pressed(1, KeyCode.A, KeyCode.LeftArrow)) SubmitInput(1);
+            if (Pressed(2, KeyCode.D, KeyCode.RightArrow)) SubmitInput(2);
         }
     }
 
@@ -138,7 +186,15 @@ public class RhythmGame : MonoBehaviour
         if (State == SealGameState.Playing)
         {
             songSample = Math.Max(songSample, song.GetLatestSampleTime());
-            while (inputs.Count > 0) Judge.Submit((SealAction)inputs.Dequeue(), AdjustedSample);
+            AdvanceStageActions();
+            while (inputs.Count > 0)
+            {
+                var input = (SealInput)inputs.Dequeue();
+                var judgement = Judge.SubmitInput(input, AdjustedSample);
+                if (judgement.Grade == HitGrade.Perfect || judgement.Grade == HitGrade.Good)
+                    PlayChartAction(characterAnimator, judgement.Action, judgement.NoteIndex);
+                else PlayInput(input, judgement.NoteIndex);
+            }
             Judge.Advance(AdjustedSample);
             bool ended = !music.isPlaying && AudioSettings.dspTime - playbackStartedAt > .3;
             if (songSample >= durationSamples || ended) FinishGame();
@@ -151,6 +207,7 @@ public class RhythmGame : MonoBehaviour
         if (!initialized) return;
         musicPlayer.Stop(); musicPlayer.LoadSong(song, 0, false); song.ResetTimings(); music.pitch = 1;
         IsPractice = practice; BuildJudge(practice); songSample = 0; inputs.Clear(); ResetActors();
+        nextPartnerNoteIndex = nextIntroIndex = 0;
         countTimer = 0; countBeat = 0; State = SealGameState.CountIn;
         StatusMessage = "预备，跟着四拍倒数进入音乐"; PlayTone(3);
     }
@@ -162,11 +219,12 @@ public class RhythmGame : MonoBehaviour
             perfectWindowInMS, practice ? Math.Max(180, hitWindowRangeInMS) : hitWindowRangeInMS);
         Judge.Judged += OnJudged;
     }
-    public void SubmitAction(int action)
+    public void SubmitInput(int input)
     {
-        if (action < 0 || action > 2 || (State != SealGameState.Playing && State != SealGameState.Ready)) return;
-        PlayAction(characterAnimator, aniName, action); PlayTone(action);
-        if (State == SealGameState.Playing) inputs.Enqueue(action);
+        if (input < 0 || input > (int)SealInput.Right || (State != SealGameState.Playing && State != SealGameState.Ready)) return;
+        PlayTone(input);
+        if (State == SealGameState.Playing) inputs.Enqueue(input);
+        else PlayInput((SealInput)input, -1);
     }
     public void TogglePause()
     {
@@ -187,6 +245,7 @@ public class RhythmGame : MonoBehaviour
     {
         if (!initialized) return;
         musicPlayer.Stop(); song.ResetTimings(); inputs.Clear(); songSample = 0;
+        nextPartnerNoteIndex = nextIntroIndex = 0;
         IsPractice = false; BuildJudge(false); ResetActors(); State = SealGameState.Ready;
         StatusMessage = "听口令，和伙伴一起打拍子。最右边的海豹是你！";
     }
@@ -215,19 +274,92 @@ public class RhythmGame : MonoBehaviour
         if (!success && AudioSettings.dspTime - feedbackAt > .1) { PlayTone(4); feedbackAt = AudioSettings.dspTime; }
     }
     private bool Pressed(int index, KeyCode letter, KeyCode arrow) => Input.GetKeyDown(letter) || Input.GetKeyDown(arrow) || (keys != null && index < keys.Length && Input.GetKeyDown(keys[index]));
-    public static string ActionLabel(SealAction a) => a == SealAction.Nod ? "点头 ↓" : a == SealAction.Left ? "左拍 ←" : "右拍 →";
+    public static bool TryGetAction(string payload, out SealAction action)
+    {
+        switch (payload)
+        {
+            case "diantou": action = SealAction.Nod; return true;
+            case "left": action = SealAction.Left; return true;
+            case "right": action = SealAction.Right; return true;
+            case "roll": action = SealAction.Roll; return true;
+            default: action = default; return false;
+        }
+    }
+    private void AdvanceStageActions()
+    {
+        while (nextIntroIndex < introDemonstrations.Count && introDemonstrations[nextIntroIndex].Sample <= songSample)
+        {
+            var cue = introDemonstrations[nextIntroIndex++];
+            foreach (var seal in seals)
+            {
+                if (cue.Payload == "readyRight" || cue.Payload == "readyLeft")
+                {
+                    if (seal != null && seal.TryGetComponent<SealOriginalAnimation>(out var original))
+                        original.PlayReady(cue.Payload == "readyLeft");
+                }
+                else if (TryGetAction(cue.Payload, out var action)) PlayAction(seal, aniName, (int)action);
+            }
+        }
+        // Judge.Notes is the complete sorted chart in a full show, or its prefix in practice.
+        // Consume every elapsed event exactly once, including frames crossing pause/resume.
+        while (nextPartnerNoteIndex < Judge.TotalNotes && Judge.Notes[nextPartnerNoteIndex].Sample <= songSample)
+        {
+            var note = Judge.Notes[nextPartnerNoteIndex];
+            foreach (var partner in partnerSeals) PlayChartAction(partner, note.Action, nextPartnerNoteIndex);
+            nextPartnerNoteIndex++;
+        }
+    }
+    private void PlayChartAction(Animator animator, SealAction action, int noteIndex)
+    {
+        if (animator != null && animator.TryGetComponent<SealOriginalAnimation>(out var original) && original.IsReady)
+            original.PlayChartAction(action, phaseBefore[noteIndex], nextFlipLeftBefore[noteIndex]);
+        else PlayAction(animator, aniName, (int)action);
+    }
+    private void PlayInput(SealInput input, int noteIndex)
+    {
+        // Down always nods. Wrong directional presses still animate the direction pressed,
+        // using a roll only when the judged beat is a roll; the Miss remains a Miss.
+        var action = input == SealInput.Nod ? SealAction.Nod :
+            noteIndex >= 0 && Judge.Notes[noteIndex].Action == SealAction.Roll
+                ? SealAction.Roll : (SealAction)input;
+        if (characterAnimator != null && characterAnimator.TryGetComponent<SealOriginalAnimation>(out var original) && original.IsReady)
+            original.PlayChartAction(action, original.IsUpsideDown,
+                input == SealInput.Nod ? original.NextFlipToLeft : input == SealInput.Left);
+        else PlayAction(characterAnimator, aniName, (int)action);
+    }
+    public static string NoteLabel(RhythmNote note) => note.Action == SealAction.Roll
+        ? (note.Input == SealInput.Left ? "向左翻滚 ←" : "向右翻滚 →") : ActionLabel(note.Action);
+    public static string ActionLabel(SealAction a) => a == SealAction.Nod ? "点头" :
+        a == SealAction.Left ? "向左翻身 ←" : a == SealAction.Right ? "向右翻身 →" : "翻滚 ← / →";
     public static void PlayAction(Animator animator, string[] names, int index)
     {
-        if (animator == null || names == null || index < 0 || index >= names.Length || !animator.isActiveAndEnabled) return;
+        if (animator == null || index < 0 || index > (int)SealAction.Roll) return;
+        if (animator.TryGetComponent<SealOriginalAnimation>(out var original) && original.IsReady)
+        {
+            original.PlayAction((SealAction)index);
+            return;
+        }
+        if (names == null || index >= names.Length || !animator.isActiveAndEnabled) return;
         int state = Animator.StringToHash("Base Layer." + names[index]);
         if (animator.HasState(0, state)) animator.Play(state, 0, 0); else animator.SetTrigger(names[index]);
     }
     private void ResetActors()
     {
         SetActorSpeed(1);
-        if (actors != null) foreach (var actor in actors) if (actor != null) { actor.Rebind(); actor.Update(0); }
+        if (actors != null) foreach (var actor in actors) if (actor != null)
+        {
+            if (actor.TryGetComponent<SealOriginalAnimation>(out var original)) original.ResetPose();
+            else { actor.Rebind(); actor.Update(0); }
+        }
     }
-    private void SetActorSpeed(float speed) { if (actors != null) foreach (var actor in actors) if (actor != null) actor.speed = speed; }
+    private void SetActorSpeed(float speed)
+    {
+        if (actors != null) foreach (var actor in actors) if (actor != null)
+        {
+            actor.speed = speed;
+            if (actor.TryGetComponent<SealOriginalAnimation>(out var original)) original.SetPaused(speed == 0);
+        }
+    }
     private void FrameStage()
     {
         if (stageCamera == null || stageBounds.size == Vector3.zero) return;

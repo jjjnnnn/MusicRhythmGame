@@ -3,18 +3,24 @@ using System.Collections.Generic;
 
 namespace SealRhythm
 {
-    public enum SealAction { Nod, Left, Right }
+    // Keep legacy values stable: Nod is an unscored intro demonstration in the original chart.
+    public enum SealAction { Nod, Left, Right, Roll }
+    public enum SealInput { Nod, Left, Right }
     public enum HitGrade { Perfect, Good, Miss, Stray }
 
     public readonly struct RhythmNote
     {
         public int Sample { get; }
         public SealAction Action { get; }
+        public SealInput Input { get; }
 
-        public RhythmNote(int sample, SealAction action)
+        public RhythmNote(int sample, SealAction action, bool rollToLeft = false)
         {
             Sample = sample;
             Action = action;
+            Input = action == SealAction.Roll
+                ? (rollToLeft ? SealInput.Left : SealInput.Right)
+                : (SealInput)action;
         }
     }
 
@@ -140,7 +146,22 @@ namespace SealRhythm
         {
             if (!Enum.IsDefined(typeof(SealAction), action))
                 throw new ArgumentOutOfRangeException(nameof(action));
+            return SubmitCore(action, sample, false);
+        }
 
+        /// <summary>
+        /// Physical keys stay Nod/Left/Right. The nearest note determines whether a
+        /// directional press is a flip or roll, while its required direction still matters.
+        /// </summary>
+        public Judgement SubmitInput(SealInput input, int sample)
+        {
+            if (!Enum.IsDefined(typeof(SealInput), input))
+                throw new ArgumentOutOfRangeException(nameof(input));
+            return SubmitCore((SealAction)input, sample, true);
+        }
+
+        private Judgement SubmitCore(SealAction action, int sample, bool physicalInput)
+        {
             Advance(sample);
             int nearestIndex = -1;
             long nearestDistance = long.MaxValue;
@@ -161,7 +182,10 @@ namespace SealRhythm
 
             if (nearestIndex >= 0)
             {
-                HitGrade grade = notes[nearestIndex].Action != action
+                bool matches = physicalInput
+                    ? notes[nearestIndex].Input == (SealInput)action
+                    : notes[nearestIndex].Action == action;
+                HitGrade grade = !matches
                     ? HitGrade.Miss
                     : nearestDistance <= perfectWindowSamples ? HitGrade.Perfect : HitGrade.Good;
                 return Resolve(nearestIndex, grade, nearestOffset);
