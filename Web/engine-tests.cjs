@@ -36,10 +36,13 @@ function fixture(storage) {
 function runNote(game, audio, note, input) {
   audio.currentTime = game._songStart + note.sample / sampleRate - game._segmentOffset;
   game.tick();
-  return game.press(input == null ? note.input : input);
+  return input == null ? game.pressBeat() : game.press(input);
 }
 async function runSong(practice) {
-  const {game,audio} = fixture();
+  const stored = new Map([['seal_h5_best','987654']]);
+  const storage = {getItem:key => stored.get(key),setItem:(key,value) => stored.set(key,value)};
+  const {game,audio} = fixture(storage);
+  assert.equal(game.best,0,'Single-button scores must not read old directional records');
   assert.equal(game.dialogue, '开始准备，根据节拍跟上队伍的动作');
   assert.equal(await game.start(practice), true);
   assert.equal(game.state, 'countin'); assert.equal(game.countdown, 4);
@@ -50,6 +53,7 @@ async function runSong(practice) {
   for (const note of activeNotes) {
     const result = runNote(game,audio,note);
     assert.equal(result.grade,'Perfect');
+    assert.equal(result.input,note.input,'A beat press chooses the matching canonical action');
     assert.equal(game.captain.input,note.input);
     assert.equal(game.captain.pose,note.input === 0 ? 3 : note.input === 1 ? 1 : 2);
     const player = game.actors[2], partner = game.actors[0];
@@ -65,7 +69,11 @@ async function runSong(practice) {
   assert.equal(game.state,'results'); assert.equal(game.judge.perfect,activeNotes.length);
   assert.equal(game.judge.score,1000000); assert.equal(game.judge.stray,0); assert.equal(game.judge.miss,0);
   assert.equal(game.captain.beatCueCount,activeNotes.length);
-  if (!practice) { assert.deepEqual([nods,lefts,rights,rolls],[5,84,84,62]); assert.equal(game.best,1000000); }
+  if (!practice) {
+    assert.deepEqual([nods,lefts,rights,rolls],[5,84,84,62]); assert.equal(game.best,1000000);
+    assert.equal(stored.get('SealRhythm.SingleButton.v4.BestScore'),'1000000');
+    assert.equal(stored.get('seal_h5_best'),'987654');
+  } else assert.equal(stored.has('SealRhythm.SingleButton.v4.BestScore'),false,'Practice does not save a full-song record');
   game.back(); assert.equal(game.state,'ready'); assert.equal(game.captain.beatCueCount,0);
   game.destroy();
 }
@@ -88,16 +96,44 @@ async function runSong(practice) {
   expiry.advance(1121); assert.equal(expiry.miss,1);
   const practiceJudge = new SealJudge([{sample:1000,input:0}],1000,true);
   assert.equal(practiceJudge.submit(0,1180).grade,'Good');
+
+  // Single-button adaptation keeps every timing bound and requires a fresh press for each note.
+  for (const input of [0,1,2]) {
+    for (const offset of [-120,-55,0,55,120]) {
+      const single = new SealJudge([{sample:1000,input}],1000,false);
+      const result = single.submitBeat(1000+offset);
+      assert.equal(result.grade,Math.abs(offset)<=55?'Perfect':'Good');
+      assert.equal(result.input,input); assert.equal(result.noteIndex,0);
+      assert.equal(single.submitBeat(1000+offset).grade,'Stray','Repeated presses cannot reuse a resolved target');
+    }
+  }
+  const tooEarly = new SealJudge([{sample:1000,input:2}],1000,false);
+  assert.equal(tooEarly.submitBeat(879).grade,'Stray'); assert.equal(tooEarly.resolvedCount,0);
+  tooEarly.advance(1120); assert.equal(tooEarly.resolvedCount,0,'Advancing time cannot auto-hit');
+  tooEarly.advance(1121); assert.equal(tooEarly.miss,1);
+  assert.equal(tooEarly.submitBeat(1121).grade,'Stray','Late presses do not resurrect missed targets');
+  const halfBeat = new SealJudge([{sample:1000,input:1},{sample:1225,input:2}],1000,false);
+  const nearLater = halfBeat.submitBeat(1120);
+  assert.equal(nearLater.noteIndex,1); assert.equal(nearLater.input,2); assert.equal(nearLater.grade,'Good');
+  const nearEarlier = halfBeat.submitBeat(1115);
+  assert.equal(nearEarlier.noteIndex,0); assert.equal(nearEarlier.input,1);
+  const singleTie = new SealJudge([{sample:1000,input:1},{sample:1200,input:2}],1000,false);
+  assert.equal(singleTie.submitBeat(1100).input,1,'Equidistant targets resolve the earlier note');
+  assert.equal(singleTie.submitBeat(1100).input,2,'Resolved notes are skipped when choosing an action');
+  const singlePractice = new SealJudge([{sample:1000,input:2}],1000,true);
+  assert.equal(singlePractice.submitBeat(1180).grade,'Good');
   await runSong(false); await runSong(true);
 
   const {game,audio,setWall} = fixture();
-  game.press(0); assert.equal(game.actors[2].motion,1); assert.equal(game.actors[2].frame,0);
+  game.pressBeat(); assert.equal(game.actors[2].motion,1); assert.equal(game.actors[2].frame,0);
   setWall(1); game.tick(); assert.equal(game.actors[2].frame,20); assert.equal(game.judge.stray,0);
   await game.start(false);
   const oldStart = game._songStart;
   audio.currentTime = .7; game.tick();
   const count = game.countdown;
+  assert.equal(game.pressBeat(),null); assert.equal(game.judge.resolvedCount,0);
   game.pause(); const remaining = game._remainingCountIn;
+  assert.equal(game.pressBeat(),null); assert.equal(game.judge.stray,0);
   audio.currentTime += 10; game.tick(); assert.equal(game.countdown,count); assert.equal(game.time,0);
   await game.resume();
   assert.equal(game._songStart,audio.currentTime+.04+remaining);
@@ -135,5 +171,9 @@ async function runSong(practice) {
   game.destroy();
   const deniedStorage = {getItem(){throw new Error('denied');},setItem(){throw new Error('denied');}};
   const safe = fixture(deniedStorage); safe.game.setOffset(20); safe.game.toggleAssist(); safe.game.destroy();
-  console.log('PASS: full 235/235 and practice 23/23 Perfect; 5 opening nods; nearest/strict/inclusive judge; preview, countdown pause, resume offset, OS interruption, wrong-key recovery, Chinese dialogue, denied storage.');
+  const calibrated = fixture(); await calibrated.game.start(false); calibrated.game.setOffset(40);
+  calibrated.audio.currentTime = calibrated.game._songStart + calibrated.game.notes[0].time + .04;
+  assert.equal(calibrated.game.pressBeat().grade,'Perfect','Automatic action selection uses the calibrated sample clock');
+  calibrated.game.destroy();
+  console.log('PASS: single-button full 235/235 and practice 23/23 Perfect; 5 opening nods; automatic nearest action, inclusive timing, half-beat overlap, duplicate/early/late/stray/miss, no auto-hit; separate single-button scores; legacy strict judge; preview, countdown pause, calibrated resume, OS interruption, recovery, Chinese dialogue, denied storage.');
 })().catch(error => { console.error(error); process.exitCode = 1; });

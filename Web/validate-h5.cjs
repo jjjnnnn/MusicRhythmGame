@@ -4,7 +4,7 @@ const path = require('node:path');
 const {pathToFileURL} = require('node:url');
 const {chromium} = require('C:/Users/wang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const root = path.resolve(__dirname,'..');
-const folder = path.join(root,'Logs/SealValidation/Mobile');
+const folder = path.join(root,'Logs/SealValidation/SingleButton');
 fs.mkdirSync(folder,{recursive:true});
 function requireTrue(value, message) { if(!value) throw Error(message); }
 let browser;
@@ -26,6 +26,8 @@ let browser;
     });
     requireTrue(result.canvas.width===viewport.width&&result.canvas.height===viewport.height,'Canvas covers full viewport');
     requireTrue(result.controls.width>=viewport.width*.90,'Controls span at least 90% viewport');
+    requireTrue(result.buttons.length===1,'There is only one physical beat button');
+    requireTrue(await page.locator('#rhythm-action').textContent().then(text=>text.includes('⚪')),'The shared button shows the circle symbol');
     requireTrue(result.buttons.every(b=>b.width>=95&&b.height>=85&&b.x>=0&&b.right<=viewport.width),'Large safe touch targets');
     requireTrue(result.card.x>=0&&result.card.right<=viewport.width&&result.card.y>=0,'Menu inside phone viewport');
     requireTrue(result.card.y>=result.header.bottom&&result.card.bottom<result.controls.y,'Menu clears beat lane and touch controls');
@@ -33,6 +35,15 @@ let browser;
     requireTrue(result.scroll[0]===viewport.width&&result.scroll[1]===viewport.height,'No page scrolling');
     layouts.push(result);await page.screenshot({path:path.join(folder,`h5-ready-${viewport.width}x${viewport.height}.png`)});
   }
+  await page.locator('#rhythm-action').focus();
+  await page.evaluate(()=>{window.__beatCalls=0;const game=SEAL_GAME;window.__savedPressBeat=game.pressBeat;game.pressBeat=function(){window.__beatCalls++;return window.__savedPressBeat.apply(this,arguments);};});
+  await page.keyboard.press('ArrowLeft');await page.keyboard.press('ArrowRight');await page.keyboard.press('s');await page.keyboard.press('a');await page.keyboard.press('d');
+  requireTrue(await page.evaluate(()=>window.__beatCalls===0),'Legacy direction keys do not trigger a beat');
+  await page.keyboard.down('Space');await page.keyboard.down('Space');await page.keyboard.up('Space');
+  requireTrue(await page.evaluate(()=>window.__beatCalls===1),'Space fires once, ignores repeat and prevents focused-button click duplication');
+  await page.evaluate(()=>{window.__beatCalls=0;const b=document.getElementById('rhythm-action');b.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,pointerType:'touch',pointerId:1,button:0}));b.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,pointerType:'touch',pointerId:1,button:0}));b.click();});
+  requireTrue(await page.evaluate(()=>window.__beatCalls===1),'PointerDown plus synthetic click submits only one beat');
+  await page.evaluate(()=>{SEAL_GAME.pressBeat=window.__savedPressBeat;});
   if(process.argv.includes('--layout-only')) {
     requireTrue(errors.length===0&&network.length===0,'Final layout has no errors or network requests');
     fs.writeFileSync(path.join(folder,'h5-final-layout.json'),JSON.stringify({pass:true,layouts,errors,network},null,2));
@@ -50,7 +61,7 @@ let browser;
     window.__autoPress=setInterval(()=>{
       const g=window.SEAL_GAME;g.tick();if(g.state!=='playing')return;
       const note=g.notes[g.judge.nextNoteIndex];if(!note||window.__inputSent.has(note.sample))return;
-      if(g.time>=note.time-.007){window.__inputSent.add(note.sample);const b=document.querySelector(`.action[data-input="${note.input}"]`);
+      if(g.time>=note.time-.007){window.__inputSent.add(note.sample);const b=document.getElementById('rhythm-action');
         b.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,pointerType:'touch',pointerId:1,button:0}));
         b.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,pointerType:'touch',pointerId:1,button:0}));}
     },4);
@@ -63,7 +74,7 @@ let browser;
   await page.locator('#resume').tap();
   await page.waitForFunction(()=>SEAL_GAME.state==='results',{},{timeout:20000});
   const practice=await page.evaluate(()=>SEAL_GAME.snapshot());
-  requireTrue(practice.perfect===23&&practice.miss===0&&practice.stray===0,'Practice scores 23/23 through physical touch buttons');
+  requireTrue(practice.perfect===23&&practice.miss===0&&practice.stray===0,'Practice scores 23/23 through the shared beat button');
   await page.screenshot({path:path.join(folder,'h5-practice-results.png')});
   await page.locator('#back-results').tap();await page.locator('#start').tap();await installAutoplay();
   await page.waitForFunction(()=>SEAL_GAME.state==='playing'&&SEAL_GAME.time>12.8,{},{timeout:20000});

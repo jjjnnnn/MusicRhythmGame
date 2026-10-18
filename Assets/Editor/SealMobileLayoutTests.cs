@@ -54,33 +54,35 @@ public static class SealMobileLayoutTests
         Require(controls.rect.height >= 128, "Touch controls are at least 128 logical units high.");
         var images = controls.GetComponentsInChildren<Image>(true);
         var buttons = controls.GetComponentsInChildren<Button>(true);
-        Require(buttons.Length == 3, "All three physical inputs have separate targets.");
+        Require(buttons.Length == 1 && buttons[0].name == "Rhythm action", "There is exactly one shared action target.");
         Rect previous = default;
         for (int index = 0; index < buttons.Length; index++)
         {
             var button = buttons[index];
-            int input = int.Parse(button.name.Substring("Action ".Length));
             Rect rect = InParent(button.GetComponent<RectTransform>(), safe);
             Require(rect.xMin >= safe.rect.xMin && rect.xMax <= safe.rect.xMax && rect.yMin >= safe.rect.yMin && rect.yMax <= safe.rect.yMax,
                 "Touch target remains inside the safe area.");
             Require(rect.width * scale >= 64 && rect.height * scale >= 64, "Phone targets exceed 64 CSS-equivalent pixels in both dimensions.");
             if (index > 0) Require(rect.xMin > previous.xMax + 2, "Neighbouring touch targets have a visible gap.");
             previous = rect;
-            Color expected = SealUiArt.InputColor(input);
+            Require(rect.width >= controls.rect.width * .97f, "The single target fills the full lower control width.");
+            Color expected = SealUiArt.InputColor(0);
             Require(Mathf.Abs(button.image.color.r - expected.r) < .01f && Mathf.Abs(button.image.color.g - expected.g) < .01f && Mathf.Abs(button.image.color.b - expected.b) < .01f,
                 "The larger target retains its input color.");
             var trigger = button.GetComponent<EventTrigger>();
             Require(trigger != null && trigger.triggers.Exists(entry => entry.eventID == EventTriggerType.PointerDown), "Touch input still fires on PointerDown.");
         }
-        int arrows = 0;
+        int circles = 0;
         foreach (var image in images)
-            if (image.name == "Direction")
+            if (image.name == "Rhythm circle")
             {
-                Require(image.rectTransform.rect.width >= 48 && image.rectTransform.rect.height >= 48, "Arrows are enlarged to 48 logical pixels.");
-                arrows++;
+                Require(image.sprite != null && image.sprite.name == "Rhythm circle ⚪", "The control uses a platform-independent white circle icon.");
+                Require(image.rectTransform.rect.width >= 60 && image.rectTransform.rect.height >= 60, "The circle is at least 60 logical pixels.");
+                circles++;
             }
-        Require(arrows == 3, "The controls contain exactly three arrow icons.");
-        foreach (var label in controls.GetComponentsInChildren<Text>(true)) Require(string.IsNullOrEmpty(label.text), "Controls show only arrows.");
+        Require(circles == 1, "The single control contains one white circle icon.");
+        foreach (var image in images) Require(image.name != "Direction", "Directional arrows are removed from the touch control.");
+        foreach (var label in controls.GetComponentsInChildren<Text>(true)) Require(string.IsNullOrEmpty(label.text), "The action control has no unnecessary text.");
         foreach (var rect in safe.GetComponentsInChildren<RectTransform>(true))
             if (rect.name == "Penguin dialogue" && rect.gameObject.activeInHierarchy)
             {
@@ -88,9 +90,9 @@ public static class SealMobileLayoutTests
                 Require(bubble.yMin > previous.yMax + 2, "Chinese dialogue stays above the touch targets.");
                 Require(bubble.xMin >= safe.rect.xMin && bubble.xMax <= safe.rect.xMax, "Chinese dialogue stays inside the safe width.");
             }
-        report.AppendLine(width + "x" + height + (insets != Vector4.zero ? " safe area" : "") + ": three targets, " +
+        report.AppendLine(width + "x" + height + (insets != Vector4.zero ? " safe area" : "") + ": one target, " +
             (buttons[0].GetComponent<RectTransform>().rect.width * scale).ToString("0") + "x" + (controls.rect.height * scale).ToString("0") +
-            " px each; arrows 48; colors and PointerDown intact.");
+            " px; white circle 62; mint color and PointerDown intact.");
     }
 
     private static void ValidateLiveStage(SealRhythmHud hud, StringBuilder report)

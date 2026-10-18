@@ -50,7 +50,8 @@ def build_data():
     durations = [x['totalDuration'] for x in animation['animations']]
     assets, sizes = {}, {}
     for key, path in [('background', ART / 'background.png'), ('seals', ART / 'seals.png'),
-                      ('captain', ART / 'captain.png'), ('ui', ROOT / 'Assets/Resources/UI/SealPaper/seal-ui-atlas.png')]:
+                      ('captain', ART / 'captain.png'), ('ui', ROOT / 'Assets/Resources/UI/SealPaper/seal-ui-atlas.png'),
+                      ('beatBar', ROOT / 'Assets/Resources/UI/SealPaper/rhythm-bar.png')]:
         assets[key], sizes[key] = artwork(path)
     LOG.mkdir(parents=True, exist_ok=True)
     music = LOG / 'h5-music.mp3'
@@ -80,7 +81,8 @@ def build_data():
     return dict(sampleRate=rate, bpm=bpm, clipSamples=source['clipSamples'], notes=notes,
                 introSamples=[n['sample'] for n in notes[:5]], motionDurations=durations,
                 preparationSamples=[round(x['beat'] * 60 / bpm * rate) for x in source['preparationEvents']],
-                assets=assets, spriteRects=dict(sealFrames=seal_rows, captainFrames=captain_rows, ui=ui_rows)), sizes
+                assets=assets, spriteRects=dict(sealFrames=seal_rows, captainFrames=captain_rows, ui=ui_rows,
+                                               beatBar=[544,65,168,1130])), sizes
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)

@@ -25,8 +25,10 @@ public sealed class SealRhythmHud : MonoBehaviour
     private RectTransform progressFill;
     private Button pauseButton;
     private Image pauseIcon;
-    private readonly Button[] actionButtons = new Button[3];
-    private readonly float[] pressedAt = { -10, -10, -10 };
+    private Button actionButton;
+    private Sprite circleSprite;
+    private Texture2D circleTexture;
+    private float pressedAt = -10;
     private bool built, stateKnown;
     private SealGameState displayedState;
     private Vector2 lastSize = new Vector2(-1, -1), lastScreenSize;
@@ -43,7 +45,7 @@ public sealed class SealRhythmHud : MonoBehaviour
     }
     public void PulseInput(int input)
     {
-        if (input >= 0 && input < pressedAt.Length) pressedAt[input] = Time.unscaledTime;
+        pressedAt = Time.unscaledTime;
     }
     public void Refresh()
     {
@@ -75,14 +77,11 @@ public sealed class SealRhythmHud : MonoBehaviour
         SetFill(progressFill, game.Progress);
         pauseButton.interactable = playing || counting || paused;
         pauseIcon.sprite = paused ? art.Play : art.Pause;
-        for (int i = 0; i < 3; i++)
-        {
-            actionButtons[i].interactable = ready || playing;
-            bool pressed = Time.unscaledTime - pressedAt[i] < .12f;
-            actionButtons[i].image.sprite = art.Key;
-            actionButtons[i].image.color = Color.Lerp(SealUiArt.InputColor(i), Color.white, pressed ? .20f : 0);
-            actionButtons[i].transform.localScale = Vector3.one * (pressed ? .94f : 1);
-        }
+        actionButton.interactable = ready || playing;
+        bool pressed = Time.unscaledTime - pressedAt < .12f;
+        actionButton.image.sprite = art.Key;
+        actionButton.image.color = Color.Lerp(SealUiArt.InputColor(0), Color.white, pressed ? .20f : 0);
+        actionButton.transform.localScale = Vector3.one * (pressed ? .98f : 1);
         SetText(assistText, "节拍强调  " + (game.AssistEnabled ? "开" : "关"));
         int offset = Mathf.RoundToInt(game.TimingOffsetMs);
         SetText(offsetText, "校准  " + (offset > 0 ? "+" : "") + offset + " ms");
@@ -158,25 +157,37 @@ public sealed class SealRhythmHud : MonoBehaviour
     }
     private void BuildControls()
     {
-        controls = RectObject("Arrow controls", canvasRect);
+        controls = RectObject("Rhythm controls", canvasRect);
         Place(controls, new Vector2(.5f, 0), new Vector2(0, 80), new Vector2(1178, 128));
-        int[] order = { 1, 0, 2 }; Sprite[] arrows = { art.Down, art.Left, art.Right };
-        for (int i = 0; i < 3; i++)
+        actionButton = MakeButton("Rhythm action", controls, "", null);
+        actionButton.image.color = SealUiArt.InputColor(0);
+        Stretch(actionButton.GetComponent<RectTransform>(), 0, 0, 0, 0);
+        // Draw the requested white-circle symbol as a sprite so it is identical on every
+        // platform, including Android fonts that replace U+26AA with a colored emoji.
+        const int resolution = 96;
+        circleTexture = new Texture2D(resolution, resolution, TextureFormat.RGBA32, false)
+            { filterMode = FilterMode.Bilinear, wrapMode = TextureWrapMode.Clamp };
+        circleTexture.name = "Rhythm circle pixels";
+        var pixels = new Color[resolution * resolution];
+        for (int y = 0; y < resolution; ++y)
+        for (int x = 0; x < resolution; ++x)
         {
-            int input = order[i]; var button = MakeButton("Action " + input, controls, "", null);
-            button.image.color = SealUiArt.InputColor(input);
-            var rect = button.GetComponent<RectTransform>();
-            rect.anchorMin = new Vector2(i / 3f, 0); rect.anchorMax = new Vector2((i + 1) / 3f, 1);
-            rect.offsetMin = new Vector2(i == 0 ? 0 : 9, 0); rect.offsetMax = new Vector2(i == 2 ? 0 : -9, 0);
-            Icon("Direction", button.transform, arrows[input], 48);
-            var trigger = button.gameObject.AddComponent<EventTrigger>();
-            var entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerDown };
-            entry.callback.AddListener(data =>
-            {
-                if (game.LiveInputEnabled && button.interactable && data is PointerEventData pointer && pointer.button == PointerEventData.InputButton.Left) game.SubmitInput(input);
-            });
-            trigger.triggers.Add(entry); actionButtons[input] = button;
+            float distance = Vector2.Distance(new Vector2(x + .5f, y + .5f), Vector2.one * (resolution * .5f));
+            var color = Color.Lerp(Ink, new Color32(255, 252, 242, 255), Mathf.Clamp01((39 - distance) * 1.5f));
+            color.a = Mathf.Clamp01((44 - distance) * 1.5f);
+            pixels[y * resolution + x] = color;
         }
+        circleTexture.SetPixels(pixels); circleTexture.Apply(false, true);
+        circleSprite = Sprite.Create(circleTexture, new Rect(0, 0, resolution, resolution), Vector2.one * .5f, 100, 0, SpriteMeshType.FullRect);
+        circleSprite.name = "Rhythm circle ⚪";
+        Icon("Rhythm circle", actionButton.transform, circleSprite, 62);
+        var trigger = actionButton.gameObject.AddComponent<EventTrigger>();
+        var entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerDown };
+        entry.callback.AddListener(data =>
+        {
+            if (game.LiveInputEnabled && actionButton.interactable && data is PointerEventData pointer && pointer.button == PointerEventData.InputButton.Left) game.SubmitBeat();
+        });
+        trigger.triggers.Add(entry);
     }
     private void BuildReady()
     {
@@ -327,5 +338,6 @@ public sealed class SealRhythmHud : MonoBehaviour
     {
         if (canvas != null) Destroy(canvas.gameObject); if (ownedEventSystem != null) Destroy(ownedEventSystem);
         art?.Dispose(); if (ownsFont && font != null) Destroy(font);
+        if (circleSprite != null) Destroy(circleSprite); if (circleTexture != null) Destroy(circleTexture);
     }
 }

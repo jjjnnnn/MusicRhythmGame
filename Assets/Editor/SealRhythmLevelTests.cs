@@ -19,7 +19,16 @@ public static class SealRhythmLevelTests
     private static bool capturedVariation;
     private static double changedAt, startedAt;
     private static float pausedTime;
+    private static int pendingPlayerNote = -1, verifiedPlayerActions;
+    private static OriginalChart originalChart;
     private static readonly string Folder = Path.Combine(Directory.GetCurrentDirectory(), "Logs", "SealValidation");
+
+    [Serializable] private sealed class OriginalChart { public OriginalNote[] notes; }
+    [Serializable] private sealed class OriginalNote
+    {
+        public int animationIndex, directionFlagAfter;
+        public bool phaseBAfter;
+    }
 
     static SealRhythmLevelTests() { EditorApplication.update += Tick; }
 
@@ -29,8 +38,10 @@ public static class SealRhythmLevelTests
         if (!EditorApplication.isPlaying) throw new InvalidOperationException("Enter Play mode first, then run this test.");
         game = UnityEngine.Object.FindAnyObjectByType<RhythmGame>();
         if (game == null || game.Judge == null) throw new InvalidOperationException("Open GamePlay and wait for initialization.");
+        originalChart = JsonUtility.FromJson<OriginalChart>(File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Tools", "SealChart.json")));
+        Require(originalChart != null && originalChart.notes.Length == 230, "Independent original animation reference is available");
         Directory.CreateDirectory(Folder);
-        savedBest = PlayerPrefs.GetInt("SealRhythm.BestScore.OriginalSOMJ01.Intro235.v3", 0);
+        savedBest = PlayerPrefs.GetInt("SealRhythm.BestScore.OriginalSOMJ01.Intro235.v4.OneButton", 0);
         savedOffset = game.TimingOffsetMs;
         savedLiveInput = game.LiveInputEnabled; game.LiveInputEnabled = false;
         game.ReturnToTitle(); game.SetTimingOffset(0);
@@ -40,13 +51,12 @@ public static class SealRhythmLevelTests
         EditorApplication.update -= Tick; EditorApplication.update += Tick;
         phase = 1; submitted = -1; capturedVariation = false; startedAt = changedAt = EditorApplication.timeSinceStartup;
         savedBackground = Application.runInBackground; Application.runInBackground = true;
-        File.WriteAllText(Path.Combine(Folder, "result.txt"), "RUNNING: physical Nod/Left/Right inputs, practice, count-in pause, restart, full-song autoplay, playback pause/resume.\n");
-        game.SubmitInput(1);
-        Require(game.characterAnimator.GetComponent<SealOriginalAnimation>().CurrentMotion == 4, "Left preview follows the left key");
-        game.SubmitInput(0);
-        Require(game.characterAnimator.GetComponent<SealOriginalAnimation>().CurrentMotion == 1, "Down previews a nod, never a roll");
-        game.SubmitInput(2);
-        Require(game.characterAnimator.GetComponent<SealOriginalAnimation>().CurrentMotion == 5, "Right preview follows the right key");
+        File.WriteAllText(Path.Combine(Folder, "result.txt"), "RUNNING: one-button timing inputs, practice, count-in pause, restart, full-song autoplay, playback pause/resume.\n");
+        game.SubmitBeat();
+        Require(game.characterAnimator.GetComponent<SealOriginalAnimation>().CurrentMotion == 1,
+            "The shared action previews a nod before playback");
+        Require(game.Judge.ResolvedCount == 0 && game.Judge.StrayCount == 0,
+            "Ready preview does not consume or score chart notes");
         game.ReturnToTitle(); Capture("01-ready");
     }
 
@@ -59,6 +69,7 @@ public static class SealRhythmLevelTests
             double now = EditorApplication.timeSinceStartup;
             if (now - startedAt > 180) throw new Exception("Playback timed out, phase=" + phase + " state=" + game.State);
             if (game.State == SealGameState.Error) throw new Exception(game.StatusMessage);
+            CheckPendingPlayerAction();
             // MCP/editor windows can take focus during unattended runs. Intentional pauses are
             // verified in phases 3 and 6; resume external focus pauses in all other phases.
             if (game.State == SealGameState.Paused && phase != 3 && phase != 6) game.TogglePause();
@@ -93,7 +104,7 @@ public static class SealRhythmLevelTests
             else if (phase == 9 && now - changedAt > .5)
             {
                 game.SetTimingOffset(savedOffset); game.LiveInputEnabled = savedLiveInput;
-                PlayerPrefs.SetInt("SealRhythm.BestScore.OriginalSOMJ01.Intro235.v3", savedBest); PlayerPrefs.Save();
+                PlayerPrefs.SetInt("SealRhythm.BestScore.OriginalSOMJ01.Intro235.v4.OneButton", savedBest); PlayerPrefs.Save();
                 File.AppendAllText(Path.Combine(Folder, "result.txt"), "PASS: sample clock, all notes, no stray input, pause/resume, restart, practice and results.\n");
                 Debug.Log("SealRhythm full level smoke test PASSED. " + Folder); phase = 0; game.ReturnToTitle(); Application.runInBackground = savedBackground;
             }
@@ -122,14 +133,14 @@ public static class SealRhythmLevelTests
                         ? (originalIndex % 2 == 0 ? SealRhythm.SealInput.Right : SealRhythm.SealInput.Left)
                         : (SealRhythm.SealInput)note.Action;
                     Require(note.Input == input, "Original physical direction at note " + index);
-                    submitted = index; game.SubmitInput((int)input);
+                    submitted = index; game.SubmitBeat();
                 }
             }
         }
         catch (Exception exception)
         {
             File.AppendAllText(Path.Combine(Folder, "result.txt"), "FAIL: " + exception + "\n");
-            PlayerPrefs.SetInt("SealRhythm.BestScore.OriginalSOMJ01.Intro235.v3", savedBest);
+            PlayerPrefs.SetInt("SealRhythm.BestScore.OriginalSOMJ01.Intro235.v4.OneButton", savedBest);
             if (game != null) { game.SetTimingOffset(savedOffset); game.LiveInputEnabled = savedLiveInput; }
             Application.runInBackground = savedBackground; Debug.LogException(exception); phase = 0;
         }
@@ -140,7 +151,9 @@ public static class SealRhythmLevelTests
         File.AppendAllText(Path.Combine(Folder, "result.txt"), mode + ": total=" + j.TotalNotes + ", perfect=" + j.PerfectCount + ", good=" + j.GoodCount + ", miss=" + j.MissCount + ", stray=" + j.StrayCount + ", score=" + j.Score + "\n");
         Require(j.TotalNotes > 0 && j.ResolvedCount == j.TotalNotes && j.MissCount == 0 && j.StrayCount == 0, mode + " all notes hit exactly once");
         Require(j.TotalNotes == (game.IsPractice ? 23 : 235) && j.PerfectCount == j.TotalNotes && nods == 5,
-            mode + " scores all five opening down beats as Perfect, including in practice");
+            mode + " scores all five opening nods through the single action as Perfect, including in practice");
+        Require(verifiedPlayerActions == j.TotalNotes, mode + " every single-button hit chooses the original player motion and phase");
+        File.AppendAllText(Path.Combine(Folder, "result.txt"), mode + ": " + verifiedPlayerActions + " single-button player motions checked against original animation data.\n");
         Require(!game.CaptainDialogueVisible, mode + " results hide conductor dialogue");
         Require(captain != null && captain.BeatCueCount == captainBeats.Count,
             mode + " conductor receives every scored beat, including the five opening nods, exactly once");
@@ -165,7 +178,7 @@ public static class SealRhythmLevelTests
                 Require(actor.CurrentMotion == 9 && !actor.IsUpsideDown && !actor.NextFlipToLeft,
                     "All four seals finish with the original final roll and phase");
             File.AppendAllText(Path.Combine(Folder, "result.txt"), "Original animation state: 4 seals, final motion 9, upright, next flip right. 168 flips / 62 rolls verified.\n");
-            File.AppendAllText(Path.Combine(Folder, "result.txt"), "Physical controls: 5 scored down nods; 31 left rolls / 31 right rolls through directional input.\n");
+            File.AppendAllText(Path.Combine(Folder, "result.txt"), "Single-button controls: 5 scored nods; 31 left rolls / 31 right rolls chosen from the original beat action.\n");
             CheckCharacterAppearances();
             CheckBackground();
         }
@@ -258,6 +271,7 @@ public static class SealRhythmLevelTests
     private static void WatchJudge()
     {
         nods = rolls = flips = leftRolls = rightRolls = 0;
+        pendingPlayerNote = -1; verifiedPlayerActions = 0;
         captain = UnityEngine.Object.FindAnyObjectByType<SealCaptainAppearance>();
         Require(captain != null && captain.IsReady && captain.BeatCueCount == 0,
             "Conductor resets its chart state before each playback");
@@ -276,11 +290,13 @@ public static class SealRhythmLevelTests
         {
             if (judgement.Grade == SealRhythm.HitGrade.Perfect || judgement.Grade == SealRhythm.HitGrade.Good)
             {
+                Require(pendingPlayerNote < 0, "Each player action is inspected before the next scored input");
+                pendingPlayerNote = judgement.NoteIndex;
                 if (judgement.Action == SealRhythm.SealAction.Nod)
                 {
                     nods++;
                     Require(judgement.NoteIndex < 5 && game.Judge.Notes[judgement.NoteIndex].Input == SealRhythm.SealInput.Nod,
-                        "Each opening nod responds to the down key");
+                        "Each opening nod responds to the shared action button");
                 }
                 else if (judgement.Action == SealRhythm.SealAction.Roll)
                 {
@@ -293,6 +309,23 @@ public static class SealRhythmLevelTests
             if (judgement.Grade == SealRhythm.HitGrade.Miss || judgement.Grade == SealRhythm.HitGrade.Stray)
                 File.AppendAllText(Path.Combine(Folder, "result.txt"), "Unexpected " + judgement.Grade + " note=" + judgement.NoteIndex + " offset=" + judgement.OffsetMilliseconds + "ms song=" + game.SongTime + "\n");
         };
+    }
+    private static void CheckPendingPlayerAction()
+    {
+        if (pendingPlayerNote < 0) return;
+        var actor = game.characterAnimator.GetComponent<SealOriginalAnimation>();
+        int index = pendingPlayerNote - game.IntroNotes.Count;
+        if (index < 0)
+            Require(actor.CurrentMotion == 1 && !actor.IsUpsideDown && !actor.NextFlipToLeft,
+                "One-button opening input plays the original upright nod");
+        else
+        {
+            var expected = originalChart.notes[index];
+            Require(actor.CurrentMotion == expected.animationIndex && actor.IsUpsideDown == expected.phaseBAfter &&
+                actor.NextFlipToLeft == (expected.directionFlagAfter != 0),
+                "One-button hit follows the original motion and phase at note " + pendingPlayerNote);
+        }
+        verifiedPlayerActions++; pendingPlayerNote = -1;
     }
     private static void Require(bool condition, string message) { if (!condition) throw new Exception(message); }
     private static void Capture(string name) { ScreenCapture.CaptureScreenshot(Path.Combine(Folder, name + ".png")); }

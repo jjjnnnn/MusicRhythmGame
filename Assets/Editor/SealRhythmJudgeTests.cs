@@ -26,7 +26,12 @@ public static class SealRhythmJudgeTests
             PhysicalInputsChooseTheChartAction,
             DownCannotRollAndRollDirectionMatters,
             PhysicalInputUsesNearestBeatAndTimingWindow,
-            OpeningNodsScoreAndRejectWrongRepeatedOrMissingInputs
+            OpeningNodsScoreAndRejectWrongRepeatedOrMissingInputs,
+            SingleButtonAdaptsToTheNearestAction,
+            SingleButtonKeepsExactTimingWindows,
+            SingleButtonNearestTiesAndDuplicatePresses,
+            SingleButtonNeverConsumesFutureNotesOrPlaysItself,
+            SingleButtonScoresTheFullOriginalChart
         };
         foreach (Action test in tests)
         {
@@ -363,6 +368,112 @@ public static class SealRhythmJudgeTests
         Equal(5, judge.NextNoteIndex);
         Equal(0, judge.PerfectCount);
         Equal(0, judge.StrayCount);
+    }
+
+    private static void SingleButtonAdaptsToTheNearestAction()
+    {
+        var actions = new[] { SealAction.Nod, SealAction.Right, SealAction.Left, SealAction.Roll, SealAction.Roll };
+        var chart = new List<RhythmNote>();
+        for (int i = 0; i < actions.Length; ++i) chart.Add(new RhythmNote(1000 + i * 500, actions[i], i == 4));
+        var judge = new SealRhythmJudge(chart, 1000, 55, 120);
+        for (int i = 0; i < actions.Length; ++i)
+        {
+            var hit = judge.SubmitBeat(1000 + i * 500);
+            Equal(HitGrade.Perfect, hit.Grade);
+            Equal(actions[i], hit.Action);
+            Equal(i, hit.NoteIndex);
+        }
+        Equal(5, judge.PerfectCount); Equal(1000000, judge.Score);
+        Equal(SealInput.Right, judge.Notes[3].Input); Equal(SealInput.Left, judge.Notes[4].Input);
+    }
+
+    private static void SingleButtonKeepsExactTimingWindows()
+    {
+        foreach (int offset in new[] { -120, -56, -55, 0, 55, 56, 120 })
+        {
+            var judge = new SealRhythmJudge(new[] { new RhythmNote(1000, SealAction.Roll, true) }, 1000, 55, 120);
+            var hit = judge.SubmitBeat(1000 + offset);
+            Equal(Math.Abs(offset) <= 55 ? HitGrade.Perfect : HitGrade.Good, hit.Grade);
+            Equal(SealAction.Roll, hit.Action); Near(offset, hit.OffsetMilliseconds);
+        }
+        var early = new SealRhythmJudge(new[] { new RhythmNote(1000, SealAction.Left) }, 1000, 55, 120);
+        Equal(HitGrade.Stray, early.SubmitBeat(879).Grade); Equal(0, early.ResolvedCount);
+        Equal(HitGrade.Good, early.SubmitBeat(880).Grade);
+        early.Reset(); Equal(HitGrade.Stray, early.SubmitBeat(1121).Grade); Equal(1, early.MissCount);
+        var practice = new SealRhythmJudge(new[] { new RhythmNote(1000, SealAction.Right) }, 1000, 55, 180);
+        Equal(HitGrade.Stray, practice.SubmitBeat(819).Grade); Equal(0, practice.ResolvedCount);
+        Equal(HitGrade.Good, practice.SubmitBeat(820).Grade);
+        practice.Reset(); Equal(HitGrade.Good, practice.SubmitBeat(1180).Grade);
+    }
+
+    private static void SingleButtonNearestTiesAndDuplicatePresses()
+    {
+        var judge = new SealRhythmJudge(new[] {
+            new RhythmNote(1000, SealAction.Left), new RhythmNote(1225, SealAction.Roll, false)
+        }, 1000, 55, 120);
+        // The overlapping windows of half-beats select by time, with no direction supplied.
+        var hit = judge.SubmitBeat(1113);
+        Equal(1, hit.NoteIndex); Equal(SealAction.Roll, hit.Action); Equal(HitGrade.Good, hit.Grade);
+        Equal(0, judge.NextNoteIndex);
+        judge.Reset(); Equal(0, judge.SubmitBeat(1000).NoteIndex);
+        Equal(HitGrade.Stray, judge.SubmitBeat(1000).Grade);
+        Equal(1, judge.ResolvedCount); Equal(1, judge.NextNoteIndex);
+        Equal(HitGrade.Perfect, judge.SubmitBeat(1225).Grade);
+        Equal(HitGrade.Stray, judge.SubmitBeat(1225).Grade);
+        judge = new SealRhythmJudge(new[] {
+            new RhythmNote(1000, SealAction.Left), new RhythmNote(1080, SealAction.Right)
+        }, 1000, 55, 120);
+        Equal(0, judge.SubmitBeat(1040).NoteIndex);
+    }
+
+    private static void SingleButtonNeverConsumesFutureNotesOrPlaysItself()
+    {
+        var judge = new SealRhythmJudge(new[] {
+            new RhythmNote(1000, SealAction.Nod), new RhythmNote(2000, SealAction.Roll)
+        }, 1000, 55, 120);
+        Equal(HitGrade.Stray, judge.SubmitBeat(0).Grade); Equal(0, judge.ResolvedCount);
+        judge.Advance(1000); Equal(0, judge.ResolvedCount); Equal(0, judge.PerfectCount);
+        judge.Advance(1121); Equal(1, judge.MissCount);
+        Equal(HitGrade.Stray, judge.SubmitBeat(1500).Grade); Equal(1, judge.NextNoteIndex);
+        Equal(HitGrade.Perfect, judge.SubmitBeat(2000).Grade); Equal(1, judge.PerfectCount);
+        judge.Reset(); judge.Advance(int.MaxValue);
+        Equal(2, judge.MissCount); Equal(0, judge.PerfectCount); Equal(0, judge.Score);
+        Equal(HitGrade.Stray, judge.SubmitBeat(int.MaxValue).Grade);
+    }
+
+    private static void SingleButtonScoresTheFullOriginalChart()
+    {
+        var song = Resources.Load<Koreography>("Art/Level_cellanim/Kore/haibao");
+        True(song != null && song.SourceClip != null);
+        var notes = new List<RhythmNote>();
+        foreach (var cue in song.GetTrackByID("haibaoIntroEventID").GetAllEvents())
+            if (cue.GetTextValue() == "diantou") notes.Add(new RhythmNote(cue.StartSample, SealAction.Nod));
+        foreach (var cue in song.GetTrackByID("haibaoEventID").GetAllEvents())
+        {
+            True(RhythmGame.TryGetAction(cue.GetTextValue(), out var action));
+            notes.Add(new RhythmNote(cue.StartSample, action));
+        }
+        int rate = song.SourceClip.frequency;
+        foreach (bool practice in new[] { false, true })
+        {
+            int duration = practice ? Mathf.RoundToInt(rate * 32 * 60f / 133) : song.SourceClip.samples;
+            var judge = new SealRhythmJudge(notes.FindAll(n => n.Sample < duration - rate * .15f), rate, 55, practice ? 180 : 120);
+            Equal(practice ? 23 : 235, judge.TotalNotes);
+            int nods = 0, left = 0, right = 0, rolls = 0;
+            foreach (var note in judge.Notes)
+            {
+                Judgement hit = judge.SubmitBeat(note.Sample);
+                Equal(HitGrade.Perfect, hit.Grade); Equal(note.Action, hit.Action);
+                if (hit.Action == SealAction.Nod) nods++;
+                else if (hit.Action == SealAction.Left) left++;
+                else if (hit.Action == SealAction.Right) right++;
+                else rolls++;
+            }
+            judge.Advance(int.MaxValue);
+            Equal(5, nods); Equal(0, judge.MissCount); Equal(0, judge.StrayCount);
+            Equal(judge.TotalNotes, judge.PerfectCount); Equal(1000000, judge.Score);
+            if (!practice) { Equal(84, left); Equal(84, right); Equal(62, rolls); }
+        }
     }
 
     private static void Equal<T>(T expected, T actual)

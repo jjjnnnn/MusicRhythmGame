@@ -16,7 +16,7 @@ public sealed class SealBeatLane : MonoBehaviour
     private Image ringImage;
     private Text judgementText;
     private CanvasGroup judgementGroup;
-    private Sprite leftSprite, downSprite, rightSprite;
+    private Sprite beatBarSprite;
     private readonly MarkerPair[] pairs = new MarkerPair[MarkerPairs];
     private SealRhythmJudge observedJudge;
     private bool[] resolved;
@@ -27,7 +27,7 @@ public sealed class SealBeatLane : MonoBehaviour
     private sealed class MarkerPair
     {
         public RectTransform Left, Right;
-        public Image LeftArrow, RightArrow;
+        public Image LeftBar, RightBar;
 
         public void SetVisible(bool value)
         {
@@ -35,15 +35,12 @@ public sealed class SealBeatLane : MonoBehaviour
             if (Right.gameObject.activeSelf != value) Right.gameObject.SetActive(value);
         }
 
-        public void Show(float distance, Sprite arrow, Color color, float opacity)
+        public void Show(float distance, float opacity)
         {
             SetVisible(true);
             Left.anchoredPosition = new Vector2(-distance, 7);
             Right.anchoredPosition = new Vector2(distance, 7);
-            if (LeftArrow.sprite != arrow) LeftArrow.sprite = arrow;
-            if (RightArrow.sprite != arrow) RightArrow.sprite = arrow;
-            color.a = opacity;
-            LeftArrow.color = RightArrow.color = color;
+            LeftBar.color = RightBar.color = new Color(1, 1, 1, opacity);
         }
     }
 
@@ -53,10 +50,14 @@ public sealed class SealBeatLane : MonoBehaviour
         Sprite rightArrow, Sprite ringSprite)
     {
         game = rhythmGame;
-        leftSprite = leftArrow;
-        downSprite = downArrow;
-        rightSprite = rightArrow;
         if (initialized) { BindJudge(); Refresh(); return; }
+        var texture = Resources.Load<Texture2D>("UI/SealPaper/rhythm-bar");
+        if (texture == null) throw new InvalidOperationException("Missing generated rhythm bar.");
+        // Keep the generated source untouched; crop only its clean central silhouette.
+        float scale = texture.width / 1254f;
+        beatBarSprite = Sprite.Create(texture, new Rect(544 * scale, texture.height - 1195 * scale,
+            168 * scale, 1130 * scale), Vector2.one * .5f, 100 * scale, 0, SpriteMeshType.FullRect);
+        beatBarSprite.name = "Generated rhythm bar";
 
         root = parent;
         track = MakeImage("Beat line", root, null, new Vector2(600, 1), new Vector2(0, 7)).rectTransform;
@@ -65,19 +66,22 @@ public sealed class SealBeatLane : MonoBehaviour
         for (int i = 0; i < pairs.Length; i++)
         {
             var pair = new MarkerPair();
-            pair.Left = MakeRect("Beat pair " + i + " left", root, new Vector2(48, 48), Vector2.zero);
-            pair.Right = MakeRect("Beat pair " + i + " right", root, new Vector2(48, 48), Vector2.zero);
-            pair.LeftArrow = MakeImage("Required key", pair.Left, downSprite, new Vector2(44, 44), Vector2.zero);
-            pair.RightArrow = MakeImage("Required key", pair.Right, downSprite, new Vector2(44, 44), Vector2.zero);
+            pair.Left = MakeRect("Beat pair " + i + " left", root, new Vector2(18, 52), Vector2.zero);
+            pair.Right = MakeRect("Beat pair " + i + " right", root, new Vector2(18, 52), Vector2.zero);
+            pair.LeftBar = MakeImage("Rhythm bar", pair.Left, beatBarSprite, new Vector2(14, 48), Vector2.zero);
+            pair.RightBar = MakeImage("Rhythm bar", pair.Right, beatBarSprite, new Vector2(14, 48), Vector2.zero);
+            pair.LeftBar.preserveAspect = pair.RightBar.preserveAspect = false;
             pair.SetVisible(false);
             pairs[i] = pair;
         }
 
-        // Draw the central art after the markers, so incoming arrows disappear beneath it.
+        // Keep the original seal as the fixed hit point; moving notes remain bars.
         ringImage = MakeImage("Beat pulse", root, ringSprite, new Vector2(60, 60), new Vector2(0, 7));
         ring = ringImage.rectTransform;
         ringImage.color = new Color(1, 1, 1, 0);
-        center = MakeImage("Seal beat", root, centerSprite, new Vector2(48, 48), new Vector2(0, 7)).rectTransform;
+        var target = MakeImage("Beat target", root, centerSprite, new Vector2(48, 48), new Vector2(0, 7));
+        target.preserveAspect = true;
+        center = target.rectTransform;
 
         judgement = MakeRect("Beat judgement", root, new Vector2(250, 28), new Vector2(0, -30));
         judgementGroup = judgement.gameObject.AddComponent<CanvasGroup>();
@@ -134,8 +138,7 @@ public sealed class SealBeatLane : MonoBehaviour
             Array.Clear(resolved, 0, resolved.Length);
         previousResolvedCount = observedJudge != null ? observedJudge.ResolvedCount : 0;
 
-        // All playable arrows, including the five opening nods, share the judge's
-        // sequence and resolved state. A successful nod removes its arrow immediately.
+        // All playable bars share one sequence; the single key supplies timing only.
         if (observedJudge != null)
         {
             var notes = observedJudge.Notes;
@@ -144,12 +147,12 @@ public sealed class SealBeatLane : MonoBehaviour
                 long delta = (long)notes[i].Sample - sample;
                 if (delta > horizon) break;
                 if (resolved[i]) continue;
-                ShowMarker(used++, delta, notes[i].Input, sampleRate, bpm, extent);
+                ShowMarker(used++, delta, sampleRate, bpm, extent);
             }
         }
         for (int i = used; i < pairs.Length; i++) pairs[i].SetVisible(false);
 
-        // The seal breathes on the music's quarter notes, independently of input offset.
+        // The target breathes on quarter notes, independently of input offset.
         double beat = game.SongTime * bpm / 60d;
         if (game.State == SealGameState.CountIn) beat = game.CountInBeats;
         float phase = (float)(beat - Math.Floor(beat));
@@ -185,13 +188,12 @@ public sealed class SealBeatLane : MonoBehaviour
         return Mathf.Clamp01((float)fraction) * extent;
     }
 
-    private void ShowMarker(int index, long delta, SealInput input, int sampleRate, float bpm, float extent)
+    private void ShowMarker(int index, long delta, int sampleRate, float bpm, float extent)
     {
         float distance = DistanceFromCenter(delta, sampleRate, bpm, extent);
         float edge = distance / Mathf.Max(1, extent);
         float opacity = 1f - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(.88f, 1f, edge));
-        Sprite arrow = input == SealInput.Left ? leftSprite : input == SealInput.Right ? rightSprite : downSprite;
-        pairs[index].Show(distance, arrow, SealUiArt.InputColor((int)input), opacity);
+        pairs[index].Show(distance, opacity);
     }
 
     private void BindJudge()
@@ -239,5 +241,6 @@ public sealed class SealBeatLane : MonoBehaviour
     private void OnDestroy()
     {
         if (observedJudge != null) observedJudge.Judged -= OnNoteJudged;
+        if (beatBarSprite != null) Destroy(beatBarSprite);
     }
 }

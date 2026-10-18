@@ -3,12 +3,13 @@
   'use strict';
   const NOD = 0, LEFT = 1, RIGHT = 2, ROLL = 3;
   const PREPARE = '开始准备，根据节拍跟上队伍的动作';
+  const BEST_KEY = 'SealRhythm.SingleButton.v4.BestScore';
   const DEFAULT_DURATIONS = [4,20,48,48,46,46,42,41,46,48,43,43,20,48,48,46,46,42,42,46,46,43,43,1048,73,73,83,4,39,41];
   const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
   const actionValue = value => typeof value === 'number' ? value : ({nod:NOD,diantou:NOD,left:LEFT,right:RIGHT,roll:ROLL})[String(value).toLowerCase()];
   const wallTime = () => typeof performance !== 'undefined' ? performance.now() / 1000 : Date.now() / 1000;
 
-  /** The same nearest-note, strict-direction judgement used by the Unity version. */
+  /** Sample-clock judgement. Single-button input chooses an action, never its timing. */
   class SealJudge {
     constructor(notes, sampleRate, practice, onJudged) {
       this.notes = notes; this.sampleRate = sampleRate;
@@ -30,6 +31,12 @@
       }
     }
     submit(input, sample) {
+      return this._submit(input, sample, false);
+    }
+    submitBeat(sample) {
+      return this._submit(NOD, sample, true);
+    }
+    _submit(input, sample, automatic) {
       this.advance(sample);
       let nearest = -1, distance = Infinity, offset = 0;
       for (let i = this.nextNoteIndex; i < this.notes.length; i++) {
@@ -41,7 +48,10 @@
           nearest = i; distance = currentDistance; offset = currentOffset;
         }
       }
-      if (nearest >= 0) return this.resolve(nearest, this.notes[nearest].input !== input ? 'Miss' : distance <= this.perfectWindow ? 'Perfect' : 'Good', offset, input);
+      if (nearest >= 0) {
+        if (automatic) input = this.notes[nearest].input;
+        return this.resolve(nearest, this.notes[nearest].input !== input ? 'Miss' : distance <= this.perfectWindow ? 'Perfect' : 'Good', offset, input);
+      }
       this.stray++; this.combo = 0;
       const result = {noteIndex:-1, grade:'Stray', offsetMs:0, input};
       if (this.onJudged) this.onJudged(result);
@@ -86,7 +96,7 @@
       this.loading = false; this.state = 'ready'; this.practice = false; this.error = '';
       this.assist = this._read('seal_h5_assist', '1') !== '0';
       this.offset = clamp(Number(this._read('seal_h5_offset', '0')) || 0, -250, 250);
-      this.best = clamp(Number(this._read('seal_h5_best', '0')) || 0, 0, 1000000);
+      this.best = clamp(Number(this._read(BEST_KEY, '0')) || 0, 0, 1000000);
       let phase = false, nextLeft = false;
       this._allNotes = data.notes.map((source, index) => {
         const action = actionValue(source.action);
@@ -296,6 +306,12 @@
       this.captain.pose = this.captain.startTime >= 0 && elapsed < .2 ? this.captain.input === NOD ? 3 : this.captain.input === LEFT ? 1 : 2 : 0;
     }
     press(input) {
+      return this._press(input, false);
+    }
+    pressBeat() {
+      return this._press(NOD, true);
+    }
+    _press(input, automatic) {
       input = Number(input);
       if (![NOD,LEFT,RIGHT].includes(input) || this.loading) return null;
       this.tick(false);
@@ -305,7 +321,8 @@
         this._animate(); this._emit(); return null;
       }
       if (this.state !== 'playing') return null;
-      const result = this.judge.submit(input, this._sample());
+      const result = automatic ? this.judge.submitBeat(this._sample()) : this.judge.submit(input, this._sample());
+      input = result.input;
       const note = result.noteIndex >= 0 ? this.notes[result.noteIndex] : null;
       if (result.grade === 'Perfect' || result.grade === 'Good') this._playActor(player, note.action, note.phaseBefore, note.nextLeftBefore, this._time);
       else {
@@ -362,7 +379,7 @@
     setOffset(milliseconds) { this.offset = clamp(Math.round(Number(milliseconds) || 0), -250, 250); this._save('seal_h5_offset', this.offset); this._emit(); return this.offset; }
     _finish() {
       this.judge.advance(Number.MAX_SAFE_INTEGER); this._stopSources(); this._time = this.duration; this.state = 'results';
-      if (!this.practice && this.judge.score > this.best) { this.best = this.judge.score; this._save('seal_h5_best', this.best); }
+      if (!this.practice && this.judge.score > this.best) { this.best = this.judge.score; this._save(BEST_KEY, this.best); }
     }
     _makeDialogue() {
       const cues = [], beat = this.beatDuration, countWords = ['','一','两','三','四','五','六','七','八','九','十'];

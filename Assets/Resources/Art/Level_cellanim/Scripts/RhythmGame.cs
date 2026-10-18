@@ -23,7 +23,6 @@ public class RhythmGame : MonoBehaviour
     public GameObject missTextPrefab, perfectTextPrefab;
     public Transform uiCanvasTransform;
     public Text scoreText;
-    public KeyCode[] keys = { KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow };
 
     public SealGameState State { get; private set; } = SealGameState.Ready;
     public bool IsPractice { get; private set; }
@@ -65,7 +64,7 @@ public class RhythmGame : MonoBehaviour
     public string NextActionLabel => HasUpcomingNote ? NoteLabel(Judge.Notes[Judge.NextNoteIndex]) : "听节奏，准备好";
     public float NextActionProgress => HasUpcomingNote ? 1f - Mathf.Clamp01((Judge.Notes[Judge.NextNoteIndex].Sample - AdjustedSample) / (sampleRate * 1.25f)) : 0;
 
-    private const string BestKey = "SealRhythm.BestScore.OriginalSOMJ01.Intro235.v3";
+    private const string BestKey = "SealRhythm.BestScore.OriginalSOMJ01.Intro235.v4.OneButton";
     private Koreography song;
     private SimpleMusicPlayer musicPlayer;
     private AudioSource music, feedbackAudio;
@@ -232,9 +231,7 @@ public class RhythmGame : MonoBehaviour
         }
         if (LiveInputEnabled && (State == SealGameState.Ready || State == SealGameState.Playing))
         {
-            if (Pressed(0, KeyCode.S, KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.Space)) SubmitInput(0);
-            if (Pressed(1, KeyCode.A, KeyCode.LeftArrow)) SubmitInput(1);
-            if (Pressed(2, KeyCode.D, KeyCode.RightArrow)) SubmitInput(2);
+            if (Input.GetKeyDown(KeyCode.Space)) SubmitBeat();
         }
     }
 
@@ -248,8 +245,13 @@ public class RhythmGame : MonoBehaviour
             AdvanceStageActions();
             while (inputs.Count > 0)
             {
-                var input = (SealInput)inputs.Dequeue();
-                var judgement = Judge.SubmitInput(input, AdjustedSample);
+                int request = inputs.Dequeue();
+                // Resolve timing and the selected action together after the audio clock updates.
+                // -1 is a single-button press, with no direction chosen in Update/PointerDown.
+                var judgement = request < 0 ? Judge.SubmitBeat(AdjustedSample) : Judge.SubmitInput((SealInput)request, AdjustedSample);
+                var input = request >= 0 ? (SealInput)request :
+                    judgement.NoteIndex >= 0 ? Judge.Notes[judgement.NoteIndex].Input : SealInput.Nod;
+                PlayTone((int)input);
                 if (judgement.Grade == HitGrade.Perfect || judgement.Grade == HitGrade.Good)
                     PlayChartAction(characterAnimator, judgement.Action, judgement.NoteIndex);
                 else PlayInput(input, judgement.NoteIndex);
@@ -281,10 +283,17 @@ public class RhythmGame : MonoBehaviour
     public void SubmitInput(int input)
     {
         if (input < 0 || input > (int)SealInput.Right || (State != SealGameState.Playing && State != SealGameState.Ready)) return;
-        PlayTone(input);
         if (hud != null) hud.PulseInput(input);
         if (State == SealGameState.Playing) inputs.Enqueue(input);
-        else PlayInput((SealInput)input, -1);
+        else { PlayTone(input); PlayInput((SealInput)input, -1); }
+    }
+    /// <summary>The keyboard and touch button share one timing-sensitive action input.</summary>
+    public void SubmitBeat()
+    {
+        if (State != SealGameState.Playing && State != SealGameState.Ready) return;
+        if (hud != null) hud.PulseInput(0);
+        if (State == SealGameState.Playing) inputs.Enqueue(-1);
+        else { PlayTone(0); PlayInput(SealInput.Nod, -1); }
     }
     public void TogglePause()
     {
@@ -333,7 +342,6 @@ public class RhythmGame : MonoBehaviour
         if (hud != null) hud.ShowJudgement(label, timing, success);
         if (!success && AudioSettings.dspTime - feedbackAt > .1) { PlayTone(4); feedbackAt = AudioSettings.dspTime; }
     }
-    private bool Pressed(int index, KeyCode letter, KeyCode arrow) => Input.GetKeyDown(letter) || Input.GetKeyDown(arrow) || (keys != null && index < keys.Length && Input.GetKeyDown(keys[index]));
     public static bool TryGetAction(string payload, out SealAction action)
     {
         switch (payload)

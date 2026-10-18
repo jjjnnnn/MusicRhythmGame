@@ -6,10 +6,9 @@
   const data = window.SEAL_DATA;
   const game = new window.SealGame(data);
   window.SEAL_GAME = game;
-  const colors = ['#77c8ad', '#ea8978', '#81b5dc'];
   const ink = '#233e49', coral = '#c96956';
   const font = '-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif';
-  const assets = {}, icons = {}, tinted = {};
+  const assets = {}, icons = {};
   let artReady = false, assetError = '', layout = null, lastState = '', lastJudgement = null, judgementAt = -100;
   const controls = Array.from(document.querySelectorAll('.action'));
   const panels = ['ready','paused','results','error'];
@@ -20,16 +19,11 @@
   const scoreLabel = score => String(Math.max(0,score || 0)).padStart(6,'0');
   const show = (id,value) => { const node=$(id); if (node.hidden === value) node.hidden=!value; };
 
-  function crop(image, rect, tint) {
+  function crop(image, rect) {
     const result = document.createElement('canvas');
     result.width = Math.ceil(rect[2]); result.height = Math.ceil(rect[3]);
     const draw = result.getContext('2d');
     draw.drawImage(image,rect[0],rect[1],rect[2],rect[3],0,0,result.width,result.height);
-    if (tint) {
-      draw.globalCompositeOperation='multiply'; draw.fillStyle=tint; draw.fillRect(0,0,result.width,result.height);
-      draw.globalCompositeOperation='destination-in';
-      draw.drawImage(image,rect[0],rect[1],rect[2],rect[3],0,0,result.width,result.height);
-    }
     return result;
   }
   function loadImage(name) {
@@ -40,14 +34,13 @@
       image.src = data.assets[name];
     });
   }
-  window.__sealReady = Promise.all(['background','seals','captain','ui'].map(loadImage)).then(() => {
-    for (const [name,rect] of Object.entries(data.spriteRects.ui)) icons[name]=crop(assets.ui,rect);
-    ['down','left','right'].forEach((name,input) => { tinted[input]=crop(assets.ui,data.spriteRects.ui[name],colors[input]); });
+  window.__sealReady = Promise.all(['background','seals','captain','ui','beatBar'].map(loadImage)).then(() => {
+    for (const name of ['seal','ring']) icons[name]=crop(assets.ui,data.spriteRects.ui[name]);
+    icons.beatBar=crop(assets.beatBar,data.spriteRects.beatBar);
     for (const image of document.querySelectorAll('img[data-icon]')) {
       const icon=icons[image.dataset.icon];
       if (!icon) continue;
       image.src=icon.toDataURL(); image.style.display='block';
-      if (image.nextElementSibling && image.nextElementSibling.classList.contains('arrow-fallback')) image.nextElementSibling.hidden=true;
     }
     artReady=true; updateDom(); resize(); return true;
   }).catch(error => { assetError=error.message; updateDom(); return false; });
@@ -175,16 +168,15 @@
     if(active){
       const lookAhead=game.beatDuration*3;
       const adjusted=game.time-game.offset/1000;
-      const size=layout.width<600?38:44;
+      const barWidth=layout.width<600?14:16,barHeight=layout.width<600?44:48;
       for(let i=game.judge.nextNoteIndex;i<game.notes.length;i++) {
         const note=game.notes[i],delta=note.time-adjusted;
         if(delta>lookAhead) break;
         if(game.judge.resolved[i]) continue;
         const fraction=clamp(delta/lookAhead,0,1),distance=fraction*laneExtent;
         context.globalAlpha=1-smooth((fraction-.88)/.12);
-        const arrow=tinted[note.input];
-        context.drawImage(arrow,width*.5-distance-size*.5,laneY-size*.5,size,size);
-        context.drawImage(arrow,width*.5+distance-size*.5,laneY-size*.5,size,size);
+        context.drawImage(icons.beatBar,width*.5-distance-barWidth*.5,laneY-barHeight*.5,barWidth,barHeight);
+        context.drawImage(icons.beatBar,width*.5+distance-barWidth*.5,laneY-barHeight*.5,barWidth,barHeight);
       }
     }
     context.globalAlpha=1;
@@ -193,7 +185,8 @@
       const ringSize=58*(1+.22*(1-pulse));context.globalAlpha=.6*pulse;
       context.drawImage(icons.ring,width*.5-ringSize*.5,laneY-ringSize*.5,ringSize,ringSize);context.globalAlpha=1;
     }
-    const centreSize=(layout.width<600?42:46)*(1+(game.assist?.055:.02)*pulse);
+    const centrePulse=1+(game.assist?.055:.02)*pulse;
+    const centreSize=(layout.width<600?42:46)*centrePulse;
     context.drawImage(icons.seal,width*.5-centreSize*.5,laneY-centreSize*.5,centreSize,centreSize);
     if(game.judgement&&active&&game.state==='playing') {
       const age=performance.now()/1000-judgementAt;
@@ -245,29 +238,24 @@
       // Capture can fail for synthetic or already-ended pointers. The press still counts.
       if(typeof button.setPointerCapture==='function') {try{button.setPointerCapture(event.pointerId);}catch(_){}}
       button.classList.add('pressed');
-      game.press(Number(button.dataset.input));
+      game.pressBeat();
     },{passive:false});
     for(const type of ['pointerup','pointercancel','lostpointercapture']) button.addEventListener(type,()=>button.classList.remove('pressed'));
-    button.addEventListener('keydown',event=>{
-      if(event.code==='Enter') {event.preventDefault();if(!event.repeat&&!button.disabled){button.classList.add('pressed');game.press(Number(button.dataset.input));}}
-    });
-    button.addEventListener('keyup',event=>{if(event.code==='Enter')button.classList.remove('pressed');});
     // Pointer input is submitted on down only. No synthetic click can submit it twice.
     button.addEventListener('click',event=>event.preventDefault());
   }
-  const keyboardInputs={ArrowDown:0,ArrowLeft:1,ArrowRight:2,KeyS:0,KeyA:1,KeyD:2,Space:0};
   window.addEventListener('keydown',event=>{
     if(event.altKey||event.ctrlKey||event.metaKey) return;
-    if(Object.prototype.hasOwnProperty.call(keyboardInputs,event.code)){
+    if(event.code==='Space'){
       event.preventDefault();if(event.repeat||!artReady) return;
-      const input=keyboardInputs[event.code];game.press(input);
-      const button=controls.find(item=>Number(item.dataset.input)===input);button.classList.add('pressed');
+      if(controls[0].disabled) return;
+      game.pressBeat();controls[0].classList.add('pressed');
     } else if(event.code==='Escape') {event.preventDefault();if(!event.repeat)invoke(()=>game.togglePause());}
     else if(event.code==='Enter'&&!event.repeat&&event.target===document.body){
       event.preventDefault();if(game.state==='ready'&&artReady)invoke(()=>game.start(false));else if(game.state==='paused')invoke(()=>game.resume());
     }
   },{passive:false});
-  window.addEventListener('keyup',event=>{const input=keyboardInputs[event.code];if(input!=null)for(const button of controls)if(Number(button.dataset.input)===input)button.classList.remove('pressed');});
+  window.addEventListener('keyup',event=>{if(event.code==='Space')controls[0].classList.remove('pressed');});
   window.addEventListener('blur',()=>controls.forEach(button=>button.classList.remove('pressed')));
   window.addEventListener('resize',resize);
   if(window.visualViewport)window.visualViewport.addEventListener('resize',resize);

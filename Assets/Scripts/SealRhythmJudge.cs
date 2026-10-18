@@ -160,7 +160,14 @@ namespace SealRhythm
             return SubmitCore((SealAction)input, sample, true);
         }
 
-        private Judgement SubmitCore(SealAction action, int sample, bool physicalInput)
+        /// <summary>
+        /// One-button play: choose the nearest playable note's action at this exact sample.
+        /// The usual timing windows, misses and duplicate-press penalties still apply.
+        /// Calling Advance alone never turns a pending note into a successful hit.
+        /// </summary>
+        public Judgement SubmitBeat(int sample) => SubmitCore(SealAction.Nod, sample, false, true);
+
+        private Judgement SubmitCore(SealAction action, int sample, bool physicalInput, bool adaptAction = false)
         {
             Advance(sample);
             int nearestIndex = -1;
@@ -182,9 +189,9 @@ namespace SealRhythm
 
             if (nearestIndex >= 0)
             {
-                bool matches = physicalInput
+                bool matches = adaptAction || (physicalInput
                     ? notes[nearestIndex].Input == (SealInput)action
-                    : notes[nearestIndex].Action == action;
+                    : notes[nearestIndex].Action == action);
                 HitGrade grade = !matches
                     ? HitGrade.Miss
                     : nearestDistance <= perfectWindowSamples ? HitGrade.Perfect : HitGrade.Good;
