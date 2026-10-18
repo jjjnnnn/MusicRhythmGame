@@ -53,8 +53,9 @@ public sealed class SealUiArt : IDisposable
     private Sprite Cut(string name, float x, float top, float width, float height, float border = 0)
     {
         const float sourceSize = 1254;
-        float scale = texture.width / sourceSize;
-        var rect = new Rect(x * scale, texture.height - (top + height) * scale, width * scale, height * scale);
+        // The intact 1254px artwork sits at the bottom left of its block-aligned texture.
+        const float scale = 1;
+        var rect = new Rect(x * scale, sourceSize - (top + height) * scale, width * scale, height * scale);
         var sprite = Sprite.Create(texture, rect, new Vector2(.5f, .5f), 100 * scale, 0,
             SpriteMeshType.FullRect, Vector4.one * border * scale);
         sprite.name = "Seal UI " + name;

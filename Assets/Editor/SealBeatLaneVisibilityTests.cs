@@ -10,7 +10,7 @@ public static class SealBeatLaneVisibilityTests
 {
     private static RhythmGame game;
     private static SealBeatLane lane;
-    private static bool running, savedAssist, savedBackground, checkedIntro, sawLeft, sawRight, moved, capturedDirections;
+    private static bool running, savedAssist, savedBackground, savedLiveInput, checkedIntro, sawLeft, sawRight, moved, capturedDirections;
     private static float savedOffset, previousDistance, previousSongTime;
     private static int previousIndex = -1;
     private static Sprite previousSprite;
@@ -30,6 +30,7 @@ public static class SealBeatLaneVisibilityTests
             throw new InvalidOperationException("Open GamePlay and wait for the game and beat guide to initialize.");
         Directory.CreateDirectory(Folder);
         savedAssist = game.AssistEnabled; savedOffset = game.TimingOffsetMs;
+        savedLiveInput = game.LiveInputEnabled; game.LiveInputEnabled = false;
         savedBackground = Application.runInBackground;
         checkedIntro = sawLeft = sawRight = moved = capturedDirections = false;
         previousIndex = -1; previousSprite = null; captureAt = -1;
@@ -61,7 +62,11 @@ public static class SealBeatLaneVisibilityTests
 
             if (!checkedIntro && game.SongTime > 3.2f)
             {
-                Require(FindArrow("Down") != null, "Intro down arrows are visible before the demonstration beat");
+                Require(FindArrow("Down") != null, "Scored opening down arrows are visible before their beat");
+                ValidateNoDuplicateIntroMarkers();
+                var player = game.characterAnimator.GetComponent<SealOriginalAnimation>();
+                Require(player.CurrentMotion == 1 && player.CurrentMotionFrame >= player.CurrentMotionDuration,
+                    "An opening down beat does not automatically nod the player without an input");
                 ValidateVisibleArrows(); ValidateControlColors();
                 Capture("01-intro"); checkedIntro = true;
                 Log("Down: 44 px, mint tint, centered on the beat line; footer controls use matching colors.");
@@ -113,6 +118,24 @@ public static class SealBeatLaneVisibilityTests
             Require(Math.Abs(image.rectTransform.position.y - track.position.y) < .01f, "Incoming arrows are centered on the line");
             Require(SameRgb(image.color, SealUiArt.InputColor(input)), "Incoming arrow color matches its physical input");
         }
+    }
+
+    private static void ValidateNoDuplicateIntroMarkers()
+    {
+        int expected = 0, actual = 0;
+        double horizon = game.SampleRate * 60d / game.beatsPerMinute * 3d;
+        for (int i = game.Judge.NextNoteIndex; i < game.Judge.TotalNotes; ++i)
+        {
+            if ((long)game.Judge.Notes[i].Sample - game.InputSample > horizon) break;
+            expected++;
+        }
+        for (int i = 0; i < lane.transform.childCount; ++i)
+        {
+            var child = lane.transform.GetChild(i);
+            if (child.name.StartsWith("Beat pair ") && child.name.EndsWith(" left") && child.gameObject.activeInHierarchy)
+                actual++;
+        }
+        Require(actual == expected, "Each scored opening beat appears once in the lane, without a duplicate demonstration arrow");
     }
 
     private static void ValidateControlColors()
@@ -173,6 +196,7 @@ public static class SealBeatLaneVisibilityTests
             if (game != null)
             {
                 game.ReturnToTitle(); game.SetTimingOffset(savedOffset);
+                game.LiveInputEnabled = savedLiveInput;
                 if (game.AssistEnabled != savedAssist) game.ToggleAssist();
                 PlayerPrefs.Save();
             }

@@ -65,7 +65,7 @@ public class RhythmGame : MonoBehaviour
     public string NextActionLabel => HasUpcomingNote ? NoteLabel(Judge.Notes[Judge.NextNoteIndex]) : "听节奏，准备好";
     public float NextActionProgress => HasUpcomingNote ? 1f - Mathf.Clamp01((Judge.Notes[Judge.NextNoteIndex].Sample - AdjustedSample) / (sampleRate * 1.25f)) : 0;
 
-    private const string BestKey = "SealRhythm.BestScore.OriginalSOMJ01.v2";
+    private const string BestKey = "SealRhythm.BestScore.OriginalSOMJ01.Intro235.v3";
     private Koreography song;
     private SimpleMusicPlayer musicPlayer;
     private AudioSource music, feedbackAudio;
@@ -145,18 +145,6 @@ public class RhythmGame : MonoBehaviour
                 chart.Add(new RhythmNote(note.StartSample, action));
         }
         if (chart.Count == 0) { Fail("海豹轨道没有有效节拍，请检查 haibaoEventID。"); return; }
-        chart.Sort((a, b) => a.Sample.CompareTo(b.Sample));
-        phaseBefore = new bool[chart.Count];
-        nextFlipLeftBefore = new bool[chart.Count];
-        bool upsideDown = false, nextLeft = false;
-        for (int i = 0; i < chart.Count; ++i)
-        {
-            phaseBefore[i] = upsideDown;
-            nextFlipLeftBefore[i] = nextLeft;
-            chart[i] = new RhythmNote(chart[i].Sample, chart[i].Action, nextLeft);
-            if (chart[i].Action != SealAction.Nod) nextLeft = !nextLeft;
-            if (chart[i].Action == SealAction.Roll) upsideDown = !upsideDown;
-        }
         var introTrack = song.GetTrackByID("haibaoIntroEventID");
         if (introTrack != null) foreach (var cue in introTrack.GetAllEvents())
         {
@@ -167,6 +155,22 @@ public class RhythmGame : MonoBehaviour
         }
         introDemonstrations.Sort((a, b) => a.Sample.CompareTo(b.Sample));
         introNotes.Sort((a, b) => a.Sample.CompareTo(b.Sample));
+        // The five opening nods are playable too. Keep their original track as metadata,
+        // but feed one merged sequence to judgement, arrows, partners and the conductor.
+        chart.AddRange(introNotes);
+        chart.Sort((a, b) => a.Sample.CompareTo(b.Sample));
+        phaseBefore = new bool[chart.Count];
+        nextFlipLeftBefore = new bool[chart.Count];
+        bool upsideDown = false, nextLeft = false;
+        for (int i = 0; i < chart.Count; ++i)
+        {
+            phaseBefore[i] = upsideDown;
+            nextFlipLeftBefore[i] = nextLeft;
+            chart[i] = new RhythmNote(chart[i].Sample, chart[i].Action, nextLeft);
+            // A nod does not change the original flip direction or upright phase.
+            if (chart[i].Action != SealAction.Nod) nextLeft = !nextLeft;
+            if (chart[i].Action == SealAction.Roll) upsideDown = !upsideDown;
+        }
         BuildCaptainDialogue();
         var sealActors = new List<Animator>();
         var partners = new List<Animator>();
@@ -345,16 +349,13 @@ public class RhythmGame : MonoBehaviour
         while (nextIntroIndex < introDemonstrations.Count && introDemonstrations[nextIntroIndex].Sample <= songSample)
         {
             var cue = introDemonstrations[nextIntroIndex++];
-            if (cue.Payload == "diantou")
-                foreach (var captain in captains) captain.PlayBeat(SealInput.Nod, cue.Sample);
+            // Nods now come from the scored sequence below. Only the unscored ready
+            // pose is automatic for the player; their nod animation requires a press.
+            if (cue.Payload != "readyRight" && cue.Payload != "readyLeft") continue;
             foreach (var seal in seals)
             {
-                if (cue.Payload == "readyRight" || cue.Payload == "readyLeft")
-                {
-                    if (seal != null && seal.TryGetComponent<SealOriginalAnimation>(out var original))
-                        original.PlayReady(cue.Payload == "readyLeft");
-                }
-                else if (TryGetAction(cue.Payload, out var action)) PlayAction(seal, aniName, (int)action);
+                if (seal != null && seal.TryGetComponent<SealOriginalAnimation>(out var original))
+                    original.PlayReady(cue.Payload == "readyLeft");
             }
         }
         // Judge.Notes is the complete sorted chart in a full show, or its prefix in practice.

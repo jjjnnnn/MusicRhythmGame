@@ -36,7 +36,7 @@ public static class SealOriginalAnimationTests
         ValidateWholeChart(data);
         ValidateErrorRecovery(data);
         Debug.Log("Seal original animation: 78 poses, 30 motions, discrete frame boundaries, signed transforms, " +
-            "230 original action/index/sample mappings, unscored intro and three input-error recovery paths verified.");
+            "230 original action/index/sample mappings, separate intro timing and three input-error recovery paths verified.");
     }
 
     private static void ValidateData(SealOriginalAnimation.AnimationData data)
@@ -143,7 +143,7 @@ public static class SealOriginalAnimationTests
             {
                 var note = chart.notes[i];
                 Require(RhythmGame.TryGetAction(note.action, out var action) && action != SealAction.Nod,
-                    "Only original flip/roll inputs are judged at " + i);
+                    "The original main track contains only flip/roll inputs at " + i);
                 Require(events[i].GetTextValue() == note.action, "Koreography action matches source at " + i);
                 int sample = (int)Math.Round(note.beat * 60d / chart.bpm * chart.sampleRate, MidpointRounding.AwayFromZero);
                 Require(events[i].StartSample == sample, "Sample-exact imported original beat at " + i);

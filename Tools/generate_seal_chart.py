@@ -97,7 +97,8 @@ def main():
     notes, people, intro = build_chart(source)
     validate(source, notes, people, intro)
     for filename, events in (("haibaoEvent.asset", notes), ("PeopleEvent.asset", people), ('haibaoIntroEvent.asset', intro)):
-        path = TRACKS / filename
+        # Original captain gestures are retained for provenance checks outside the player.
+        path = (ROOT / "Assets/Editor/OriginalData" / filename) if filename == "PeopleEvent.asset" else TRACKS / filename
         current = path.read_text(encoding="utf-8")
         expected = serialize_track(current, events, source)
         verify_serialization(expected, events, source)

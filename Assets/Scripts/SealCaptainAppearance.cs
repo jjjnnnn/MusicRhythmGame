@@ -73,7 +73,7 @@ public sealed class SealCaptainAppearance : MonoBehaviour
         animator.enabled = false;
         var go = new GameObject("Penguin conductor"); go.transform.SetParent(transform, false);
         body = go.AddComponent<SpriteRenderer>(); body.sortingOrder = 5;
-        ground = new Vector3(0, hasBounds ? transform.InverseTransformPoint(new Vector3(bounds.center.x, bounds.min.y, bounds.center.z)).y : -2.18f, 0);
+        ground = new Vector3(0, hasBounds ? transform.InverseTransformPoint(new Vector3(bounds.center.x, bounds.min.y, bounds.center.z)).y : -2.202f, 0);
         initialized = true; ResetPose();
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SealRhythm
 {
-    // Keep legacy values stable: Nod is an unscored intro demonstration in the original chart.
+    // Keep legacy values stable. Opening Nod notes are scored alongside flips and rolls.
     public enum SealAction { Nod, Left, Right, Roll }
     public enum SealInput { Nod, Left, Right }
     public enum HitGrade { Perfect, Good, Miss, Stray }

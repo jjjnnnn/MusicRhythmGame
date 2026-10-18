@@ -134,17 +134,8 @@ public sealed class SealBeatLane : MonoBehaviour
             Array.Clear(resolved, 0, resolved.Length);
         previousResolvedCount = observedJudge != null ? observedJudge.ResolvedCount : 0;
 
-        // Incoming notes are core gameplay information, even with a saved accent setting off.
-        // Intro nods are visual demonstrations, never judge inputs. They disappear on time.
-        var intro = game.IntroNotes;
-        if (intro != null) for (int i = 0; i < intro.Count && used < pairs.Length; i++)
-        {
-            long delta = (long)intro[i].Sample - sample;
-            if (delta <= 0) continue;
-            if (delta > horizon) break;
-            ShowMarker(used++, delta, intro[i].Input, sampleRate, bpm, extent);
-        }
-
+        // All playable arrows, including the five opening nods, share the judge's
+        // sequence and resolved state. A successful nod removes its arrow immediately.
         if (observedJudge != null)
         {
             var notes = observedJudge.Notes;

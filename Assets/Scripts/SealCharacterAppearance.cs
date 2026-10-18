@@ -8,7 +8,8 @@ using UnityEngine;
 [DefaultExecutionOrder(100)]
 public sealed class SealCharacterAppearance : MonoBehaviour
 {
-    private const float SourceWidth = 1774f;
+    // Artwork occupies the original 1774 x 887 pixels; block-compression padding is outside it.
+    private const float SourceHeight = 887f;
     private const float PixelsPerUnit = 280f;
     private const float Ground = -.20f;
     private const float Centre = .36f;
@@ -45,11 +46,11 @@ public sealed class SealCharacterAppearance : MonoBehaviour
                 new Rect(942, 501, 325, 332), new Rect(1377, 500, 328, 333) }
             : new[] { new Rect(73, 72, 341, 330), new Rect(511, 141, 348, 266),
                 new Rect(942, 77, 325, 331), new Rect(1376, 76, 328, 332) };
-        float scale = texture.width / SourceWidth;
+        const float scale = 1;
         for (int i = 0; i < rectangles.Length; ++i)
         {
             var source = rectangles[i];
-            var rect = new Rect(source.x * scale, texture.height - source.yMax * scale,
+            var rect = new Rect(source.x * scale, SourceHeight - source.yMax * scale,
                 source.width * scale, source.height * scale);
             var pivot = new Vector2(.5f, (Centre - Ground) * PixelsPerUnit / source.height);
             poses[i] = Sprite.Create(texture, rect, pivot, PixelsPerUnit * scale, 0, SpriteMeshType.FullRect);

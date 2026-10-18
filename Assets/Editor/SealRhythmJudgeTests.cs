@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using SealRhythm;
+using SonicBloom.Koreo;
 using UnityEditor;
 using UnityEngine;
 
@@ -24,7 +25,8 @@ public static class SealRhythmJudgeTests
             InputValidationAndSampleOverflow,
             PhysicalInputsChooseTheChartAction,
             DownCannotRollAndRollDirectionMatters,
-            PhysicalInputUsesNearestBeatAndTimingWindow
+            PhysicalInputUsesNearestBeatAndTimingWindow,
+            OpeningNodsScoreAndRejectWrongRepeatedOrMissingInputs
         };
         foreach (Action test in tests)
         {
@@ -302,6 +304,65 @@ public static class SealRhythmJudgeTests
         Equal(1, judge.MissCount);
         Throws<ArgumentOutOfRangeException>(() => judge.SubmitInput((SealInput)3, 1000));
         Throws<ArgumentOutOfRangeException>(() => judge.SubmitInput((SealInput)(-1), 1000));
+    }
+
+    private static void OpeningNodsScoreAndRejectWrongRepeatedOrMissingInputs()
+    {
+        var song = Resources.Load<Koreography>("Art/Level_cellanim/Kore/haibao");
+        True(song != null && song.SourceClip != null);
+        int sampleRate = song.SourceClip.frequency;
+        var intro = new List<RhythmNote>();
+        foreach (var cue in song.GetTrackByID("haibaoIntroEventID").GetAllEvents())
+            if (cue.GetTextValue() == "diantou") intro.Add(new RhythmNote(cue.StartSample, SealAction.Nod));
+        intro.Sort((a, b) => a.Sample.CompareTo(b.Sample));
+        Equal(5, intro.Count);
+        var notes = new List<RhythmNote>(intro);
+        foreach (var cue in song.GetTrackByID("haibaoEventID").GetAllEvents())
+        {
+            True(RhythmGame.TryGetAction(cue.GetTextValue(), out var action));
+            notes.Add(new RhythmNote(cue.StartSample, action));
+        }
+        var judge = new SealRhythmJudge(notes, sampleRate, 55, 120);
+        Equal(235, judge.TotalNotes);
+        for (int i = 0; i < intro.Count; ++i)
+        {
+            Equal(intro[i].Sample, judge.Notes[i].Sample);
+            Judgement hit = judge.SubmitInput(SealInput.Nod, intro[i].Sample);
+            Equal(HitGrade.Perfect, hit.Grade);
+            Equal(i, hit.NoteIndex);
+            Equal(SealAction.Nod, hit.Action);
+            Equal(i + 1, judge.Combo);
+            True(judge.Score > 0);
+        }
+        Equal(5, judge.PerfectCount);
+        Equal(0, judge.StrayCount);
+        Equal(0, judge.MissCount);
+
+        judge.Reset();
+        Equal(HitGrade.Miss, judge.SubmitInput(SealInput.Left, intro[0].Sample).Grade);
+        Equal(HitGrade.Stray, judge.SubmitInput(SealInput.Nod, intro[0].Sample).Grade);
+        // A missed opening beat expires by the same late boundary as the rest of the song.
+        judge.Advance(intro[1].Sample + (int)Math.Floor(.120d * sampleRate) + 1);
+        Equal(2, judge.MissCount);
+        Equal(2, judge.NextNoteIndex);
+        Equal(HitGrade.Perfect, judge.SubmitInput(SealInput.Nod, intro[2].Sample).Grade);
+        Equal(HitGrade.Stray, judge.SubmitInput(SealInput.Nod, intro[2].Sample).Grade);
+        for (int i = 3; i < intro.Count; ++i)
+            Equal(HitGrade.Perfect, judge.SubmitInput(SealInput.Nod, intro[i].Sample).Grade);
+        Equal(3, judge.PerfectCount);
+        Equal(2, judge.MissCount);
+        Equal(2, judge.StrayCount);
+        Equal(5, judge.ResolvedCount);
+        Equal(5, judge.NextNoteIndex);
+        Equal(SealAction.Right, judge.Notes[5].Action);
+        True(judge.Score > 0);
+
+        judge.Reset();
+        judge.Advance(intro[4].Sample + (int)Math.Floor(.120d * sampleRate) + 1);
+        Equal(5, judge.MissCount);
+        Equal(5, judge.NextNoteIndex);
+        Equal(0, judge.PerfectCount);
+        Equal(0, judge.StrayCount);
     }
 
     private static void Equal<T>(T expected, T actual)
