@@ -17,10 +17,18 @@ def data_uri(data, mime):
     return 'data:' + mime + ';base64,' + base64.b64encode(data).decode('ascii')
 
 def artwork(path, quality=92):
+    folder = LOG / 'h5-assets'
+    folder.mkdir(parents=True, exist_ok=True)
+    cache = folder / ('%s-%s-%s.webp' % (path.stem, quality, path.stat().st_mtime_ns))
+    if cache.exists():
+        content = cache.read_bytes()
+        return data_uri(content, 'image/webp'), len(content)
     with Image.open(path) as image:
         output = BytesIO()
         image.save(output, format='WEBP', quality=quality, method=6, exact=True)
-        return data_uri(output.getvalue(), 'image/webp'), len(output.getvalue())
+        content = output.getvalue()
+        cache.write_bytes(content)
+        return data_uri(content, 'image/webp'), len(content)
 
 def build_data():
     source = json.loads((ROOT / 'Tools/SealChart.json').read_text(encoding='utf-8'))
@@ -49,9 +57,10 @@ def build_data():
     original = ROOT / 'Assets/Resources/Art/Level_cellanim/Music/haibao.mp3'
     ffmpeg = shutil.which('ffmpeg')
     if not ffmpeg: raise RuntimeError('FFmpeg is required to package the offline music.')
-    subprocess.run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(original),
-                    '-codec:a', 'libmp3lame', '-b:a', '128k', '-ar', str(rate), '-ac', '2',
-                    '-map_metadata', '-1', str(music)], check=True)
+    if not music.exists() or music.stat().st_mtime < original.stat().st_mtime:
+        subprocess.run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(original),
+                        '-codec:a', 'libmp3lame', '-b:a', '128k', '-ar', str(rate), '-ac', '2',
+                        '-map_metadata', '-1', str(music)], check=True)
     pcm = subprocess.check_output([ffmpeg, '-hide_banner', '-loglevel', 'error', '-i', str(music), '-f', 's16le', '-acodec', 'pcm_s16le', '-'])
     assert len(pcm) // 4 == source['clipSamples'], 'MP3 sample count changed'
     assets['music'] = data_uri(music.read_bytes(), 'audio/mpeg')

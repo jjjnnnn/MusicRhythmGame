@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data: blob:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; media-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#fcf8ee">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>海豹节奏队</title>
+  <style>{{STYLE}}</style>
+</head>
+<body>
+  <main id="game" aria-label="海豹节奏队">
+    <canvas id="scene" aria-label="企鹅带领海豹跟随音乐点头和翻滚"></canvas>
+    <header id="header">
+      <div class="statistics">
+        <span id="score" aria-label="得分">000000</span>
+        <span id="combo">0 连击</span>
+        <span id="accuracy">—</span>
+        <span id="time">0:00 / 1:46</span>
+        <button id="pause" class="icon-button" type="button" aria-label="暂停" disabled><span aria-hidden="true">Ⅱ</span></button>
+      </div>
+    </header>
+    <div id="dialogue" class="speech" role="status" hidden></div>
+    <div id="shade" hidden></div>
+    <section id="ready" class="card" aria-labelledby="game-title">
+      <img class="emblem" data-icon="seal" alt="" width="34" height="34">
+      <h1 id="game-title">海豹节奏队</h1>
+      <div class="button-row">
+        <button id="start" class="primary" type="button" disabled>开始</button>
+        <button id="practice" type="button" disabled>练习</button>
+      </div>
+      <div class="settings">
+        <button id="assist" type="button" aria-pressed="true">节拍强调　开</button>
+        <div class="calibration">
+          <button id="offset-minus" type="button" aria-label="校准减少10毫秒">−</button>
+          <span id="offset">校准 0 ms</span>
+          <button id="offset-plus" type="button" aria-label="校准增加10毫秒">+</button>
+        </div>
+      </div>
+      <p id="loading" class="status" role="status">准备中…</p>
+    </section>
+    <section id="paused" class="card" aria-labelledby="paused-title" hidden>
+      <h2 id="paused-title">暂停</h2>
+      <p id="pause-error" class="status" role="status" hidden></p>
+      <div class="button-row">
+        <button id="resume" class="primary" type="button">继续</button>
+        <button id="restart-paused" type="button">重来</button>
+        <button id="back-paused" type="button">返回</button>
+      </div>
+    </section>
+    <section id="results" class="card" aria-labelledby="results-title" hidden>
+      <h2 id="results-title">演出完成</h2>
+      <p id="result-score" class="result-score">000000</p>
+      <div class="result-stats">
+        <span>PERFECT<b id="result-perfect">0</b></span>
+        <span>GOOD<b id="result-good">0</b></span>
+        <span>MISS<b id="result-miss">0</b></span>
+        <span>多按<b id="result-stray">0</b></span>
+      </div>
+      <p id="result-detail" class="result-detail"></p>
+      <div class="button-row">
+        <button id="replay" class="primary" type="button">再来</button>
+        <button id="back-results" type="button">返回</button>
+      </div>
+    </section>
+    <section id="error" class="card" aria-labelledby="error-title" hidden>
+      <h2 id="error-title">无法开始</h2>
+      <p id="error-message" class="error-message" role="alert"></p>
+      <div class="button-row"><button id="retry" class="primary" type="button">重试</button></div>
+    </section>
+    <div id="controls" role="group" aria-label="节奏按键">
+      <button class="action left" data-input="1" type="button" aria-label="向左，左方向键或A键"><img data-icon="left" alt="" draggable="false"><span class="arrow-fallback" aria-hidden="true">←</span></button>
+      <button class="action down" data-input="0" type="button" aria-label="点头，下方向键、S键或空格键"><img data-icon="down" alt="" draggable="false"><span class="arrow-fallback" aria-hidden="true">↓</span></button>
+      <button class="action right" data-input="2" type="button" aria-label="向右，右方向键或D键"><img data-icon="right" alt="" draggable="false"><span class="arrow-fallback" aria-hidden="true">→</span></button>
+    </div>
+  </main>
+  <noscript>请在支持 JavaScript 的浏览器中打开游戏。</noscript>
+  <script>window.SEAL_DATA={{DATA}};</script>
+  <script>{{ENGINE}}</script>
+  <script>{{UI}}</script>
+</body>
+</html>

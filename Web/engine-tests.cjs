@@ -109,6 +109,7 @@ async function runSong(practice) {
   audio.currentTime += 31; game.tick(); assert.equal(game.time,held); assert.equal(game.actors[2].frame,playerFrame);
   await game.resume();
   assert.equal(audio.sources.at(-1).started[1],held);
+  game.tick(); assert.equal(game.time,held, 'Resume scheduling must hold the sample clock until sound starts');
   const sourceStart = game._songStart;
   audio.currentTime = sourceStart + .4; game.tick(); assert.ok(Math.abs(game.time-held-.4)<1e-9);
   // An OS audio interruption pauses rather than skipping chart events when it resumes.

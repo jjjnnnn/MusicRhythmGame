@@ -172,7 +172,7 @@
     async start(practice) {
       if (this.loading) return false;
       const token = ++this._token;
-      this._stopSources(); this.loading = true; this.error = ''; this._emit();
+      this._stopSources(); this.state = 'ready'; this.loading = true; this.error = ''; this._emit();
       try {
         await this._ensureAudio();
         if (token !== this._token) return false;
@@ -237,7 +237,7 @@
       if (!this._isActive() || !this._context) return;
       const now = this._context.currentTime;
       if (this.state === 'countin' && now >= this._songStart) this.state = 'playing';
-      this._time = this.state === 'playing' ? clamp(this._segmentOffset + now - this._songStart, 0, this.duration) : 0;
+      this._time = this.state === 'playing' ? clamp(this._segmentOffset + Math.max(0, now - this._songStart), 0, this.duration) : 0;
     }
     _sample() { return Math.round(this._time * this.sampleRate) - Math.round(this.offset * this.sampleRate / 1000); }
     tick(emit) {
@@ -323,6 +323,7 @@
     pause() {
       if (!this._isActive()) return false;
       this._updateClock();
+      if (this.state === 'playing' && this._time >= this.duration) { this._advanceStage(); this._finish(); this._animate(); this._emit(); return false; }
       if (this.state === 'playing') { this._advanceStage(); this.judge.advance(this._sample()); }
       this._pausedState = this.state;
       this._remainingCountIn = this.state === 'countin' ? Math.max(0, this._songStart - this._context.currentTime) : 0;

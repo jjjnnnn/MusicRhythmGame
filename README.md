@@ -6,6 +6,12 @@
 
 Windows版运行 `Builds/SealRhythm/SealRhythm.exe`，同目录Data、MonoBleedingEdge和DLL需保留在一起。也可打开 `Assets/Scenes/GamePlay.unity` 后点击Unity Play。
 
+安卓离线单文件版为 `Builds/H5/SealRhythm.html`（约4.6 MB）。只需把这个HTML文件传到手机，用支持JavaScript和Web Audio的浏览器打开，点击“开始”后播放；推荐横屏。音乐、角色、背景和235拍谱面全部内嵌，无需联网、服务器、安装或同目录资源文件。此版以Canvas/Web Audio复用Unity关卡数据和素材，独立于Unity WebGL运行时；前5次点头、方向判定、翻滚相位、中文变奏、暂停恢复和练习均保留。
+
+背景现在铺满整个视口，覆盖底部按钮区域；三个方向键按安全区宽度分成大触控列。Unity布局检查覆盖桌面、手机横竖屏与刘海安全区。H5在离线 `file://` 的Chromium触控模拟环境中跑通235/235整曲、23/23练习，确认0网络请求、0运行错误；手机实机表现仍取决于浏览器的本地HTML运行支持，验证记录与截图见 `Logs/SealValidation/Mobile`。
+
+H5源码在 `Web`；运行 `python Tools/build_h5.py` 重新生成单HTML（需要Pillow与FFmpeg），原始图片与MP3不会被改写。`node Web/engine-tests.cjs` 验证判定和音频时钟状态机，`Web/validate-h5.cjs` 使用Playwright与本机Chrome验证生成文件。所有打包缓存仅写到日志目录，最终手机只需HTML本身。
+
 标题页可选“开始”（完整演出，约106秒、235个计分输入）或“练习”（前32拍、约14秒、23个输入）。Enter开始，四拍倒数后进入音乐。蓝色海豹由玩家操作，其余三只奶白色海豹跟随原关卡动作。
 
 | 操作 | 按键 |
